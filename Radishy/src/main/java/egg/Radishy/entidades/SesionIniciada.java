@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,7 +20,7 @@ public class SesionIniciada implements Serializable {
     @OneToOne
     private Usuario usuario;
     
-    @OneToOne
+    @OneToMany
     private List<Cultivo> cultivos;
 
     // constructores:
