@@ -100,10 +100,16 @@ public class SesionIniciada_servicio {
         //  Usuario usuario = usuarioRepositorio.findByEnSesion;
         //  'query que busca la sesionIniciada en su repositorio s/el usuario' ---> findByUsuario
         //  SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
-        //  List<Cultivo> cultivos = sesion.getCultivos();
-        //  
-        //
-        // """""todavía no lo terminé"""""
+        //  Iterator<Cultivo> itcultivos = sesion.getCultivos().iterator();
+        //  while(itcultivos.hasNext()){
+        //      if (uncultivo.next.getId().equals(idCultivo)){
+        //          uncultivo.remove
+        //          breack;
+        //      }
+        //  }
+        //} else {
+        //  throw new Errores_servicio("No hay ningún usuario ingresado, por ende no podrá eliminar ningún cultivo");
+        //}
     }
     
     public void eliminarUnCultivo (String idCultivo, String idUsuario) throws Errores_servicio{
