@@ -107,7 +107,20 @@ public class SesionIniciada_servicio {
     }
     
     public void eliminarUnCultivo (String idCultivo, String idUsuario) throws Errores_servicio{
-        
+        Optional<Usuario> rta = usuarioRepositorio.findById(idUsuario);
+        if (rta.isPresent()){
+            Usuario usuario = rta.get();
+            //'query que busca en repositorioSesIn la sesion iniciada segun el usuario' ---> findByUsuario
+            //SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+            //List<Culivo> cultivos = sesion.getCultivos();
+            //for (Cultivo uncultivo : cultivos) {
+            //    if (uncultivo.getId().equals(idCultivo){
+            //      uncultivo.remove();
+            //      breack;
+            //}
+        } else {
+            throw new Errores_servicio("No se encontró al usuario solicitado");
+        }
     }
     
     public void vaciarMisCultivos (String idUsuario) throws Errores_servicio{
