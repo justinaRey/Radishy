@@ -93,9 +93,30 @@ public class SesionIniciada_servicio {
         return null;
     }
     
-
+    // eliminarMiCultivo(): recibe el id del cultivo que quiere sacar de su listado de cultivos (busca usuario por enSesion)
+    public void eliminarMiCultivo (String idCultivo) throws Errores_servicio{
+        //if('query que cuenta la cantidad de usuarios con enSesion true' == 1){
+        //  'query que busca al usuario segun enSesion true' ---> findByEnSesion
+        //  Usuario usuario = usuarioRepositorio.findByEnSesion;
+        //  'query que busca la sesionIniciada en su repositorio s/el usuario' ---> findByUsuario
+        //  SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+        //  List<Cultivo> cultivos = sesion.getCultivos();
+        //  
+        //
+        // """""todavía no lo terminé"""""
+    }
     
-
+    public void eliminarUnCultivo (String idCultivo, String idUsuario) throws Errores_servicio{
+        
+    }
+    
+    public void vaciarMisCultivos (String idUsuario) throws Errores_servicio{
+        
+    }
+    
+    public void vaciarMisCultivos2 () throws Errores_servicio{
+        
+    }
     
     // incorporarle un boolean al usuario de 'en sesion' para que sea false siempre, salvo cuando ese usuario está en sesión
     
