@@ -42,10 +42,10 @@ public class SesionIniciada_servicio {
             if (rtacul.isPresent()) {
                 Cultivo cultivo = rtacul.get();
                 //'query de repositorioSesIn que busca la sesionIniciada según el usuario'
-                //SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario).get();
-                //List<Cultivo> cultivos = sesion.getCultivos();
-                //cultivos.add(cultivo);
-                //repositorioSesIn.save(sesion);
+                SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+                List<Cultivo> cultivos = sesion.getCultivos();
+                cultivos.add(cultivo);
+                repositorioSesIn.save(sesion);
             } else {
                 throw new Errores_servicio("El cultivo que intenta agregar a sus cultivos, no se encuentra guardado en nuestra base de datos.\nSi quiere, puede ir a agregarla a la misma para luego incorporarlo a sus cultivos");
            }
