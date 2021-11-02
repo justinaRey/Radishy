@@ -21,6 +21,7 @@ public class Usuario implements Serializable {
     private String nombre;
     private String password;
     private String apodo;
+    private Boolean enSesion;
     
     @Enumerated(EnumType.STRING)
     private Genero genero;
@@ -32,6 +33,7 @@ public class Usuario implements Serializable {
     //private Cultivo cultivo
     
     public Usuario() {
+        enSesion = false;
     }
 
     public Usuario(String id, String nombre, String password, String apodo, Genero genero, Localidad localidad) {
@@ -41,6 +43,7 @@ public class Usuario implements Serializable {
         this.apodo = apodo;
         this.genero = genero;
         this.localidad = localidad;
+        this.enSesion = false;
     }
 
     public String getId() {
@@ -91,5 +94,11 @@ public class Usuario implements Serializable {
         this.localidad = localidad;
     }
     
+    public void setEnSesion (boolean enSesion) {
+        this.enSesion = enSesion;
+    }
     
+    public Boolean getEnSesion(){
+        return enSesion;
+    }
 }
