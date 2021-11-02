@@ -10,6 +10,7 @@ import egg.Radishy.Repositorios.Cultivo_repositorio;
 import egg.Radishy.Repositorios.SesionIniciada_repositorio;
 import egg.Radishy.Repositorios.Usuario_repositorio;
 import egg.Radishy.entidades.Cultivo;
+import egg.Radishy.entidades.SesionIniciada;
 import egg.Radishy.entidades.Usuario;
 import java.util.List;
 import java.util.Optional;
@@ -39,12 +40,25 @@ public class SesionIniciada_servicio {
 //        
 //    }
     
-    // misCultivos(): devuelve una lista con todos los cultivos que el usuario posee
-//    public List<Cultivo> misCultivos () {
-//        return null;
-//    }
-    
+// misCultivos(): devuelve una lista con todos los cultivos que el usuario posee (busca con el id de la sesionIniciada)
+    public List<Cultivo> misCultivos (String idSesionIniciada) {
+        SesionIniciada sesion = repositorioSesIn.findById(idSesionIniciada).get();
+        return sesion.getCultivos();
+    }
 
+// misCultivosDistintos    
+    public List<Cultivo> misCultivosDistinto () throws Errores_servicio{
+        //if ('query que cuente la cantidad de usuarios con enSesion = true' == 1) {
+        //  'query que busca al usuario segun enSesion = true' ---> findByEnSesion()
+        //  Usuario usuario = usuarioRepositorio.findByEnSesion();
+        //  'query que busca la sesionIniciada según el usuario (entidad)' ---> findByUsuario(usuario)
+        //  SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+        //} else {
+        //  throw new Errores_servicios("No hay un usuario con la sesión iniciada.\nAntes de poder ver sus cultivos, deberá iniciar sesión.");
+        //}
+        //return sesion.getCultivos();
+        return null;
+    }
     
 
     
@@ -100,10 +114,10 @@ public class SesionIniciada_servicio {
              datosUsuario.setApodo(apodo);
             }
             usuarioRepositorio.save(datosUsuario);
-        }
-        
+        } 
     }
     
-    // query en repositorio del usuario que cuente la cantidad de usuarios con 'enSesion' = true, y devuelva dicha cantidad
-    // query en repositorio del usuario que busque y devuelva al usuario con 'enSesion' = true
+    // query en repositorio del usuario que cuente la cantidad de usuarios con 'enSesion' = true, y devuelva dicha cantidad 
+    // query en repositorio del usuario que busque y devuelva al usuario con 'enSesion' = true  ---> findByEnSesion()
+    // query en repositorio del usuario que busca al usuario según el nombre del usuario  ---> findByNombreUsuario()
 }
