@@ -28,6 +28,9 @@ public class Usuario implements Serializable {
     @Enumerated(EnumType.STRING)
     private Localidad localidad;
 
+    //@ManyToOne
+    //private Cultivo cultivo
+    
     public Usuario() {
     }
 
