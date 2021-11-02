@@ -80,6 +80,7 @@ public class SesionIniciada_servicio {
         return sesion.getCultivos();
     }
     
+    //misCultivos(): devuelve los cultivos que posee el usuario con la sesion iniciada (sin parametros)
     public List<Cultivo> misCultivos2 () throws Errores_servicio{
         //if ('query que cuenta la cantidad de usuarios enSesion true' == 1){
             Usuario usuario; // = usuarioRepositorio.findByEnSesion();
@@ -88,20 +89,6 @@ public class SesionIniciada_servicio {
         //} else {
         //    throw new Errores_servicio("No ha iniciado sesión aún");
         //}
-        return null;
-    }
-
-// misCultivosDistintos    
-    public List<Cultivo> misCultivosDistinto () throws Errores_servicio{
-        //if ('query que cuente la cantidad de usuarios con enSesion = true' == 1) {
-        //  'query que busca al usuario segun enSesion = true' ---> findByEnSesion()
-        //  Usuario usuario = usuarioRepositorio.findByEnSesion();
-        //  'query que busca la sesionIniciada según el usuario (entidad)' ---> findByUsuario(usuario)
-        //  SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
-        //} else {
-        //  throw new Errores_servicios("No hay un usuario con la sesión iniciada.\nAntes de poder ver sus cultivos, deberá iniciar sesión.");
-        //}
-        //return sesion.getCultivos();
         return null;
     }
     
@@ -124,6 +111,7 @@ public class SesionIniciada_servicio {
         //}
     }
     
+    //eliminarUnCultivo(): recibe el id del cultivo a eliminar del usuario recibido
     public void eliminarUnCultivo (String idCultivo, String idUsuario) throws Errores_servicio{
         Optional<Usuario> rta = usuarioRepositorio.findById(idUsuario);
         if (rta.isPresent()){
