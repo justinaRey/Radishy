@@ -15,37 +15,37 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class Security extends WebSecurityConfigurerAdapter{
-    
+public class Security extends WebSecurityConfigurerAdapter {
+
 //    UserDetailService
 //    @Autowired
 //    private UsuarioServicio usuarioServicio;
-    
 //    Metodo de autenticacion.
 //    @Autowired
 //    public void configureGlobal(AuthenticationManagerBuilder auth) throwa Exception{
 //        auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
 //    }
-    
-//  configuracion de peticiones http    
+//    configuracion de peticiones http    
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception{
-//        http.authorizeRequests()
+//        http.headers().frameOptions().sameOrigin()
+//        .and().authorizeRequests()
 //                .antMatchers("/css/*","/img/*","/js/*").permitAll()
-//                .and().formLogin().loginPage("")
-//                .usernameParameter("")
-//                .passwordParameter("")
+//        .and().formLogin()
+//                .loginPage("/login")
+//                .usernameParameter("username")
+//                .passwordParameter("password")
 //                .defaultSuccessUrl("")
 //                .loginProcessingUrl("/logincheck")
 //                .failureUrl("").permitAll()
-//                .and().logout()
-//                .logoutUrl("")
-//                .logoutSuccessUrl("")
-//                .and().csrf().disable();
+//        .and().logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/")
+//        .and().csrf().disable();
 //    }
     
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
-       http.formLogin().disable();
+    protected void configure(HttpSecurity http) throws Exception {
+        http.formLogin().disable();
     }
 }
