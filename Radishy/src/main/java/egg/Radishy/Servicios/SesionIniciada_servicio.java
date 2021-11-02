@@ -32,13 +32,29 @@ public class SesionIniciada_servicio {
     @Autowired
     private Cultivo_repositorio cultivoRepositorio;
     
-    // agregarCultivo(): agrega un cultivo a los que ya posee el usuario
-//    public void agregarMiCultivo (String idUsuario, String idCultivo) {
-//        
-//        Usuario usuario = usuarioRepositorio.findById(idUsuario).get();
-//        
-//        
-//    }
+// agregarCultivo(): agrega un cultivo a los que ya posee el usuario
+    public void agregarMiCultivo (String idUsuario, String idCultivo) throws Errores_servicio{
+        
+        Optional<Usuario> rtaus = usuarioRepositorio.findById(idUsuario);
+        if (rtaus.isPresent()){
+            Usuario usuario = rtaus.get();
+            Optional<Cultivo> rtacul = cultivoRepositorio.findById(idCultivo);
+            if (rtacul.isPresent()) {
+                Cultivo cultivo = rtacul.get();
+                //'query de repositorioSesIn que busca la sesionIniciada según el usuario'
+                //SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario).get();
+                //List<Cultivo> cultivos = sesion.getCultivos();
+                //cultivos.add(cultivo);
+                //repositorioSesIn.save(sesion);
+            } else {
+                throw new Errores_servicio("El cultivo que intenta agregar a sus cultivos, no se encuentra guardado en nuestra base de datos.\nSi quiere, puede ir a agregarla a la misma para luego incorporarlo a sus cultivos");
+           }
+        } else {
+            throw new Errores_servicio("No se encontró al usuario.");
+        }
+        
+        
+    }
     
 // misCultivos(): devuelve una lista con todos los cultivos que el usuario posee (busca con el id de la sesionIniciada)
     public List<Cultivo> misCultivos (String idSesionIniciada) {
@@ -66,14 +82,15 @@ public class SesionIniciada_servicio {
     
     // incorporarle un boolean al usuario de 'en sesion' para que sea false siempre, salvo cuando ese usuario está en sesión
     
-        // iniciarSesion(): recibe el nombre de usuario y la contraseña por parte del 'usuario' y controla que se pueda iniciar la sesión y los datos ingresados sean correctos
+// iniciarSesion(): recibe el nombre de usuario y la contraseña por parte del 'usuario' y controla que se pueda iniciar la sesión y los datos ingresados sean correctos
     public void iniciarSesion (String usuario, String password) throws Errores_servicio{
         // if ('query que cuente la cantidad de usarios con enSesion true' < 1) {
         //  validarHayaDatosInicioSesio(usuario, password);
         //  'query que busque al usuario en el repositorio con el nombre de usuario' ---> findByNombreUsuario(nombreUsuario)
         //  Usuario datosUsuario = usuarioRepositorio.findByNombreUsuario(usuario);
-        //  if (usuario.getPassword() == password) {
-        //      usuario.setEnSesio(true);
+        //  if (datosUsuario.getPassword() == password) {
+        //      datosUsuario.setEnSesio(true);
+        //      usuarioRepositorio.save(datosUsuario);
         //  } else {
         //      throw new Errores_servicio("La contraseña ingresada no corresponde al nombre de usuario ingresado");
         // } else {
