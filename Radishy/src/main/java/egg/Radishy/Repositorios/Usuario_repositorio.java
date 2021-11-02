@@ -19,6 +19,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Usuario_repositorio extends JpaRepository<Usuario, String>{
 
+    @Query("Select count(u) from Usuario u where u.enSesion = true")
+    public int cantidadEnSesionTrue();
     
+    @Query("Select u from Usuario u where u.enSesion = true")
+    public Usuario findByEnSesion();
     
 }
