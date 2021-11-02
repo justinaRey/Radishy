@@ -140,19 +140,21 @@ public class SesionIniciada_servicio {
         }
     }
     
+    // vaciarMisCultivos(): recibe el id del usuario en cuestión y vacía su lista de cultivos seleccionados
     public void vaciarMisCultivos (String idUsuario) throws Errores_servicio{
         Optional<Usuario> rta = usuarioRepositorio.findById(idUsuario);
         if(rta.isPresent()){
             Usuario usuario = rta.get();
             //'query que busca la sesionIniciada según el usuario' ---> findByUsuario
-            //SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
-            //sesion.getCultivos().clear();
-            //repositorioSesIn.save(sesion);
+            SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+            sesion.getCultivos().clear();
+            repositorioSesIn.save(sesion);
         } else {
             throw new Errores_servicio("No se encontró al usuario solicitado");
         }
     }
     
+    // vaciarMisCultivos2(): al usuario con la sesión iniciada se le quitan todos sus cultivos seleccionados
     public void vaciarMisCultivos2 () throws Errores_servicio{
         //if('query que cuenta la cantidad de usuarios enSesion true' == 1){
         //  'query que busca al usuario según enSesion' ---> findByEnSesion
@@ -187,6 +189,18 @@ public class SesionIniciada_servicio {
     public void cerrarSesion (String idUsuario) {
         Usuario usuario = usuarioRepositorio.findById(idUsuario).get();
         usuario.setEnSesion(false);
+    }
+    
+    // cerrarSesion2(): a la sesion iniciada, la cierra, sin requerimiento de ningún parámetro
+    public void cerrarSesion2 () throws Errores_servicio{
+        //if('query que busca la cant de usuarios con enSesion true' == 1){
+        //  'query que busca al usuario segun enSesion true' ---> findByEnSesion
+        //  Usuario usuario = usuarioRepositorio.findByEnSesion();
+        //  usuario.setEnSesion(false);
+        //  usuarioRepositorio.save(usuario);
+        //} else {
+        //  throw new Errores_servicio("No había ninguna sesión iniciada que cerrar");
+        //}
     }
     
     // validarHayaDatosInicioSesion(): 
