@@ -78,6 +78,17 @@ public class SesionIniciada_servicio {
         SesionIniciada sesion = repositorioSesIn.findById(idSesionIniciada).get();
         return sesion.getCultivos();
     }
+    
+    public List<Cultivo> misCultivos2 () throws Errores_servicio{
+        //if ('query que cuenta la cantidad de usuarios enSesion true' == 1){
+            Usuario usuario; // = usuarioRepositorio.findByEnSesion();
+            SesionIniciada sesion; // = repositorioSesIn.findByUsuario(usuario);
+        //    return sesion.getCultivos();
+        //} else {
+        //    throw new Errores_servicio("No ha iniciado sesión aún");
+        //}
+        return null;
+    }
 
 // misCultivosDistintos    
     public List<Cultivo> misCultivosDistinto () throws Errores_servicio{
