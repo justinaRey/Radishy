@@ -12,6 +12,7 @@ import egg.Radishy.Repositorios.Usuario_repositorio;
 import egg.Radishy.entidades.Cultivo;
 import egg.Radishy.entidades.Usuario;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,11 +46,7 @@ public class SesionIniciada_servicio {
     
 
     
-//    public void editarCuenta (String idUsuario, String usuario, String password, String apodo) {
-//        
-//        Usuario usuario2 = usuarioRepositorio.findById(idUsuario).get();
-//        
-//    }
+
     
 
     
@@ -84,4 +81,29 @@ public class SesionIniciada_servicio {
             throw new Errores_servicio("No ha ingresado una contraseña");
         }
     }
+    
+    // editarCuenta(): recibe el id de un usuario (se puede modificar haciendo que se busque al usuario 'enSesion' y sea al que se modifica) y los campos que se le permiten editar al usuario, para modificar los datos de aquellos que ingrese algo
+    public void editarCuenta (String idUsuario, String usuario, String passwordActual, String passwordNueva, String apodo) throws Errores_servicio{
+        Optional<Usuario> rta = usuarioRepositorio.findById(idUsuario);
+        if (rta.isPresent()) {
+            Usuario datosUsuario = rta.get();
+            if (passwordActual == null) {
+                throw new Errores_servicio("No puede guardar ningún cambio si no introduce su contraseña actual");
+            }
+            if (usuario != null) {
+             datosUsuario.setNombre(usuario);
+            }
+            if (passwordNueva != null) {
+                datosUsuario.setPassword(passwordNueva);
+            }
+            if(apodo != null) {
+             datosUsuario.setApodo(apodo);
+            }
+            usuarioRepositorio.save(datosUsuario);
+        }
+        
+    }
+    
+    // query en repositorio del usuario que cuente la cantidad de usuarios con 'enSesion' = true, y devuelva dicha cantidad
+    // query en repositorio del usuario que busque y devuelva al usuario con 'enSesion' = true
 }
