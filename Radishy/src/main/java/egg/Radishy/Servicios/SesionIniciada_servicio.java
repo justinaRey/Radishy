@@ -32,7 +32,7 @@ public class SesionIniciada_servicio {
     @Autowired
     private Cultivo_repositorio cultivoRepositorio;
     
-// agregarCultivo(): agrega un cultivo a los que ya posee el usuario
+// agregarCultivo(): agrega un cultivo a los que ya posee el usuario (recibe el id del usuario)
     public void agregarMiCultivo (String idUsuario, String idCultivo) throws Errores_servicio{
         
         Optional<Usuario> rtaus = usuarioRepositorio.findById(idUsuario);
@@ -51,9 +51,26 @@ public class SesionIniciada_servicio {
            }
         } else {
             throw new Errores_servicio("No se encontró al usuario.");
-        }
-        
-        
+        }   
+    }
+    
+    // agregarAMisCultivos(): agrega un cultivo a los que ya posee el usuario (busca al usuario en sesion iniciada)
+    public void agregarAMisCultivos (String idCultivo) throws Errores_servicio{
+        //if('query que cuenta la cantidad de usuarios con enSesion true' == 1){
+        //  'query que busca el usuario con enSesion true'  ---> findByEnSesion
+        //  Usuario usuario = usuarioRepositorio.findByEnSesion();
+        //  Optional<Cultivo> rta = cultivoRepositorio.findById(idCultivo);
+        //  if (rta.isPresent()) {
+        //      'query que busca en repositorioSesIn la sesion iniciada segun el usuario' ---> findByUsuario
+        //      SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+        //      sesion.getCultivos.add(rta.get());
+        //      repositorioSesIn.save(sesion);
+        //  } else {
+        //      throw new Errores_servicio("No se encuentra registrado el cultivo seleccionado");
+        //  }
+        //} else {
+        //  throw new Errores_servicio("No puede agregar a sus cultivos debido a que no ha iniciado sesión.\nInicie su sesión o regístrese para poder hacerlo");
+        //}
     }
     
 // misCultivos(): devuelve una lista con todos los cultivos que el usuario posee (busca con el id de la sesionIniciada)
