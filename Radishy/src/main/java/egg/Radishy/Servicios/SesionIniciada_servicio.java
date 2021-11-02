@@ -132,8 +132,12 @@ public class SesionIniciada_servicio {
             SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
             Iterator<Cultivo> cultivos = sesion.getCultivos().iterator();
             while (cultivos.hasNext()){
-                if (cultivos.next().)
+                if (cultivos.next().getId().equals(idCultivo)){
+                    cultivos.remove();
+                    break;
+                }
             }
+            repositorioSesIn.save(sesion);
         } else {
             throw new Errores_servicio("No se encontró al usuario solicitado");
         }
