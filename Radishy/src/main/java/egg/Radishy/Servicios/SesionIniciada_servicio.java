@@ -111,11 +111,29 @@ public class SesionIniciada_servicio {
     }
     
     public void vaciarMisCultivos (String idUsuario) throws Errores_servicio{
-        
+        Optional<Usuario> rta = usuarioRepositorio.findById(idUsuario);
+        if(rta.isPresent()){
+            Usuario usuario = rta.get();
+            //'query que busca la sesionIniciada según el usuario' ---> findByUsuario
+            //SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+            //sesion.getCultivos().clear();
+            //repositorioSesIn.save(sesion);
+        } else {
+            throw new Errores_servicio("No se encontró al usuario solicitado");
+        }
     }
     
     public void vaciarMisCultivos2 () throws Errores_servicio{
-        
+        //if('query que cuenta la cantidad de usuarios enSesion true' == 1){
+        //  'query que busca al usuario según enSesion' ---> findByEnSesion
+        //  Usuario usuario = usuarioRepositorio.findByEnSesion(usuario);
+        //  'query que busca en repositorioSesIn la sesion iniciada segun el usuario' ---> findByUsuario
+        //  SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+        //  sesion.getCultivos().clear();
+        //  repositorioSesIn.save(sesion);
+        //} else {
+        //  throw new Errores_servicio("No ha iniciado sesión todavía");
+        //}
     }
     
     // incorporarle un boolean al usuario de 'en sesion' para que sea false siempre, salvo cuando ese usuario está en sesión
