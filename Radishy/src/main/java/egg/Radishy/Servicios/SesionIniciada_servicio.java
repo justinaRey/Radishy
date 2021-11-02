@@ -43,9 +43,22 @@ public class SesionIniciada_servicio {
 //        return null;
 //    }
     
-    // iniciarSesion(): recibe el nombre de usuario y la contraseña por parte del 'usuario' y controla que se pueda iniciar la sesión y los datos ingresados sean correctos
+
+    
+//    public void editarCuenta (String idUsuario, String usuario, String password, String apodo) {
+//        
+//        Usuario usuario2 = usuarioRepositorio.findById(idUsuario).get();
+//        
+//    }
+    
+
+    
+    // incorporarle un boolean al usuario de 'en sesion' para que sea false siempre, salvo cuando ese usuario está en sesión
+    
+        // iniciarSesion(): recibe el nombre de usuario y la contraseña por parte del 'usuario' y controla que se pueda iniciar la sesión y los datos ingresados sean correctos
     public void iniciarSesion (String usuario, String password) throws Errores_servicio{
         // if ('query que cuente la cantidad de usarios con enSesion true' < 1) {
+        //  validarHayaDatosInicioSesio(usuario, password);
         //  'query que busque al usuario en el repositorio con el nombre de usuario' ---> findByNombreUsuario(nombreUsuario)
         //  Usuario datosUsuario = usuarioRepositorio.findByNombreUsuario(usuario);
         //  if (usuario.getPassword() == password) {
@@ -56,26 +69,19 @@ public class SesionIniciada_servicio {
         //  throw new Errores_servicio("No se puede tener dos sesiones ingresadas a la vez, por favor cierre la sesión en curso antes de iniciar una nueva");
     }
     
-//    public void editarCuenta (String idUsuario, String usuario, String password, String apodo) {
-//        
-//        Usuario usuario2 = usuarioRepositorio.findById(idUsuario).get();
-//        
-//    }
-    
-//    public void validarDatos (String usuario, String password, String apodo) throws Errores_servicio{
-//        if (usuario == null) {
-//            throw new Errores_servicio("No ha ingresado un nombre de usuario");
-//        }
-//        if (password == null) {
-//            throw new Errores_servicio("No ha ingresado una contraseña");
-//        }
-//    }
-    
-    // incorporarle un boolean al usuario de 'en sesion' para que sea false siempre, salvo cuando ese usuario está en sesión
-    
     // cerrarSesion(): recibe el id del Usuario activo y le cierra la sesión
     public void cerrarSesion (String idUsuario) {
         Usuario usuario = usuarioRepositorio.findById(idUsuario).get();
         usuario.setEnSesion(false);
+    }
+    
+    // validarHayaDatosInicioSesion(): 
+    public void validarHayaDatosInicioSesion(String usuario, String password) throws Errores_servicio {
+        if (usuario == null) {
+            throw new Errores_servicio("No ha ingresado un nombre de usuario");
+        }
+        if (password == null) {
+            throw new Errores_servicio("No ha ingresado una contraseña");
+        }
     }
 }
