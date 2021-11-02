@@ -19,6 +19,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SesionIniciada_repositorio extends JpaRepository<SesionIniciada, String>{
         
-    @Query("select s from SesionIniciada where usuario = :usuario")
+    @Query("select s from SesionIniciada s where s.usuario = :usuario")
     public SesionIniciada findByUsuario(@Param("usuario") Usuario usuario);
 }
