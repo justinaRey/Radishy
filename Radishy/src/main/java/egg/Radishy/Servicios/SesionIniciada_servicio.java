@@ -12,6 +12,7 @@ import egg.Radishy.Repositorios.Usuario_repositorio;
 import egg.Radishy.entidades.Cultivo;
 import egg.Radishy.entidades.SesionIniciada;
 import egg.Radishy.entidades.Usuario;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,13 +129,11 @@ public class SesionIniciada_servicio {
         if (rta.isPresent()){
             Usuario usuario = rta.get();
             //'query que busca en repositorioSesIn la sesion iniciada segun el usuario' ---> findByUsuario
-            //SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
-            //List<Culivo> cultivos = sesion.getCultivos();
-            //for (Cultivo uncultivo : cultivos) {
-            //    if (uncultivo.getId().equals(idCultivo){
-            //      uncultivo.remove();
-            //      breack;
-            //}
+            SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+            Iterator<Cultivo> cultivos = sesion.getCultivos().iterator();
+            while (cultivos.hasNext()){
+                if (cultivos.next().)
+            }
         } else {
             throw new Errores_servicio("No se encontró al usuario solicitado");
         }
