@@ -16,3 +16,61 @@
     background-image: url(../Img/vintage-wallpaper.png);
 }
 
+footer{
+    margin-top: 0%;
+    background-color: #7A7A77;
+    opacity: 0.4;
+    text-align: center;
+}
+
+.typography{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+}
+
+h1.typography{
+    padding-top: 2%;
+    font-size: 1em;
+    line-height: 2;
+    color: #181E23;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.iconos{
+    margin-top: 4%;
+}
+
+/* Iconos - Redes Sociales Footer*/
+#ico-face{
+    width: 3em;
+    height: 3em;
+    margin-right: 5em;
+}
+
+#ico-twit{
+    width: 3em;
+    height: 3em;
+    margin-right: 5em;
+}
+
+#ico-inst{
+    width: 3em;
+    height: 3em;
+    margin-right: 5em;
+    margin-bottom: em;
+}
+
+#ico-gmail{
+    width: 3em;
+    height: 3em;
+    
+}
+
+h2.typography{
+    text-align: end;
+    padding-top: 1em;
+    padding-bottom: 0.3%;
+    padding-right: 0.5%;
+    opacity: 0.7;
+}
