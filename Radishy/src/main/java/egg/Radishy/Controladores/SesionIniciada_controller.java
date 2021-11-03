@@ -6,6 +6,7 @@
 package egg.Radishy.Controladores;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -16,5 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 public class SesionIniciada_controller {
   
-    
+    @GetMapping("")
+    public String login(){
+        return "usuario.hmtl";
+    }
 }
