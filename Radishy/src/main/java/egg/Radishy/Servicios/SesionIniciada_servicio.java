@@ -12,6 +12,7 @@ import egg.Radishy.Repositorios.Usuario_repositorio;
 import egg.Radishy.entidades.Cultivo;
 import egg.Radishy.entidades.SesionIniciada;
 import egg.Radishy.entidades.Usuario;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -57,7 +58,7 @@ public class SesionIniciada_servicio {
     }
     
     // agregarAMisCultivos(): agrega un cultivo a los que ya posee el usuario (busca al usuario en sesion iniciada)
-    public void agregarAMisCultivos (String idCultivo) throws Errores_servicio{
+    public void agregarAMisCultivos (String idCultivo, Date fechaDeSiembra) throws Errores_servicio{
         //'query que cuenta la cantidad de usuarios con enSesion true'
         if(usuarioRepositorio.cantidadEnSesionTrue() == 1){
             //'query que busca el usuario con enSesion true'  ---> findByEnSesion
@@ -66,7 +67,9 @@ public class SesionIniciada_servicio {
             if (rta.isPresent()) {
                 //'query que busca en repositorioSesIn la sesion iniciada segun el usuario' ---> findByUsuario
                 SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
-                sesion.getCultivos().add(rta.get());
+                rta.get().setFechaDeSiembra(fechaDeSiembra);  // se le cambia la fecha de siembra al cultivo
+                cultivoRepositorio.save(rta.get());  // se la guarda en el repositoiro del cultivo
+                sesion.getCultivos().add(rta.get());  // se agrega el cultivo con la fecha modificada al usuario en sesion iniciada
                 repositorioSesIn.save(sesion);
             } else {
                 throw new Errores_servicio("No se encuentra registrado el cultivo seleccionado");
@@ -74,6 +77,7 @@ public class SesionIniciada_servicio {
         } else {
             throw new Errores_servicio("No puede agregar a sus cultivos debido a que no ha iniciado sesión.\nInicie su sesión o regístrese para poder hacerlo");
         }
+        // me quedó de la duda de si no hay que sacar la lista de cultivos y hacer que sea un solo cultivo y que la fecha de siembra esté en sesión iniciada; y que por ende, se cree un sesión iniciada por cada cultivo agregado al usuario
     }
     
 // misCultivos(): devuelve una lista con todos los cultivos que el usuario posee (busca con el id de la sesionIniciada)
