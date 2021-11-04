@@ -21,4 +21,9 @@ public class SesionIniciada_controller {
     public String login(){
         return "usuario.hmtl";
     }
+    
+    @GetMapping("/agregar-cultivo-usuario")
+    public String agregarCultivo(){
+        return "aggCultivo.html";
+    }
 }
