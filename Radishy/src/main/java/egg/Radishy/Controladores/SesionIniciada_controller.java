@@ -7,6 +7,7 @@ package egg.Radishy.Controladores;
 
 import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.Servicios.SesionIniciada_servicio;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,14 +57,17 @@ public class SesionIniciada_controller {
         return "aggCultivo.html";
     }
     
+    // agregarCultivo(): lo que sucede al apretar 'agregar cultivo' (msj error y permanecer en la misma pág. o ir a los cultivos si se guardó).
     @GetMapping("/agragar-cultivo-usuario")
-    public String agregarCultivo(ModelMap modelo, @RequestParam String idCultivo) {
+    public String agregarCultivo(ModelMap modelo, @RequestParam String idCultivo, @RequestParam Date fechaDeSiembra) {
         try {
-            servicio.agregarAMisCultivos(idCultivo);
+            servicio.agregarAMisCultivos(idCultivo, fechaDeSiembra);
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
+            modelo.put("fechaDeSiembra", fechaDeSiembra);
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "aggCultivo.html";
         }
-        return null;
+        return "misCultivos.html";  // posibilidad de llevar a una pág que diga que su cultivo ha sido agregado con éxito
     }
 }

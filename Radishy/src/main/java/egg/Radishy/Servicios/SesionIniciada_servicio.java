@@ -65,12 +65,16 @@ public class SesionIniciada_servicio {
             Usuario usuario = usuarioRepositorio.findByEnSesion();
             Optional<Cultivo> rta = cultivoRepositorio.findById(idCultivo);
             if (rta.isPresent()) {
-                //'query que busca en repositorioSesIn la sesion iniciada segun el usuario' ---> findByUsuario
-                SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
-                rta.get().setFechaDeSiembra(fechaDeSiembra);  // se le cambia la fecha de siembra al cultivo
-                cultivoRepositorio.save(rta.get());  // se la guarda en el repositoiro del cultivo
-                sesion.getCultivos().add(rta.get());  // se agrega el cultivo con la fecha modificada al usuario en sesion iniciada
-                repositorioSesIn.save(sesion);
+                if(fechaDeSiembra != null) {
+                    //'query que busca en repositorioSesIn la sesion iniciada segun el usuario' ---> findByUsuario
+                    SesionIniciada sesion = repositorioSesIn.findByUsuario(usuario);
+                    rta.get().setFechaDeSiembra(fechaDeSiembra);  // se le cambia la fecha de siembra al cultivo
+                    cultivoRepositorio.save(rta.get());  // se la guarda en el repositoiro del cultivo
+                    sesion.getCultivos().add(rta.get());  // se agrega el cultivo con la fecha modificada al usuario en sesion iniciada
+                    repositorioSesIn.save(sesion);
+                } else {
+                    throw new Errores_servicio("No ha ingresado una fecha de siembra");
+                }
             } else {
                 throw new Errores_servicio("No se encuentra registrado el cultivo seleccionado");
             }
