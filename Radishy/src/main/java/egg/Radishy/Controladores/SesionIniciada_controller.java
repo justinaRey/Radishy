@@ -64,5 +64,6 @@ public class SesionIniciada_controller {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 }

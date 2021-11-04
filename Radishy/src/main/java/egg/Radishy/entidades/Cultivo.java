@@ -3,11 +3,14 @@ package egg.Radishy.entidades;
 
 import egg.Radishy.enumeraciones.Mes;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -30,6 +33,9 @@ public class Cultivo implements Serializable {
     private Integer tiempoGerminar;
     private Integer tiempoTransplantar;
     private Integer tiempoCosechar;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaDeSiembra;
 
     public String getId() {
         return id;
@@ -101,6 +107,14 @@ public class Cultivo implements Serializable {
 
     public void setTiempoCosechar(Integer tiempoCosechar) {
         this.tiempoCosechar = tiempoCosechar;
+    }
+
+    public Date getFechaDeSiembra() {
+        return fechaDeSiembra;
+    }
+
+    public void setFechaDeSiembra(Date fechaDeSiembra) {
+        this.fechaDeSiembra = fechaDeSiembra;
     }
     
     
