@@ -70,4 +70,29 @@ public class SesionIniciada_controller {
         }
         return "misCultivos.html";  // posibilidad de llevar a una pág que diga que su cultivo ha sido agregado con éxito
     }
+    
+    // misCultivos(): lleva a la pág donde se ven los cultivos del usuario con sesión iniciada, y si no la inició, se lo comunica
+    @GetMapping("/cultivos-usuario")
+    public String misCultivos (ModelMap modelo) {
+        try {
+            servicio.misCultivos2();
+        } catch (Errores_servicio ex) {
+            modelo.put("error", ex.getMessage());
+            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            // return "usuario.html";
+        }
+        return "misCultivos.html";
+    }
+    
+    @GetMapping("/cerrar-sesion")
+    public String cerrarSesion(ModelMap modelo){
+        try {
+            servicio.cerrarSesion2();
+        } catch (Errores_servicio ex) {
+            modelo.put("error", ex.getMessage());
+            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            //return "usuario.html";
+        }
+        return "index.html";
+    }
 }
