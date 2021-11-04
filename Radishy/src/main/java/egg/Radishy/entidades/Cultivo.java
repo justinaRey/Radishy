@@ -27,7 +27,7 @@ public class Cultivo implements Serializable {
     private Mes finEpocaSiembra;
     
     private String metodo;
-    private Integer profSiembraCM;
+    private Integer profSiembraCM; // Profundidad de siembra
     private Integer tiempoGerminar;
     private Integer tiempoTransplantar;
     private Integer tiempoCosechar;
