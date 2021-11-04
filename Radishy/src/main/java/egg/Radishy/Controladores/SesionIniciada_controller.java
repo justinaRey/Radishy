@@ -36,7 +36,7 @@ public class SesionIniciada_controller {
     
     // inicioDeSesion(): lo que sucede luego de apretar el botón de "iniciar sesión" (inicio de la sesión y vuelta a pág. pcipal o volver a pedir datos
     @PostMapping("iniciar-sesion")
-    public String inicioDeSesion(ModelMap modelo, @RequestParam(required = false) String usuario, @RequestParam(required = false) String password){
+    public String inicioDeSesion(ModelMap modelo, @RequestParam String usuario, @RequestParam String password){
         try {
             servicio.iniciarSesion(usuario, password);
         } catch (Errores_servicio ex) {
@@ -57,7 +57,12 @@ public class SesionIniciada_controller {
     }
     
     @GetMapping("/agragar-cultivo-usuario")
-    public String agregarCultivo() {
-        
+    public String agregarCultivo(ModelMap modelo, @RequestParam String idCultivo) {
+        try {
+            servicio.agregarAMisCultivos(idCultivo);
+        } catch (Errores_servicio ex) {
+            modelo.put("error", ex.getMessage());
+            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
