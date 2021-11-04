@@ -15,6 +15,7 @@ import egg.Radishy.entidades.Usuario;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -165,6 +166,7 @@ public class SesionIniciada_servicio {
     // incorporarle un boolean al usuario de 'en sesion' para que sea false siempre, salvo cuando ese usuario está en sesión
     
 // iniciarSesion(): recibe el nombre de usuario y la contraseña por parte del 'usuario' y controla que se pueda iniciar la sesión y los datos ingresados sean correctos
+    @Transactional
     public void iniciarSesion (String usuario, String password) throws Errores_servicio{
         //'query que cuente la cantidad de usarios con enSesion true'
         if (usuarioRepositorio.cantidadEnSesionTrue() < 1) {

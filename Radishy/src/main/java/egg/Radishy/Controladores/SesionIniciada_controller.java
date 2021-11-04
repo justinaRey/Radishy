@@ -5,9 +5,17 @@
  */
 package egg.Radishy.Controladores;
 
+import egg.Radishy.Errores.Errores_servicio;
+import egg.Radishy.Servicios.SesionIniciada_servicio;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -17,13 +25,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 public class SesionIniciada_controller {
   
-    @GetMapping("")
-    public String login(){
+    @Autowired
+    private SesionIniciada_servicio servicio;
+    
+    // iniciarSesion(): lleva a la pag. html para completar los datos de inicio de sesión
+    @GetMapping("/iniciar-sesion(?")
+    public String iniciarSesion(){
         return "usuario.hmtl";
     }
     
-    @GetMapping("/agregar-cultivo-usuario")
-    public String agregarCultivo(){
+    // inicioDeSesion(): lo que sucede luego de apretar el botón de "iniciar sesión" (inicio de la sesión y vuelta a pág. pcipal o volver a pedir datos
+    @PostMapping("iniciar-sesion")
+    public String inicioDeSesion(ModelMap modelo, @RequestParam(required = false) String usuario, @RequestParam(required = false) String password){
+        try {
+            servicio.iniciarSesion(usuario, password);
+        } catch (Errores_servicio ex) {
+            // envía el mensaje de error a la página (front)
+            modelo.put("error", ex.getMessage());
+            // recuerda el nombre de usuario ingresado por el usuario en la página(front)
+            modelo.put("usuario", usuario);
+            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "usuario.html";  // vuelve a solicitar los datos al usuario para iniciar sesión
+        }
+        return "index.html";  // vuelve a la página principal 
+    }
+    
+    // aAgregarCultivo(): lleva a la pág. html para añadir un cultivo al usuario en cuestión.
+    @GetMapping("/agregar-cultivo-usuario(?")
+    public String aAgregarCultivo(){
         return "aggCultivo.html";
+    }
+    
+    @GetMapping("/agragar-cultivo-usuario")
+    public String agregarCultivo() {
+        
     }
 }
