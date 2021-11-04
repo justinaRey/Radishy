@@ -23,6 +23,31 @@
       crossorigin="anonymous"
     ></script>
     <link href="../Css/cultivo.css" rel="stylesheet" type="text/css" />
+    <link href="../Css/aggCultivo.css" rel="stylesheet" type="text/css" />
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css"
+    />
+
+    <!-- Include Date Range Picker -->
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"
+    />
   </head>
 
   <body class="boddy">
@@ -89,6 +114,80 @@
         </div>
       </div>
     </nav>
+    <div class="segundoFondo">
+      <br />
+      <h1>Crear nuevo cultivo</h1>
+      <br>
+      <br />
+      <div class="mb-3" style="padding-left: 25%; padding-right: 25%">
+        <input
+          type="nombre"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Nombre"
+        />
+        <br />
+        <br />
+        <input
+          type="nombre"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Tipo de cultivo"
+        />
+        <br />
+        <br />
+        <input
+          type="nombre"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Región"
+        />
+        <br>
+        <br>
+        <input
+          type="nombre"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Tiempo de cosecha"
+        />
+        <br>
+        <h5 style="text-align: initial; font-size: 1em">Epoca de cultivo</h5>
+        <input class="fechis" type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+        <script type="text/javascript">
+          $(function () {
+            $('input[name="daterange"]').daterangepicker();
+          });
+        </script>
+        <br />
+        <br />
+        
+        <button href="#" class="boxx">Agregar cultivo</button>
+      </div>
+    </div>
     
+
   </body>
+
+  <footer th:fragment="footer">
+    <div class="foot-1">
+      <h1 class="typography">Redes Sociales</h1>
+      <div class="iconos">
+        <a href=""
+          ><img src="../Img/facebook.png" alt="Icono Facebook" id="ico-face"
+        /></a>
+        <a href=""
+          ><img src="../Img/twitter.png" alt="Icono Twitter" id="ico-twit"
+        /></a>
+        <a href=""
+          ><img src="../Img/instagram.png" alt="Icono Instagram" id="ico-inst"
+        /></a>
+        <a href=""
+          ><img src="../Img/email.png" alt="Icono Gmail" id="ico-gmail"
+        /></a>
+      </div>
+    </div>
+    <h2 class="typography">
+      2021 Copyright Radishy - Todos los derechos reservados.
+    </h2>
+  </footer>
 </html>
