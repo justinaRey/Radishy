@@ -25,6 +25,7 @@ public class Cultivo implements Serializable {
     
     @Enumerated(EnumType.STRING)
     private Mes finEpocaSiembra;
+    
     private String metodo;
     private Integer profSiembraCM;
     private Integer tiempoGerminar;

@@ -22,7 +22,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 //    private UsuarioServicio usuarioServicio;
 //    Metodo de autenticacion.
 //    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throwa Exception{
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 //        auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
 //    }
 //    configuracion de peticiones http    
