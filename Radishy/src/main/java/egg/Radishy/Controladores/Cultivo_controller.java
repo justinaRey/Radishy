@@ -1,4 +1,3 @@
-
 package egg.Radishy.Controladores;
 
 import egg.Radishy.enumeraciones.Mes;
@@ -23,7 +22,9 @@ public class Cultivo_controller {
     }
     
     @PostMapping("/guardarCultivo")
-    public String crearCultivo(@RequestParam String nombre){ // Parámetros
+    public String crearCultivo(@RequestParam String nombre, @RequestParam String metodo, @RequestParam String profSiembraCM, @RequestParam Integer tiempoGerminar, @RequestParam Integer tiempoTransplantar, @RequestParam Integer tiempoCosechar){ // Parámetros, agregar cuando esté el form hecho
+        // Qué hacer con la epoca de siembra
+
         //cS.guardarCultivo();
         return "nuevoCultivo";
     }
