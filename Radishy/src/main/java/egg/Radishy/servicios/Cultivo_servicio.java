@@ -39,32 +39,37 @@ public class Cultivo_servicio {
             List<Cultivo> lista = listarCultivos();
             for (Cultivo cultivo : lista) {
                 if(nombre == cultivo.getNombre()){
-                    throw new ErrorServicio("El nombre ingresado no es válido.");
+                    throw new ErrorServicio("El nombre ingresado ya está en la lista de cultivos.");
                 }
             }
             if (nombre == null) {
-                throw new ErrorServicio("El nombre ingresado no es válido.");
+                throw new ErrorServicio("El nombre no fue ingresado.");
             }
             if (iniSiembra == null) {
-                throw new ErrorServicio("La contraseña ingresada no es válida.");
+                throw new ErrorServicio("El inicio de la siembra no fue ingresado.");
             }
             if (finSiembra == null) {
-                throw new ErrorServicio("El apodo ingresado no es válido.");
+                throw new ErrorServicio("El final de la siembra no fue ingresado.");
+            }
+            for (Mes mes : Mes.values()) {
+                if(iniSiembra != mes || finSiembra != mes){
+                    throw new ErrorServicio("El mes ingresado no es correcto.");
+                }
             }
             if (metodo == null) {
-                throw new ErrorServicio("El género ingresado no es válido.");
+                throw new ErrorServicio("El método no fue ingresado.");
             }
             if (profSiembra == null) {
-                throw new ErrorServicio("La localidad ingresada no es válida.");
+                throw new ErrorServicio("La profundidad de siembra no fue ingresada");
             }
             if (tGerminar == null) {
-                throw new ErrorServicio("La localidad ingresada no es válida.");
+                throw new ErrorServicio("El tiempo de germinar no fue ingresado.");
             }
             if (tTransplantar == null) {
-                throw new ErrorServicio("La localidad ingresada no es válida.");
+                throw new ErrorServicio("El tiempo de transplantar no fue ingresado.");
             }
             if (tCosechar == null) {
-                throw new ErrorServicio("La localidad ingresada no es válida.");
+                throw new ErrorServicio("El tiempo de cosechar no fue ingresado.");
             }
         } catch (ErrorServicio e) {
             System.err.println(e.getMessage());
