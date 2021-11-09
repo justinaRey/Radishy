@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author usuario
  */
 @Controller
-@RequestMapping("")
+@RequestMapping("/sesion")
 public class SesionIniciada_controller {
   
    @Autowired
@@ -31,12 +31,12 @@ public class SesionIniciada_controller {
     
     /*           controladores para regular el inicio de la sesión            */ 
     
-    @GetMapping("/iniciar-sesion(?")
+    @GetMapping("/sesion/iniciar")
     public String iniciarSesion(){
         return "usuario.html";
     }
     
-    @GetMapping("/iniciar-sesion")
+    @GetMapping("/sesion/iniciada")
     public String iniciar_sesion(ModelMap modelo, @RequestParam String nusuario, @RequestParam String password){
         try {
             servicio.iniciarSesion(nusuario, password);
@@ -52,7 +52,7 @@ public class SesionIniciada_controller {
     
     /*             controlador para cerrar la sesión del usuario              */
     
-    @GetMapping("/cerrar-sesion")
+    @GetMapping("/sesion/iniciada/cerrar")
     public String cerrarSesion(ModelMap modelo) {
         try {
             servicio.cerrarSesion();
@@ -66,12 +66,12 @@ public class SesionIniciada_controller {
     
     /*      controlador que agrega un cultivo a los cultivos del usuario      */
     
-    @GetMapping("/agg-a-mis-cultivos(?")
+    @GetMapping("/sesion/iniciada/agregar-mis-cultivos")
     public String agregarMiCultivo(){
         return "aggCultivo.html";
     }
     
-    @GetMapping()
+    @GetMapping("/sesion/iniciada/agregado-mis-cultivos")
     public String agregadoMiCultivo(ModelMap modelo, @RequestParam String idCultivo, @RequestParam Date fechaSembrado){
         try {
             servicio.agregarMiCultivo(idCultivo, fechaSembrado);
@@ -88,7 +88,7 @@ public class SesionIniciada_controller {
     
     /*              controlador para el listado de los cultivos               */
     
-    @GetMapping("/mis-cultivos")
+    @GetMapping("/sesion/iniciada/mis-cultivos")
     public String verMisCultivos(ModelMap modelo){
         try {
             servicio.misCultivos();
@@ -102,7 +102,7 @@ public class SesionIniciada_controller {
     
     /*    controlador para eliminar un cultivo del listado de los cultivos    */
     
-    @GetMapping("/eliminar-cultivo")
+    @GetMapping("/sesion/iniciada/mis-cultivos/eliminar-cultivo")
     public String eliminarCultivo(ModelMap modelo, @RequestParam String idSesIn){
         try {
             servicio.eliminarMiCultivo(idSesIn);
@@ -117,7 +117,7 @@ public class SesionIniciada_controller {
     
     /*   controlador para eliminar todos los cultivos que posee el usuario    */
     
-    @GetMapping("/eliminar-todos-cultivos-usuario")
+    @GetMapping("/sesion/iniciada/mis-cultivos/eliminar-todos-cultivos")
     public String eliminarTodosCultivos(ModelMap modelo){
         try {
             servicio.vaciarMisCultivos();
