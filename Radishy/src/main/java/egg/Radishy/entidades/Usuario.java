@@ -21,6 +21,7 @@ public class Usuario implements Serializable {
     private String nombre;
     private String password;
     private String apodo;
+//    private String email; // se lo puede agregar si se agrega el mail en el front para por ej, recuperar la contraseña
     private Boolean enSesion;
     
     @Enumerated(EnumType.STRING)
@@ -101,4 +102,12 @@ public class Usuario implements Serializable {
     public Boolean getEnSesion(){
         return enSesion;
     }
+    
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 }
