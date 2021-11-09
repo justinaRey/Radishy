@@ -120,7 +120,7 @@ public class SesionIniciada_servicio {
     /*              métodos para iniciar la sesión y cerrarla                 */
     
     // iniciarSesion(): inicia la sesión del usuario según los datos ingresados
-    public void iniciarSesion(String usuario, String password) throws Errores_servicio_ {
+    public void iniciarSesion(String usuario, String password) throws Errores_servicio {
         chequeoEstenSesionesCerradas();
         if (usuario != null) {
             if (usuarioRepositorio.cantidadUsuariosNombre(usuario) != 0) {
