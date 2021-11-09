@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,7 +29,11 @@ public class SesionIniciada_controller {
    @Autowired
     private SesionIniciada_servicio servicio;
     
-    
+   @GetMapping("/sesion")
+   public String index(){
+       return "index.html";
+   }
+   
     /*           controladores para regular el inicio de la sesión            */ 
     
     @GetMapping("/sesion/iniciar")
@@ -36,7 +41,7 @@ public class SesionIniciada_controller {
         return "usuario.html";
     }
     
-    @GetMapping("/sesion/iniciada")
+    @PostMapping("/sesion/iniciada")
     public String iniciar_sesion(ModelMap modelo, @RequestParam String nusuario, @RequestParam String password){
         try {
             servicio.iniciarSesion(nusuario, password);
@@ -44,9 +49,9 @@ public class SesionIniciada_controller {
             modelo.put("error", ex.getMessage());
             modelo.put("usuario", nusuario);
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "usuario.html";
+            return "usuario.hmtl";
         }
-        return "index.hmtl";
+        return "redirect:/sesion";
     }
     
     
@@ -60,7 +65,7 @@ public class SesionIniciada_controller {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "index.html";
+        return "redirect:/"; //index.html si no es con redirect
     }
     
     
@@ -71,7 +76,7 @@ public class SesionIniciada_controller {
         return "aggCultivo.html";
     }
     
-    @GetMapping("/sesion/iniciada/agregado-mis-cultivos")
+    @PostMapping("/sesion/iniciada/agregado-mis-cultivos")
     public String agregadoMiCultivo(ModelMap modelo, @RequestParam String idCultivo, @RequestParam Date fechaSembrado){
         try {
             servicio.agregarMiCultivo(idCultivo, fechaSembrado);
@@ -81,8 +86,9 @@ public class SesionIniciada_controller {
             modelo.put("idCultivo", idCultivo);
             modelo.put("fechaSembrado", fechaSembrado);
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "aggCultivo.html";
         }
-        return "aggCultivo.html";
+        return "redirect:/sesion/iniciada/agregar-mis-cultivos"; //aggCultivo.html si no es con redirect
     }
     
     
@@ -95,7 +101,7 @@ public class SesionIniciada_controller {
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "usuario.hmtl";
+            return "redirect:/sesion/iniciar"; // usuario.html si no va redirect
         }
         return "misCultivos";
     }
@@ -111,7 +117,7 @@ public class SesionIniciada_controller {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "misCultivos";
+        return "misCultivos.";
     }
     
     
@@ -125,6 +131,6 @@ public class SesionIniciada_controller {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "misCultivos-hmtl";
+        return "misCultivos.hmtl";
     }
 }

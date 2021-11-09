@@ -8,9 +8,12 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+//import javax.persistence.Inheritance;
+//import javax.persistence.InheritanceType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+//@Inheritance(strategy = InheritanceType.JOINED) // algo de la security
 public class Usuario implements Serializable {
 
     @Id
