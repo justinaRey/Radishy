@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,73 +25,106 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("")
 public class SesionIniciada_controller {
   
-    @Autowired
+   @Autowired
     private SesionIniciada_servicio servicio;
     
-    // iniciarSesion(): lleva a la pag. html para completar los datos de inicio de sesión
+    
+    /*           controladores para regular el inicio de la sesión            */ 
+    
     @GetMapping("/iniciar-sesion(?")
     public String iniciarSesion(){
-        return "usuario.hmtl";
+        return "usuario.html";
     }
     
-    // inicioDeSesion(): lo que sucede luego de apretar el botón de "iniciar sesión" (inicio de la sesión y vuelta a pág. pcipal o volver a pedir datos
-    @PostMapping("iniciar-sesion")
-    public String inicioDeSesion(ModelMap modelo, @RequestParam String usuario, @RequestParam String password){
+    @GetMapping("/iniciar-sesion")
+    public String iniciar_sesion(ModelMap modelo, @RequestParam String nusuario, @RequestParam String password){
         try {
-            servicio.iniciarSesion(usuario, password);
+            servicio.iniciarSesion(nusuario, password);
         } catch (Errores_servicio ex) {
-            // envía el mensaje de error a la página (front)
             modelo.put("error", ex.getMessage());
-            // recuerda el nombre de usuario ingresado por el usuario en la página(front)
-            modelo.put("usuario", usuario);
+            modelo.put("usuario", nusuario);
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "usuario.html";  // vuelve a solicitar los datos al usuario para iniciar sesión
+            return "usuario.html";
         }
-        return "index.html";  // vuelve a la página principal 
+        return "index.hmtl";
     }
     
-    // aAgregarCultivo(): lleva a la pág. html para añadir un cultivo al usuario en cuestión.
-    @GetMapping("/agregar-cultivo-usuario(?")
-    public String aAgregarCultivo(){
+    
+    /*             controlador para cerrar la sesión del usuario              */
+    
+    @GetMapping("/cerrar-sesion")
+    public String cerrarSesion(ModelMap modelo) {
+        try {
+            servicio.cerrarSesion();
+        } catch (Errores_servicio ex) {
+            modelo.put("error", ex.getMessage());
+            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "index.html";
+    }
+    
+    
+    /*      controlador que agrega un cultivo a los cultivos del usuario      */
+    
+    @GetMapping("/agg-a-mis-cultivos(?")
+    public String agregarMiCultivo(){
         return "aggCultivo.html";
     }
     
-    // agregarCultivo(): lo que sucede al apretar 'agregar cultivo' (msj error y permanecer en la misma pág. o ir a los cultivos si se guardó).
-    @GetMapping("/agragar-cultivo-usuario")
-    public String agregarCultivo(ModelMap modelo, @RequestParam String idCultivo, @RequestParam Date fechaDeSiembra) {
+    @GetMapping()
+    public String agregadoMiCultivo(ModelMap modelo, @RequestParam String idCultivo, @RequestParam Date fechaSembrado){
         try {
-            servicio.agregarAMisCultivos(idCultivo, fechaDeSiembra);
+            servicio.agregarMiCultivo(idCultivo, fechaSembrado);
+            modelo.put("confirmacion", "El cultivo seleccionado se ha agregado a sus cultivos con éxito"); //aviso de cultivo agregado
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
-            modelo.put("fechaDeSiembra", fechaDeSiembra);
+            modelo.put("idCultivo", idCultivo);
+            modelo.put("fechaSembrado", fechaSembrado);
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "aggCultivo.html";
         }
-        return "misCultivos.html";  // posibilidad de llevar a una pág que diga que su cultivo ha sido agregado con éxito
+        return "aggCultivo.html";
     }
     
-    // misCultivos(): lleva a la pág donde se ven los cultivos del usuario con sesión iniciada, y si no la inició, se lo comunica
-    @GetMapping("/cultivos-usuario")
-    public String misCultivos (ModelMap modelo) {
+    
+    /*              controlador para el listado de los cultivos               */
+    
+    @GetMapping("/mis-cultivos")
+    public String verMisCultivos(ModelMap modelo){
         try {
-            servicio.misCultivos2();
+            servicio.misCultivos();
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            // return "usuario.html";
+            return "usuario.hmtl";
         }
-        return "misCultivos.html";
+        return "misCultivos";
     }
     
-    @GetMapping("/cerrar-sesion")
-    public String cerrarSesion(ModelMap modelo){
+    /*    controlador para eliminar un cultivo del listado de los cultivos    */
+    
+    @GetMapping("/eliminar-cultivo")
+    public String eliminarCultivo(ModelMap modelo, @RequestParam String idSesIn){
         try {
-            servicio.cerrarSesion2();
+            servicio.eliminarMiCultivo(idSesIn);
+            modelo.put("confirmacion", "El culivo seleccionado ha sido eliminado de sus cultivos con éxito");
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            //return "usuario.html";
         }
-        return "index.html";
+        return "misCultivos";
+    }
+    
+    
+    /*   controlador para eliminar todos los cultivos que posee el usuario    */
+    
+    @GetMapping("/eliminar-todos-cultivos-usuario")
+    public String eliminarTodosCultivos(ModelMap modelo){
+        try {
+            servicio.vaciarMisCultivos();
+        } catch (Errores_servicio ex) {
+            modelo.put("error", ex.getMessage());
+            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "misCultivos-hmtl";
     }
 }
