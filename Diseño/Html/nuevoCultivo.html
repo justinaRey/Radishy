@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crear un cultivo</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear un nuevo cultivo</title>
     <link rel="shortcut icon" href="../Img/radishy.png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -32,11 +32,7 @@
       type="text/javascript"
       src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"
     ></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css"
-    />
+    
 
     <!-- Include Date Range Picker -->
     <script
@@ -48,13 +44,9 @@
       type="text/css"
       href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"
     />
-  </head>
-
- 
-  <body class="boddy">
-    <!--Barra de navegacion-->
+</head>
+<body class="boddy">
     <nav
-      class="navegar"
       class="navbar navbar-expand-lg navbar-light"
       style="background-color: rgb(0, 187, 178)"
     >
@@ -105,8 +97,8 @@
                 >Sobre nosotros</a
               >
             </li>
-          </ul> 
-          <a class="navbar-brand" href="/" style="margin-right: 0px;">
+          </ul>
+          <a class="navbar-brand" href="/">
             <img
               src="../Img/2561496_user_icon.png"
               alt=""
@@ -115,75 +107,72 @@
             />
           </a>
         </div>
-        
       </div>
     </nav>
-    <!---->
-    <!--Formulario-->
+
     <div class="segundoFondo">
-      <br />
-      <h1>Crear nuevo cultivo</h1>
-      <br>
-      <br />
-      <div class="mb-3" style="padding-left: 25%; padding-right: 25%">
-        <input
-          type="nombre"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Nombre"
-        />
-
         <br />
-        <br />
-        <input
-          type="number"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Profundida de siembra en cm"
-        />
-        <br />
-        <br />
-        <input
-          type="number"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Tiempo de germinar (dias)"
-        />
+        <h1>Crear nuevo cultivo</h1>
         <br>
-        <br>
-        <input
-          type="number"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Tiempo de transplantar (dias)"
-        />
-        <br>
-        <br>
-        <input
-          type="number"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Tiempo de cosecha (dias)"
-        />
-        <br>
-        <h5 style="text-align: initial; font-size: 1em">Epoca de siembra</h5>
-        <input class="fechis" type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
-        <script type="text/javascript">
-          $(function () {
-            $('input[name="daterange"]').daterangepicker();
-          });
-        </script>
         <br />
-        <br />
-        
-        <button href="#" class="boxx">Agregar cultivo</button>
+        <div class="mb-3" style="padding-left: 25%; padding-right: 25%">
+          <input
+            type="nombre"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Nombre"
+          />
+  
+          <br />
+          <br />
+          <input
+            type="number"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Profundida de siembra en cm"
+          />
+          <br />
+          <br />
+          <input
+            type="number"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Tiempo de germinar (dias)"
+          />
+          <br>
+          <br>
+          <input
+            type="number"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Tiempo de transplantar (dias)"
+          />
+          <br>
+          <br>
+          <input
+            type="number"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Tiempo de cosecha (dias)"
+          />
+          <br>
+          <h5 style="text-align: initial; font-size: 1em">Epoca de siembra</h5>
+          <input class="fechis" type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+          <script type="text/javascript">
+            $(function () {
+              $('input[name="daterange"]').daterangepicker();
+            });
+          </script>
+          <br />
+          <br />
+          
+          <button href="#" class="boxx">Agregar cultivo</button>
+        </div>
       </div>
-    </div>
-    <!---->
+      <!---->
+</body>
 
-  </body>
-
-  <footer th:fragment="footer">
+<footer th:fragment="footer">
     <div class="foot-1">
       <h1 class="typography">Redes Sociales</h1>
       <div class="iconos">
