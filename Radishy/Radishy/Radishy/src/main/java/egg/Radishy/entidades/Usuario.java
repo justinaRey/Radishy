@@ -20,10 +20,7 @@ public class Usuario implements Serializable {
 
     private String nombre;
     private String password;
-    private String email;
-    private String apellido;
-    private Boolean alta;
-    private Boolean enSesion;
+    private String apodo;
     
     @Enumerated(EnumType.STRING)
     private Genero genero;
@@ -34,34 +31,15 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Boolean getAlta() {
-        return alta;
-    }
-
-    public void setAlta(Boolean alta) {
-        this.alta = alta;
-    }
-
-    public Usuario(String id, String nombre, String password, String apellido, Boolean alta, Boolean enSesion, Genero genero, Localidad localidad) {
+    public Usuario(String id, String nombre, String password, String apodo, Genero genero, Localidad localidad) {
         this.id = id;
         this.nombre = nombre;
         this.password = password;
-        this.apellido = apellido;
-        this.alta = alta;
-        this.enSesion = enSesion;
+        this.apodo = apodo;
         this.genero = genero;
         this.localidad = localidad;
     }
 
-    public Boolean getEnSesion() {
-        return enSesion;
-    }
-
-    public void setEnSesion(Boolean enSesion) {
-        this.enSesion = enSesion;
-    }
-
-    
     public String getId() {
         return id;
     }
@@ -86,14 +64,13 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApodo() {
+        return apodo;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApodo(String apodo) {
+        this.apodo = apodo;
     }
-
 
     public Genero getGenero() {
         return genero;

@@ -1,0 +1,101 @@
+body{
+    background: #24303c;
+}
+
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+.form-login{
+    width: 400px;
+    height: 340px;;
+    background: #22374d;
+    padding:20px 30px;
+    margin:auto;
+    margin-top:180px;
+    box-shadow:7px 13px 37px #000 ;
+    border-radius: 4px;
+    font-family: 'Calibri';
+    color: white;
+    border-top: 4px solid#017bab;
+}
+.form-login h5{
+    margin:0;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid;
+    font-size: 20px;
+    font-family: 'Calibri'
+}
+.controls{
+    width: 100%;
+    border:1px solid #017bab;
+    padding:11px 10px;
+    margin-bottom:15px;
+    background:#252323;
+    font-size: 14px;
+    font-weight: bold;
+
+
+}
+/* -Footer- */
+footer{
+    margin-top: 2%;
+    background-color: #7A7A77;
+    opacity: 0.4;
+    text-align: center;
+}
+
+.typography{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1.typography{
+    padding-top: 2%;
+    font-size: 3em;
+    line-height: 2;
+    color: #181E23;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.iconos{
+    margin-top: 4%;
+}
+
+/* Iconos - Redes Sociales Footer*/
+#ico-face{
+    width: 5em;
+    height: 5em;
+    margin-right: 5em;
+}
+
+#ico-twit{
+    width: 5em;
+    height: 5em;
+    margin-right: 5em;
+}
+
+#ico-inst{
+    width: 5em;
+    height: 5em;
+    margin-right: 5em;
+    margin-bottom: em;
+}
+
+#ico-gmail{
+    width: 5em;
+    height: 5em;
+    
+}
+
+h2.typography{
+    text-align: end;
+    padding-top: 3em;
+    padding-bottom: 0.3%;
+    padding-right: 0.5%;
+    opacity: 0.7;
+}
