@@ -57,7 +57,6 @@ public class Cultivo implements Serializable {
         this.inicioEpocadeSiembra = inicioEpocadeSiembra;
         this.finEpocaSiembra = finEpocaSiembra;
         this.metodo = metodo;
-        this.profSiembraCM = profSiembraCM;
         this.tiempoGerminar = tiempoGerminar;
         this.tiempoTransplantar = tiempoTransplantar;
         this.tiempoCosechar = tiempoCosechar;
@@ -102,16 +101,7 @@ public class Cultivo implements Serializable {
     public void setMetodo(String metodo) {
         this.metodo = metodo;
     }
-
-<<<<<<< HEAD
-    public Integer getProfSiembraCM() {
-        return profSiembraCM;
-    }
-
-    public void setProfSiembraCM(Integer profSiembraCM) {
-        this.profSiembraCM = profSiembraCM;
-    }
-
+    
     public Integer getTiempoGerminar() {
         return tiempoGerminar;
     }
@@ -136,8 +126,6 @@ public class Cultivo implements Serializable {
         this.tiempoCosechar = tiempoCosechar;
     }
     
-    
-=======
     public Integer getProfundidadSiembraCM() {
         return profundidadSiembraCM;
     }
@@ -283,5 +271,4 @@ public class Cultivo implements Serializable {
     
 //    public String getTiempoCosechar () {
 //          return this.tiempoCosechar;
->>>>>>> facuh
 }

@@ -124,10 +124,6 @@ public class Usuario implements Serializable {
         this.enSesion = enSesion;
     }
     
-    public Boolean getEnSesion(){
-        return enSesion;
-    }
-    
 //    public String getEmail() {
 //        return email;
 //    }
