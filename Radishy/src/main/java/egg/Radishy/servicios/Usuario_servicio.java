@@ -1,4 +1,4 @@
-package egg.Radishy.servicios;
+package egg.Radishy.Servicios;
 
 import egg.Radishy.Entidades.Usuario;
 import egg.Radishy.Enumeraciones.Genero;

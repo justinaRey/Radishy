@@ -1,5 +1,5 @@
 
-package egg.Radishy.servicios;
+package egg.Radishy.Servicios;
 
 import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.Repositorios.Cultivo_repositorio;
