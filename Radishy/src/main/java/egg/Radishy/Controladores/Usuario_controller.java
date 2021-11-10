@@ -1,11 +1,11 @@
 
 package egg.Radishy.Controladores;
 
+import egg.Radishy.Entidades.Usuario;
+import egg.Radishy.Enumeraciones.Genero;
+import egg.Radishy.Enumeraciones.Localidad;
 import egg.Radishy.Errores.Errores_servicio;
-import egg.Radishy.Servicios.Usuario_servicio;
-import egg.Radishy.entidades.Usuario;
-import egg.Radishy.enumeraciones.Genero;
-import egg.Radishy.enumeraciones.Localidad;
+import egg.Radishy.servicios.Usuario_servicio;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

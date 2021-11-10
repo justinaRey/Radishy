@@ -1,4 +1,4 @@
-package egg.Radishy.entidades;
+package egg.Radishy.Entidades;
 
 import java.io.Serializable;
 import java.util.Calendar;

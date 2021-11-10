@@ -1,8 +1,7 @@
 
 package egg.Radishy.Repositorios;
 
-import egg.Radishy.entidades.SesionIniciada;
-import egg.Radishy.entidades.Usuario;
+import egg.Radishy.Entidades.Usuario;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

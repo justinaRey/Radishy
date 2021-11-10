@@ -1,7 +1,7 @@
-package egg.Radishy.entidades;
+package egg.Radishy.Entidades;
 
-import egg.Radishy.enumeraciones.Genero;
-import egg.Radishy.enumeraciones.Localidad;
+import egg.Radishy.Enumeraciones.Genero;
+import egg.Radishy.Enumeraciones.Localidad;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

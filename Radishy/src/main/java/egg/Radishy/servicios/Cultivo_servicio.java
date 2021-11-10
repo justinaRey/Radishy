@@ -3,8 +3,8 @@ package egg.Radishy.servicios;
 
 import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.Repositorios.Cultivo_repositorio;
-import egg.Radishy.entidades.Cultivo;
-import egg.Radishy.enumeraciones.Mes;
+import egg.Radishy.Entidades.Cultivo;
+import egg.Radishy.Enumeraciones.Mes;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
