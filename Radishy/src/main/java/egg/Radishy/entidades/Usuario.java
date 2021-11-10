@@ -124,11 +124,11 @@ public class Usuario implements Serializable {
         this.enSesion = enSesion;
     }
     
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
