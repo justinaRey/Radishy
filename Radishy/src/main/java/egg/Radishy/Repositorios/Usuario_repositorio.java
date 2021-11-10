@@ -1,7 +1,9 @@
 
 package egg.Radishy.Repositorios;
 
+import egg.Radishy.entidades.SesionIniciada;
 import egg.Radishy.entidades.Usuario;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,10 +15,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface Usuario_repositorio extends JpaRepository<Usuario, String>{
-    
-    @Query("SELECT c FROM Usuario c WHERE c.id = :id")
-    public Usuario buscarPorId(@Param("id") String id);
-    
+
     @Query("Select count(u) from Usuario u where u.enSesion = true")
     public int cantidadEnSesionTrue();
     
@@ -26,4 +25,13 @@ public interface Usuario_repositorio extends JpaRepository<Usuario, String>{
     @Query("Select u from Usuario u where u.nombre = :nombre")
     public Usuario findByNombreUsuario(@Param("nombre") String nombre);
     
+    // estas dos son las agregadas
+    @Query("Select u from Usuario_ u where u.enSesion = true")
+    public List<Usuario> findSesionesIniciadas ();
+    
+    @Query("SELECT c FROM Usuario c WHERE c.id = :id")
+    public Usuario buscarPorId(@Param("id") String id);
+    
+    @Query("Select count(u) from Usuario_ u where u.noombre = :nombre")
+    public int cantidadUsuariosNombre(@Param("nombre") String nombre);
 }

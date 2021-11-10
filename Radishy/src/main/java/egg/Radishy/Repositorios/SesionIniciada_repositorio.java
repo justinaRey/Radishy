@@ -6,7 +6,12 @@
 package egg.Radishy.Repositorios;
 
 import egg.Radishy.entidades.SesionIniciada;
+import egg.Radishy.entidades.Usuario;
+import java.util.Date;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,5 +20,39 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SesionIniciada_repositorio extends JpaRepository<SesionIniciada, String>{
+        
+    @Query("select s from SesionIniciada s where s.usuario = :usuario")
+    public SesionIniciada findByUsuario(@Param("usuario") Usuario usuario);  // este ya estaba de antes 
     
+    @Query("Select s from SesionIniciada_ s where s.usuario.enSesion = true")
+    public List<SesionIniciada> cultivosUsuario();
+    
+    // no se si se hace así    
+    @Query("Select c.nombre, c.metodo, c.profuncidadSiembraCm, c.riego, s.fechaDeSembrado, s.fechaGerminadoProm, s.fechaTransplanteProm, s.fechaCosechaProm from Cultivo c, SesionIniciada_ s where s.usuario.enSesion = true")
+    public List<SesionIniciada> cultivosUsuarioVista();
+    
+    // como creo que se hace
+    @Query("Select c.nombre from Cultivo_ c, SesionIniciada_ s where s.id = :id")
+    public String nombreCultivo(@Param("id") String id); 
+    
+    @Query("Select c.metodo from Cultivo_ c, SesionIniciada_ s where s.id = :id")
+    public String metodoCultivo (@Param("id") String id);
+    
+    @Query("Select c.profuncidadSiembraCm from Cultivo_ c, SesionIniciada_ s where s.id = :id")
+    public String profundidadSiembra (@Param("id") String id);
+    
+    @Query("Select c.riego from Cultivo_ c, SesionIniciada_ s where s.id = :id")
+    public String riegoCultivo (@Param("id") String id);
+    
+    @Query("Select s.fechaDeSembrado from SesionIniciada_ s where s.id = :id")
+    public Date fechaSembradoCultivo (@Param("id") String id);
+    
+    @Query("Select s.fechaGerminadoProm from SesionIniciada_ s where s.id = :id")
+    public Date fechaGerminadoCultivo (@Param("id") String id);
+    
+    @Query("Select s.fechaTransplanteProm from SesionIniciada_ s where s.id = :id")
+    public Date fechaTransplanteCultivo (@Param("id") String id);
+    
+    @Query("Select s.fechaCosechaProm from SesionIniciada_ s where s.id = :id")
+    public Date fechaCosechaCultivo (@Param("id") String id);
 }
