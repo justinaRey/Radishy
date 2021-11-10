@@ -30,7 +30,7 @@ public class Usuario_controller {
     
     @GetMapping("")
     String mostrarUsuario(){
-        return "usuario";
+        return "";
     }
     
     @GetMapping("/registrar")
@@ -50,6 +50,8 @@ public class Usuario_controller {
             modelo.put("error", ex.getMessage());
             
             Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
+            
+            return "nuevousuario";
         }
         return "redirect:/usuario";
     }
@@ -76,6 +78,7 @@ public class Usuario_controller {
             modelo.put("error", ex.getMessage());
             
             Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
         }
         return "redirect:/usuario";
     }
