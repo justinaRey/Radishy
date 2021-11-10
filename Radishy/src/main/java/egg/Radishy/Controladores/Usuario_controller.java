@@ -1,10 +1,10 @@
 
 package egg.Radishy.Controladores;
 
+import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.entidades.Usuario;
 import egg.Radishy.enumeraciones.Genero;
 import egg.Radishy.enumeraciones.Localidad;
-import egg.Radishy.errores.ErrorServicio;
 import egg.Radishy.servicios.Usuario_servicio;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +46,7 @@ public class Usuario_controller {
         
         try {
             uS.crearUsuario(nombre, password, apodo, genero, localidad);
-        } catch (ErrorServicio ex) {
+        } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
             modelo.put("password", password);
@@ -67,7 +67,7 @@ public class Usuario_controller {
         try {
             usuario = uS.buscarPorId(id);
             modelo.put("usuario",usuario);
-        } catch (ErrorServicio ex) {
+        } catch (Errores_servicio ex) {
             Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "";
@@ -77,7 +77,7 @@ public class Usuario_controller {
     public String guardarModificacion(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, @RequestParam String password, @RequestParam String apodo, @RequestParam Genero genero, @RequestParam Localidad localidad){
         try {
             uS.modificarUsuario(id, nombre, password, apodo, genero, localidad);
-        } catch (ErrorServicio ex) {
+        } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
             modelo.put("password", password);
