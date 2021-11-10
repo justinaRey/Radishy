@@ -1,0 +1,37 @@
+body { 
+    background-image:url("../IMAGENES/field.jpg");
+    background-size: 100vw 100vh;
+    background-attachment:fixed;
+    margin:0px;
+    padding:10px 20px;
+
+}
+h2{ margin-top: 10px;
+    color:rgb(132, 190, 190);
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    font-size: 40px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    background-color: rgba(0, 0, 0, 0.466);
+    box-shadow:7px 13px 37px #000 ;
+
+}
+p{
+    margin-top: 10px;
+    color:rgb(132, 190, 190);
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    background-color: rgba(0, 0, 0, 0.466);
+    box-shadow:7px 13px 37px #000 ;
+
+}
