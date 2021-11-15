@@ -28,6 +28,11 @@ public class Cultivo_controller {
         return "nuevoCultivo";
     }
     
+    @GetMapping("/aggCultivo")
+    public String aggCultivo(){
+        return "aggCultivo";
+    }
+    
     @PostMapping("/guardarCultivo")
     public String crearCultivo(@RequestParam String nombre, @RequestParam String metodo, @RequestParam Integer profSiembraCM, @RequestParam Integer tiempoGerminar, @RequestParam Integer tiempoTransplantar, @RequestParam Integer tiempoCosechar, @RequestParam Mes iniSiembra, @RequestParam Mes finSiembra) throws Errores_servicio{ // Parámetros, agregar cuando esté el form hecho
         cS.guardarCultivo(nombre, iniSiembra, finSiembra, metodo, profSiembraCM, tiempoGerminar, tiempoTransplantar, tiempoCosechar);
