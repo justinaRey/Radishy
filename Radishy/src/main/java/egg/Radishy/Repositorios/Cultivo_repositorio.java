@@ -5,7 +5,7 @@
  */
 package egg.Radishy.Repositorios;
 
-import egg.Radishy.entidades.Cultivo;
+import egg.Radishy.Entidades.Cultivo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

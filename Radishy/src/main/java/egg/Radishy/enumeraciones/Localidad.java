@@ -1,5 +1,5 @@
 
-package egg.Radishy.enumeraciones;
+package egg.Radishy.Enumeraciones;
 
 
 public enum Localidad {

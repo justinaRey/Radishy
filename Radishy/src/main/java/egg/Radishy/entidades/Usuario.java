@@ -1,16 +1,19 @@
-package egg.Radishy.entidades;
+package egg.Radishy.Entidades;
 
-import egg.Radishy.enumeraciones.Genero;
-import egg.Radishy.enumeraciones.Localidad;
+import egg.Radishy.Enumeraciones.Genero;
+import egg.Radishy.Enumeraciones.Localidad;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+//import javax.persistence.Inheritance;
+//import javax.persistence.InheritanceType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+//@Inheritance(strategy = InheritanceType.JOINED) // algo de la security
 public class Usuario implements Serializable {
 
     @Id
@@ -21,6 +24,8 @@ public class Usuario implements Serializable {
     private String nombre;
     private String password;
     private String apodo;
+    private Boolean alta;
+    private String email;
     private Boolean enSesion;
     
     @Enumerated(EnumType.STRING)
@@ -36,16 +41,37 @@ public class Usuario implements Serializable {
         enSesion = false;
     }
 
-    public Usuario(String id, String nombre, String password, String apodo, Genero genero, Localidad localidad) {
+    public Boolean getAlta() {
+        return alta;
+    }
+
+    public void setAlta(Boolean alta) {
+        this.alta = alta;
+    }
+
+    public Usuario(String id, String nombre, String password, String apodo, Boolean alta, Boolean enSesion, Genero genero, Localidad localidad) {
         this.id = id;
         this.nombre = nombre;
         this.password = password;
         this.apodo = apodo;
+        this.alta = alta;
+        this.enSesion = enSesion;
         this.genero = genero;
         this.localidad = localidad;
         this.enSesion = false;
     }
 
+    public Boolean getEnSesion() {
+        return enSesion;
+    }
+
+    public void setEnSesion(Boolean enSesion) {
+        this.enSesion = enSesion;
+    }
+
+    
+
+    
     public String getId() {
         return id;
     }
@@ -98,7 +124,11 @@ public class Usuario implements Serializable {
         this.enSesion = enSesion;
     }
     
-    public Boolean getEnSesion(){
-        return enSesion;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
