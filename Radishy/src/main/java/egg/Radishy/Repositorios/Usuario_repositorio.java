@@ -25,12 +25,12 @@ public interface Usuario_repositorio extends JpaRepository<Usuario, String>{
     public Usuario findByNombreUsuario(@Param("nombre") String nombre);
     
     // estas dos son las agregadas
-    @Query("Select u from Usuario_ u where u.enSesion = true")
+    @Query("Select u from Usuario u where u.enSesion = true")
     public List<Usuario> findSesionesIniciadas ();
     
     @Query("SELECT c FROM Usuario c WHERE c.id = :id")
     public Usuario buscarPorId(@Param("id") String id);
     
-    @Query("Select count(u) from Usuario_ u where u.noombre = :nombre")
+    @Query("Select count(u) from Usuario u where u.nombre = :nombre")
     public int cantidadUsuariosNombre(@Param("nombre") String nombre);
 }

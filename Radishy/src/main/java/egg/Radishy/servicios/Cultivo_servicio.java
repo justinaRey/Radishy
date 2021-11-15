@@ -7,7 +7,9 @@ import egg.Radishy.Entidades.Cultivo;
 import egg.Radishy.Enumeraciones.Mes;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class Cultivo_servicio {
     
     @Autowired Cultivo_repositorio cR;
