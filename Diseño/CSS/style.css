@@ -199,16 +199,34 @@ hr.linea{
 
 /* Partners */
 /* Egg */
+article.partners{
+    padding-bottom: 25em;
+    text-align: left;
+}
+
 #partner-lona-img{
-position: relative;
+    position: absolute;
+    background-image: black;
+    color: #181E23;
+}
+
+.partner-egg-titulo{
+    font-size: 4em;
+    font-weight: 900;
+    color: #FFC170;
+    position: relative;
+    margin-left: 15em;
+    margin-top: 44em;
 }
 
 #partner-huevo-img{
-
+    position: absolute;
+    margin-left: 30em;
 }
 
 .partner-egg-subtitulo{
-
+    position: relative;
+    margin-left: 33em;
 }
 /*---------------------------------*/
 
