@@ -36,12 +36,12 @@ public class SesionIniciada_controller {
    
     /*           controladores para regular el inicio de la sesión            */ 
     
-    @GetMapping("/sesion/iniciar")
+    @GetMapping("/iniciar")
     public String iniciarSesion(){
         return "usuario.html";
     }
     
-    @PostMapping("/sesion/iniciada")
+    @PostMapping("/iniciada")
     public String iniciar_sesion(ModelMap modelo, @RequestParam String nusuario, @RequestParam String password){
         try {
             servicio.iniciarSesion(nusuario, password);
@@ -57,7 +57,7 @@ public class SesionIniciada_controller {
     
     /*             controlador para cerrar la sesión del usuario              */
     
-    @GetMapping("/sesion/iniciada/cerrar")
+    @GetMapping("/iniciada/cerrar")
     public String cerrarSesion(ModelMap modelo) {
         try {
             servicio.cerrarSesion();
@@ -71,12 +71,12 @@ public class SesionIniciada_controller {
     
     /*      controlador que agrega un cultivo a los cultivos del usuario      */
     
-    @GetMapping("/sesion/iniciada/agregar-mis-cultivos")
+    @GetMapping("/iniciada/agregar-mis-cultivos")
     public String agregarMiCultivo(){
-        return "aggCultivo.html";
+        return "aggCultivo";
     }
     
-    @PostMapping("/sesion/iniciada/agregado-mis-cultivos")
+    @PostMapping("/iniciada/agregado-mis-cultivos")
     public String agregadoMiCultivo(ModelMap modelo, @RequestParam String idCultivo, @RequestParam Date fechaSembrado){
         try {
             servicio.agregarMiCultivo(idCultivo, fechaSembrado);
@@ -86,7 +86,7 @@ public class SesionIniciada_controller {
             modelo.put("idCultivo", idCultivo);
             modelo.put("fechaSembrado", fechaSembrado);
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "aggCultivo.html";
+            return "aggCultivo";
         }
         return "redirect:/sesion/iniciada/agregar-mis-cultivos"; //aggCultivo.html si no es con redirect
     }
@@ -94,7 +94,7 @@ public class SesionIniciada_controller {
     
     /*              controlador para el listado de los cultivos               */
     
-    @GetMapping("/sesion/iniciada/mis-cultivos")
+    @GetMapping("/iniciada/mis-cultivos")
     public String verMisCultivos(ModelMap modelo){
         try {
             servicio.misCultivos();
@@ -131,6 +131,6 @@ public class SesionIniciada_controller {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "misCultivos.hmtl";
+        return "misCultivos";
     }
 }

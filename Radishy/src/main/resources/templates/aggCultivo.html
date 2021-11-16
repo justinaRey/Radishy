@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html xmlns:th="http://www.thymeleaf.org">
-=======
-<html lang="en">
->>>>>>> developIgnacio
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -54,10 +50,10 @@
                 Mis cultivos
               </a>
               <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Ver mis cultivos</a></li>
-                <li><a class="dropdown-item" href="#">Cargar un cultivo</a></li>
+                <li><a class="dropdown-item" th:href="@{/cultivos/listarCultivos}">Ver mis cultivos</a></li>
+                <li><a class="dropdown-item" th:href="@{/cultivos/}">Cargar un cultivo</a></li>
                 <li>
-                  <a class="dropdown-item" href="#">Crear un nuevo cultivo</a>
+                  <a class="dropdown-item" th:href="@{/cultivos/agregarCultivo}">Crear un nuevo cultivo</a>
                 </li>
               </ul>
             </li>
@@ -111,11 +107,8 @@
         <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Fecha de sembrado">   
         <br>
         <br>
-<<<<<<< HEAD
-        <button th:href="@{/}" class="btn btn-dark" class="boxx">Agregar cultivo</button>   
-=======
-        <button href="#" class="btn btn-dark" class="boxx">Agregar cultivo</button>   
->>>>>>> developIgnacio
+        <button class="btn btn-dark boxx">Agregar cultivo</button> 
+
         <br>
         <br>
         <button type="button" class="btn btn-link" style="color: black;">¿No encuentras un cultivo?</button>
