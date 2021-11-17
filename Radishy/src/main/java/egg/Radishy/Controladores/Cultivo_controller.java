@@ -20,7 +20,7 @@ public class Cultivo_controller {
     @GetMapping("/listarCultivos")
     public String listarCultivos(Model model){
         model.addAttribute("cultivos",cS.listarCultivos());
-        return "misCultivos"; // Nombre del html que muestra la tabla de info de los cultivos
+        return ""; // Nombre del html que muestra la tabla de info de los cultivos
     }
     
     @GetMapping("/agregarCultivo")
@@ -28,15 +28,9 @@ public class Cultivo_controller {
         return "nuevoCultivo";
     }
     
-    @GetMapping("/aggCultivo")
-    public String aggCultivo(){
-        return "aggCultivo";
-    }
-    
     @PostMapping("/guardarCultivo")
     public String crearCultivo(@RequestParam String nombre, @RequestParam String metodo, @RequestParam Integer profSiembraCM, @RequestParam Integer tiempoGerminar, @RequestParam Integer tiempoTransplantar, @RequestParam Integer tiempoCosechar, @RequestParam Mes iniSiembra, @RequestParam Mes finSiembra) throws Errores_servicio{ // Parámetros, agregar cuando esté el form hecho
         cS.guardarCultivo(nombre, iniSiembra, finSiembra, metodo, profSiembraCM, tiempoGerminar, tiempoTransplantar, tiempoCosechar);
         return "redirect:/cultivos/listarCultivos";
     }
-    
 }
