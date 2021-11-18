@@ -24,35 +24,35 @@ public interface SesionIniciada_repositorio extends JpaRepository<SesionIniciada
     @Query("select s from SesionIniciada s where s.usuario = :usuario")
     public SesionIniciada findByUsuario(@Param("usuario") Usuario usuario);  // este ya estaba de antes 
     
-    @Query("Select s from SesionIniciada_ s where s.usuario.enSesion = true")
+    @Query("select s from SesionIniciada s where s.usuario.enSesion = true")
     public List<SesionIniciada> cultivosUsuario();
     
     // no se si se hace así    
-    @Query("Select c.nombre, c.metodo, c.profuncidadSiembraCm, c.riego, s.fechaDeSembrado, s.fechaGerminadoProm, s.fechaTransplanteProm, s.fechaCosechaProm from Cultivo c, SesionIniciada_ s where s.usuario.enSesion = true")
-    public List<SesionIniciada> cultivosUsuarioVista();
+//    @Query("Select c.nombre, c.metodo, c.profuncidadSiembraCm, c.riego, s.fechaDeSembrado, s.fechaGerminadoProm, s.fechaTransplanteProm, s.fechaCosechaProm from Cultivo c, SesionIniciada_ s where s.usuario.enSesion = true")
+//    public List<SesionIniciada> cultivosUsuarioVista();
     
     // como creo que se hace
-    @Query("Select c.nombre from Cultivo_ c, SesionIniciada_ s where s.id = :id")
+    @Query("select c.nombre from Cultivo c, SesionIniciada s where s.id = :id")
     public String nombreCultivo(@Param("id") String id); 
     
-    @Query("Select c.metodo from Cultivo_ c, SesionIniciada_ s where s.id = :id")
+    @Query("select c.metodo from Cultivo c, SesionIniciada s where s.id = :id")
     public String metodoCultivo (@Param("id") String id);
     
-    @Query("Select c.profuncidadSiembraCm from Cultivo_ c, SesionIniciada_ s where s.id = :id")
+    @Query("select c.profundidadSiembraCM from Cultivo c, SesionIniciada s where s.id = :id")
     public String profundidadSiembra (@Param("id") String id);
     
-    @Query("Select c.riego from Cultivo_ c, SesionIniciada_ s where s.id = :id")
-    public String riegoCultivo (@Param("id") String id);
+//    @Query("select c.riego from Cultivo c, SesionIniciada s where s.id = :id")
+//    public String riegoCultivo (@Param("id") String id);
     
-    @Query("Select s.fechaDeSembrado from SesionIniciada_ s where s.id = :id")
+    @Query("select s.fechaDeSembrado from SesionIniciada s where s.id = :id")
     public Date fechaSembradoCultivo (@Param("id") String id);
     
-    @Query("Select s.fechaGerminadoProm from SesionIniciada_ s where s.id = :id")
-    public Date fechaGerminadoCultivo (@Param("id") String id);
-    
-    @Query("Select s.fechaTransplanteProm from SesionIniciada_ s where s.id = :id")
-    public Date fechaTransplanteCultivo (@Param("id") String id);
-    
-    @Query("Select s.fechaCosechaProm from SesionIniciada_ s where s.id = :id")
-    public Date fechaCosechaCultivo (@Param("id") String id);
+//    @Query("Select s.fechaGerminadoProm from SesionIniciada_ s where s.id = :id")
+//    public Date fechaGerminadoCultivo (@Param("id") String id);
+//    
+//    @Query("Select s.fechaTransplanteProm from SesionIniciada_ s where s.id = :id")
+//    public Date fechaTransplanteCultivo (@Param("id") String id);
+//    
+//    @Query("Select s.fechaCosechaProm from SesionIniciada_ s where s.id = :id")
+//    public Date fechaCosechaCultivo (@Param("id") String id);
 }
