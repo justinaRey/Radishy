@@ -1,77 +1,433 @@
 <!DOCTYPE html>
 <html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radishy</title>
-  
-  <!--Tipografia: 'Roboto' .Thin 100-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-  
-  <!--Bootstrap-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  
-  <!--CSS-->
-  <link rel="stylesheet" href="/CSS/style.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Radishy</title>
 
-</head>
+        <!--Tipografia: 'Roboto' .Thin 100-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <div class="container">
-      <main>
-        <h1>qpqwwqwwqpqw</h1>
-        <p>adaddada</p>
-      </main>
-    </div>
-    <footer th:replace="/fragment/footer.html :: footer"></footer>
-  
+        <!--CSS-->
+        <link rel="stylesheet" href="/CSS/style.css">
 
-</body>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(0, 187, 178);">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a class="navbar-brand" href="/">
+                        <img src="../Img/radishy.png" alt="" width="44" height="38" />
+                    </a>
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" style="text-align: center; font-size: 20px; margin-left: 4%;"
+                               href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Mis cultivos
+                            </a>
+                            <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Ver mis cultivos</a></li>
+                                <li><a class="dropdown-item" href="#">Cargar un cultivo</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Crear un nuevo cultivo</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"
+                               style="text-align: center; font-size: 20px;">Contacto</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" style="text-align: center; font-size: 20px;">Sobre
+                                nosotros</a>
+                        </li>
+                    </ul>
+
+                    <a class="navbar-brand" href="/">
+                        <img src="../Img/2561496_user_icon.png" alt="" width="40" height="40" />
+                    </a>
+
+                </div>
+            </div>
+        </nav>
+
+
+        <main class="container">
+
+            <img src="../IMG/Main/Tip.png" alt="Logo-Tips" id="main-tip">
+
+
+            <!--Zanahoria-->
+            <article class="zanahoria">
+
+                <!--Parte Principal-->
+
+                <img src="../IMG/Main/Article-Zana/Zanahoria.png" alt="Imagen-Zanahoria" class="img-principal">
+                <h1 class="titulo">addadadaEl mejor modo de conservar las zanahorias en casa</h1>
+
+                <p class="parrafo-principal" id="p-zanah">Cada verdura y cada hortaliza tienen sus propias necesidades y características.
+                    Para
+                    conservar zanahorias en casa de la mejor manera, a diferencia de otros productos
+                    de la huerta, tienes que seguir unas indicaciones concretas que te permitirán
+                    disfrutar de ellas en plena forma durante el mayor tiempo posible
+                    <br>
+                    Lo primero de todo es guardar las zanahorias según sea el estado en el que se
+                    encuentran al llegar a casa. En este sentido, lo normal es que estén enteras, sin
+                    lavar ni cortar e, incluso, con las hojas verdes relucientes, casi como si el mismo
+                    Bugs Bunny estuviera a punto de mordisquearlas.
+                </p>
+
+                <!--Receta-->
+
+                <img src="../IMG/Main/Arrow Botton.png" alt="Icono flecha para abajo" class="receta-img-arrow">
+                <h2 class="receta">Receta</h2>
+
+                <!--Realizar-->
+                <img src="../IMG/Main/List.png" alt="Icono de Lista" class="realizar-img-list">
+
+                <h3 class="realizar-subtitulo">Pastel de zanahoria</h3>
+
+                <!--Ingredientes-->
+                <h4 class="ingredientes-subtitulo">Ingredientes</h4>
+
+                <hr class="linea">
+
+                <ul class="ingredientes">
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input"
+                               checked id="checkbox">
+                        <label class="ingrediente" for="checkbox"> 3/4 de taza de azúcar (175g.)</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">3/4 de taza de aceite (175ml.)</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1 y 1/2 taza de harina leudante (o harina común + polvopara hornear)</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1 taza apretadita de zanahorias ralladas finas (unas 2 zanahorias medianas)</label>
+                        <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1/2 cdita. de nuez moscada</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1 cdita. de bicarbonato de sodio</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1 cdita. de canela</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">Ralladura de medio limón</label> <br>
+                    </li>
+
+                </ul>
+
+                <hr class="linea">
+
+                <!--Glaseado-->
+                <h5 class="glaseado">Para el glaseado</h5>
+
+                <ul class="ingredientes">
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">4 cdas. de azúcar impalpable</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">6 cditas. de jugo de limón (aprox.)</label> <br>
+                    </li>
+                </ul>
+
+                <hr class="linea">
+
+                <!--Procedimiento-->
+                <h6 class="procedimiento-subtitulo">Procedimiento</h6>
+                <ol class="list-group-numbered">
+                    <li class="procedimiento">Precalentar el horno a 180º y enmantecar y enharinar un molde para torta.</li>
+                    <li class="procedimiento">Colocar en un bol los huevos con el azúcar y batir hasta unir.</li>
+                    <li class="procedimiento">Agregar el aceite y unir bien.</li>
+                    <li class="procedimiento">Incorporar la zanahoria rallada y la ralladura de limón. Unir.</li>
+                    <li class="procedimiento">Mezclar aparte la harina, el bicarbonato, la canela y la nuez moscada.</li>
+                    <li class="procedimiento">Agregar los ingredientes secos tamizados a la mezcla húmeda. Mezclar
+                        bien hasta que no quede ni un grumo. Movimientos envolventes.</li>
+                </ol>
+
+            </article>
+
+            <hr class="linea-final-Articulo">
+
+            <!--Rabanito-->
+            <article class="rabanito">
+
+                <!--Parte Principal-->
+
+                <img src="../IMG/Main/Article-Radish/Rabanito.png" alt="Imagen-Rabanito" class="img-principal">
+
+                <h1 class="titulo">La mejor informacion para tus Rabanitos</h1>
+                <p class="parrafo-principal">Bajo la denominación de Raphanus sativus L. se incluye al rábano y al rabanito. El rábano tiene una raíz más
+                    picante y dura que el rabanito. Su ciclo vegetativo es un poco más largo, mientras que el del rabanito es de
+                    aproximadamente de 3 a 5 semanas después de la siembra.
+                    Es un cultivo oriundo de Asia, China específicamente, pero se sabe que ya se cultivaba en la Grecia antigua y
+                    Egipto. Actualmente es un cultivo muy difundido a nivel mundial.
+                    De este cultivo se consume generalmente la raíz, aunque también resultan comestibles sus hojas, sus vainas
+                    carnosas y de sus semillas se extrae aceite.
+                </p>
+
+                <!--Receta-->
+
+                <img src="../IMG/Main/Arrow Botton.png" alt="Icono flecha para abajo" class="receta-img-arrow">
+                <h2 class="receta">Receta</h2>
+
+                <!--Realizar-->
+                <img src="../IMG/Main/List.png" alt="Icono de Lista" class="realizar-img-list">
+
+                <h3 class="realizar-subtitulo" id="realizar-subt-rabanito">Ensalada de rabanitos</h3>
+
+                <!--Ingredientes-->
+                <h4 class="ingredientes-subtitulo">Ingredientes</h4>
+
+                <hr class="linea">
+
+                <ul class="ingredientes">
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input"
+                               checked id="checkbox">
+                        <label class="ingrediente" for="checkbox">1 paquete de rabanitos</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">2 limones</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">Mucho perejil</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">2 dientes de ajo</label>
+                        <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">Opcional picante: 2 rodajas de jengibre, 1 trozo de ají puta parió (chile picante)</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">Aceite de Oliva</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">Sal y Pimienta</label> <br>
+                    </li>
+
+                </ul>
+
+                <hr class="linea">
+
+                <!--Procedimiento-->
+                <h6 class="procedimiento-subtitulo">Procedimiento</h6>
+                <ol class="list-group-numbered">
+                    <li class="procedimiento">Lo primero que vamos a hacer es lavar bien los rabanitos (sin los tallos obvio) y cortarlos en rodajas bien bien finitas, casi que se tendría que poder ver por la rodaja. Los ponemos en una fuente y los reservamos.</li>
+                    <li class="procedimiento">Ahora vamos a picar el ajo y el perejil, y si te decidiste por la opción picante, el jengibre y el ají (o el que hayas elegído!)</li>
+                    <li class="procedimiento">Todo esto picado más la sal, la pimienta y el jugo de limón nos van a servir de marinada para nuestra ensalada de rabanitos.</li>
+                    <li class="procedimiento">Cubrimos los rabanitos con la marinada, cuidando que llegue bien a todos, y lo llevamos a la heladera hasta la hora de servir, mínimo media hora, cuanto más tiempo, mejor! El contacto con el limón va a hacer que los rabanitos queden blandos pero crocantes a la vez!</li>
+                </ol>
+
+            </article>
+
+            <hr class="linea-final-Articulo">
+
+            <!--Tomate-->
+            <article class="tomate">
+
+                <!--Parte Principal-->
+
+                <img src="../IMG/Main/Article-Tomate/Tomate.png" alt="Imagen-Tomate" class="img-principal">
+
+                <h1 class="titulo">Mejora tu huerta de Tomates</h1>
+                <p class="parrafo-principal">A los tomates les gusta el agua en las raíces, nunca en las hojas, una forma de asegurarte que las capas más profundas del suelo
+                    se mantienen húmedas es regando en profundidad y menos veces, en lugar de todos los días durante un corto periodo de tiempo, ya que entonces el agua no se infiltra a capas más profundas y se evapora con mayor facilidad.
+                </p>
+
+                <!--Receta-->
+
+                <img src="../IMG/Main/Arrow Botton.png" alt="Icono flecha para abajo" class="receta-img-arrow">
+                <h2 class="receta">Receta</h2>
+
+                <!--Realizar-->
+                <img src="../IMG/Main/List.png" alt="Icono de Lista" class="realizar-img-list">
+
+                <h3 class="realizar-subtitulo" id="realizar-subt-tomate">Sopa de tomate</h3>
+
+                <!--Ingredientes-->
+                <h4 class="ingredientes-subtitulo">Ingredientes</h4>
+
+                <hr class="linea">
+
+                <ul class="ingredientes">
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input"
+                               checked id="checkbox">
+                        <label class="ingrediente" for="checkbox">5 tomates grandes</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1/2 papa chica</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1/2 cebolla</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1 diente de ajo</label>
+                        <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">2 tomates secos</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">2 cdas. de puré de tomates</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1 cdita. de pimentón</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1/2 cdita. de tomillo</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1 cdita. de azúcar</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">1 chorro de aceite de oliva</label> <br>
+                    </li>
+
+
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">Caldo de verduras: cant. necesaria</label> <br>
+                    </li>
+
+                    <li class="li-ingrediente">
+                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        <label class="ingrediente">Sal y pimienta</label> <br>
+                    </li>
+                </ul>
+
+                <hr class="linea">
+
+                <!--Consejos-->
+
+                <img src="../IMG/Main/Article-Tomate/TIP.png" alt="Icono TIP" class="consejo-img">
+
+                <h5 class="consejo-subtitulo">Consejos</h5>
+                <ol class="consejos">
+                    <li class="consejo">En lugar de poner los tomates a hervir con el caldo directamente, los salteamos antes, primero sin aceite, para que se “asen” y luego con aceite para que se doren. Esto es porque así la sopa tomará un sabor más particular, a vegetales salteados y no el sabor (aburrido) de los vegetales hervidos.</li>
+                    <li class="consejo">La mayoría de ingredientes que lleva esta sopa de tomate son muy líquidos: el tomate, la cebolla… Entonces, lo común al licuarla sería que nos quede una sopa muy líquida. Que no está mal, para nada. Pero a mí me gusta más cremosa y consistente. La forma de darle esta consistencia es agregándole una papa (media, en este caso). No interferirá con los sabores de la sopa de tomate y quedará con más cuerpo, sin llegar a ser una crema de tomates.</li>
+                    <li class="consejo">Resulta que a una le dicen tomate y piensa en un rojo intenso. Ese es el color que queremos para nuestra sopa de tomates. Y también queremos que tenga un sabor intenso, que el sabor del tomate no se vaya en el hervor. Bueno, esto se lo damos agregando puré de tomates y pimentón (que es habitual en las sopas de tomate) y también ¡dos tomates secos! Esto último mejorará mucho su sabor.</li>
+                    <li class="consejo">Para que la sopa de tomate no quede ácida por la acidez natural de tomate, agregamos 1 cdita. de azúcar. También podemos quitarle la acidez con un trozo de zanahoria, en este caso lo pondríamos junto con la papa. Este truco podés usarlo para cuando hacés salsa de tomate para pastas.</li>
+                </ol>
+
+
+                <hr class="linea">
+
+                <!--Procedimiento-->
+                <h6 class="procedimiento-subtitulo">Procedimiento</h6>
+                <ol class="list-group-numbered">
+                    <li class="procedimiento">Pelar los tomates y cortarlos en trozos grandes. Lo mismo con la cebolla y el ajo.</li>
+                    <li class="procedimiento">Colocar los tomates, la cebolla y los ajos en una olla profunda. Dejar a fuego fuerte un minuto. Luego agregar el chorro de aceite de oliva, y cocinar a fuego máximo hasta que el tomate cambie de color y la cebolla se ablande.</li>
+                    <li class="procedimiento">Cuando los tomates hayan cambiado de color, agregar el caldo (el triple de volumen de los tomates) con la papa, cortada en cubos. Cocinar 10 minutos con olla tapada.</li>
+                    <li class="procedimiento">Agregar a la sopa lo siguiente: los tomates secos, el puré de tomates, el pimentón y el tomillo.</li>
+                    <li class="procedimiento">Cocinar durante unos 40 minutos. Olla tapada. Revolver de vez en cuando y, si hace falta, agregar más caldo. Cuando esté lista, retirar del fuego y dejar entibiar.</li>
+                    <li class="procedimiento">Agregar la cdita. de azúcar y pasar por la procesadora hasta que quede una sopa lisita y de color maravilloso. Si aún nos queda líquida, podemos volverla a la olla y cocinar hasta que esté como queremos. Si nos queda espesa, podemos agregar más caldo.</li>
+                    <li class="procedimiento">Servir con gotitas de crema de leche, el contraste es genial.</li>
+                </ol>
+
+            </article>
+
+            <article class="partners">
+
+                <img src="../IMG/Main/bg-horizontal.webp" alt="Lona roja" id="partner-lona-img">
+                <h1 class="partner-egg-titulo">Partners</h1>
+                <img src="../IMG/Main/huevo.png" alt="Huevo de Egg" id="partner-huevo-img">
+
+                <h2 class="partner-egg-subtitulo">Egg</h2>
+            </article>
+
+
+        </main>
+
+
+        <footer>
+
+            <div class="foot-1">
+                <h1 class="foot-subtitulo">Redes Sociales</h1>
+                <div class="iconos">
+                    <a href="https://www.facebook.com/profile.php?id=100074247235177"><img src="/IMG/Footer/facebook.png"
+                                                                                           alt="Icono Facebook" id="ico-face"></a>
+
+                    <a href="https://twitter.com/Radishy0"><img src="../IMG/Footer/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
+                    <a href="https://www.instagram.com/radishy.1/"><img src="../IMG/Footer/instagram.png" alt="Icono Instagram"
+                                                                        id="ico-inst"></a>
+                    <a href="https://mail.google.com/mail/u/0/#search/radishycompany%40gmail.com?compose=new"><img
+                            src="../IMG/Footer/email.png" alt="Icono Gmail" id="ico-gmail"></a>
+
+                </div>
+            </div>
+            <h2 class="foot-copyright">2021 Copyright Radishy - Todos los derechos reservados.</h2>
+        </footer>
+
+
+    </body>
 
 </html>

@@ -6,7 +6,7 @@
 package egg.Radishy.Servicios;
 
 import egg.Radishy.Entidades.Cultivo;
-import egg.Radishy.Entidades.SesionIniciada;
+import egg.Radishy.Entidades.CultivoUsuario;
 import egg.Radishy.Entidades.Usuario;
 import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.Repositorios.Cultivo_repositorio;
@@ -39,8 +39,8 @@ public class SesionIniciada_servicio {
     public void vaciarMisCultivos () throws Errores_servicio{
         chequearEsteSesionIniciada();
         Usuario usuario = usuarioRepositorio.findByEnSesion();
-        List<SesionIniciada> sesionUsuario = repositorioSesIn.cultivosUsuario();
-        for (SesionIniciada sesIn : sesionUsuario) {
+        List<CultivoUsuario> sesionUsuario = repositorioSesIn.cultivosUsuario();
+        for (CultivoUsuario sesIn : sesionUsuario) {
             eliminarMiCultivo(sesIn.getId());
         }
     }
@@ -48,7 +48,7 @@ public class SesionIniciada_servicio {
     // eliminarMiCultivo(): elimina al cultivo de la lista de cultivos del usuario seleccionado
     public void eliminarMiCultivo (String idSesIn) throws Errores_servicio{
         chequearEsteSesionIniciada();
-        Optional<SesionIniciada> rta = repositorioSesIn.findById(idSesIn);
+        Optional<CultivoUsuario> rta = repositorioSesIn.findById(idSesIn);
         if (rta.isPresent()){
             repositorioSesIn.delete(rta.get());
         } else {
@@ -60,7 +60,7 @@ public class SesionIniciada_servicio {
     public void agregarMiCultivo (String idCultivo, Date fechaSembrado) throws Errores_servicio{
         chequearEsteSesionIniciada();
         if (idCultivo != null && fechaSembrado != null){
-            SesionIniciada sesion = new SesionIniciada();
+            CultivoUsuario sesion = new CultivoUsuario();
             Cultivo cultivo = cultivoRepositorio.findById(idCultivo).get();
             Usuario usuario = usuarioRepositorio.findByEnSesion();
             sesion.setCultivo(cultivo);
@@ -73,9 +73,9 @@ public class SesionIniciada_servicio {
     }
     
     // misCultivos(): devuelve una lista con todos los cultivos que posee el usuario en sesión
-    public List<SesionIniciada> misCultivos() throws Errores_servicio{
+    public List<CultivoUsuario> misCultivos() throws Errores_servicio{
         chequearEsteSesionIniciada();
-        List<SesionIniciada> cultivosSesIn = repositorioSesIn.cultivosUsuario();
+        List<CultivoUsuario> cultivosSesIn = repositorioSesIn.cultivosUsuario();
         if (cultivosSesIn.isEmpty()){
             throw new Errores_servicio("No posee cultivos aún");
         } else {
@@ -85,15 +85,15 @@ public class SesionIniciada_servicio {
     
     /*         Todos los campos por separado que hacen ha los datos a mostrar por pantalla de 'mis cultivos'        */
     
-    public String nombreCultivo (SesionIniciada sesion){
+    public String nombreCultivo (CultivoUsuario sesion){
         return sesion.getCultivo().getNombre();
     }
     
-    public String metodoCultivo(SesionIniciada sesion){
+    public String metodoCultivo(CultivoUsuario sesion){
         return sesion.getCultivo().getMetodo();
     }
     
-    public int profundidadCultivo (SesionIniciada sesion) {
+    public int profundidadCultivo (CultivoUsuario sesion) {
         return sesion.getCultivo().getProfundidadSiembraCM();
     }
     
@@ -101,7 +101,7 @@ public class SesionIniciada_servicio {
 //        return sesion.getCultivo().getRiego();
 //    }
     
-    public Date fechaSembradoCultivo (SesionIniciada sesion){
+    public Date fechaSembradoCultivo (CultivoUsuario sesion){
         return sesion.getFechaDeSembrado();
     }
     

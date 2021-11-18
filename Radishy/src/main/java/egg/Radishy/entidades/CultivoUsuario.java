@@ -6,26 +6,28 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class SesionIniciada implements Serializable {
+public class CultivoUsuario implements Serializable {
     //Atributos
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     
-    @OneToOne
+    @ManyToOne
     private Usuario usuario;
     
-    @OneToOne
+    @ManyToOne
     private Cultivo cultivo;
     
-    @DateTimeFormat(pattern = "YY-MM-dd")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     private Date fechaDeSembrado;
   
   //Las siguientes fechas son para agregar si se puede, q toma en cuenta los datos de germinación, transplante y cosecha y los implementa a la fecha de sembrado 
@@ -40,11 +42,11 @@ public class SesionIniciada implements Serializable {
 //    private Date fechaCosechaAprox;
     
     // constructores:
-    public SesionIniciada(){
+    public CultivoUsuario(){
         
     }
     
-    public SesionIniciada (Usuario usuario, Cultivo cultivo, Date fechaDeSembrado){
+    public CultivoUsuario (Usuario usuario, Cultivo cultivo, Date fechaDeSembrado){
         this.cultivo = cultivo;
         this.fechaDeSembrado = fechaDeSembrado;
         this.usuario = usuario;
