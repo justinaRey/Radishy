@@ -5,7 +5,7 @@
  */
 package egg.Radishy.Repositorios;
 
-import egg.Radishy.Entidades.SesionIniciada;
+import egg.Radishy.Entidades.CultivoUsuario;
 import egg.Radishy.Entidades.Usuario;
 import java.util.Date;
 import java.util.List;
@@ -19,13 +19,13 @@ import org.springframework.stereotype.Repository;
  * @author usuario
  */
 @Repository
-public interface SesionIniciada_repositorio extends JpaRepository<SesionIniciada, String>{
+public interface SesionIniciada_repositorio extends JpaRepository<CultivoUsuario, String>{
         
     @Query("select s from SesionIniciada s where s.usuario = :usuario")
-    public SesionIniciada findByUsuario(@Param("usuario") Usuario usuario);  // este ya estaba de antes 
+    public CultivoUsuario findByUsuario(@Param("usuario") Usuario usuario);  // este ya estaba de antes 
     
     @Query("Select s from SesionIniciada s where s.usuario.enSesion = true")
-    public List<SesionIniciada> cultivosUsuario();
+    public List<CultivoUsuario> cultivosUsuario();
     
     // no se si se hace así    
    // @Query("Select c.nombre, c.metodo, c.profundidadSiembraCM, s.fechaDeSembrado, s.fechaGerminadoProm, s.fechaTransplanteProm, s.fechaCosechaProm from Cultivo c, SesionIniciada s where s.usuario.enSesion = true")
