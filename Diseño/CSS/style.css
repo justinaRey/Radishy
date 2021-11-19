@@ -1,0 +1,288 @@
+
+body{
+    background-image: url("/IMG/Wallpaper/wallpaper.png");
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+}
+
+/*--- -Main- ---*/
+main{
+    background-color: #44558d9f;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+/* -Article- */
+article{
+    margin-top: 10%;
+}
+
+/* Parte principal */
+#main-tip{
+    margin-top: 5%;
+    height: 20%;
+    width: 20%;
+}
+
+.img-principal{
+    height: 20%;
+    width: 20%;
+    float : left;
+}
+
+.titulo{
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-weight: 800;
+}
+
+.parrafo-principal{
+    font-size: 1.3em;
+    margin-bottom: 5%;
+    margin-left: 23%;
+    margin-right: 5%;
+    font-weight: 700;
+    color: #7983A6;
+}
+
+.receta-img-arrow{
+    height: 3%;
+    width: 3%;
+    float: right;
+    margin-right: 37%;
+}
+
+/* Receta */
+.receta{
+    font-weight: 800;
+    margin-left: 50%;
+}
+
+.realizar-img-list{
+    height: 3%;
+    width: 3%;
+    float: left;
+    margin-top: 2.1%;
+    margin-left: 18%;
+}
+
+.realizar-subtitulo{
+    font-weight: 600;
+    margin-top: 3%;
+    margin-right: 57%;
+    text-decoration: underline;
+}
+
+hr.linea{
+    width: 50%;
+    margin-left: 25%;
+    color: black;
+}
+
+/* Ingredientes */
+.ingredientes-subtitulo{
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.7em;
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+
+.ingredientes{
+    margin: 3%;
+    margin-left: 30%;
+}
+
+.form-check-input{
+    margin-right: 2%;
+    margin-top: 1.41%;
+    background-color: transparent;
+    border: solid black 1px;
+}
+
+.form-check-input[type="checkbox"]:checked{
+    background-color: #44558d9f;
+    border-color: #181E23;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 0;
+}
+
+.ingrediente{
+    margin-top: 1%;
+    text-align: left;
+}
+
+.li-ingrediente{
+    text-align: left;
+    list-style: none;
+}
+
+.glaseado{
+    font-weight: 600;
+    margin-top: 3%;
+    margin-bottom: -1%;
+    margin-left: 3%;
+}
+
+/* Procedimiento */
+.procedimiento-subtitulo{
+    text-align: left;
+    font-weight: 800;
+    font-size: 1.7em;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    margin-left: 10%;
+}
+
+
+.list-group-numbered{
+    text-align: left;
+    margin-left: 13%;
+    margin-right: 2%;
+    margin-bottom: 4%;
+}
+
+.procedimiento{
+    font-size: 1em;
+    margin-bottom: 1%;
+}
+
+.consejo-img{
+    height: 3%;
+    width: 3%;
+    float: left;
+    margin-top: 1.5%;
+    margin-left: 40%;
+}
+
+.consejo-subtitulo{
+    font-weight: 600;
+    font-size: 1.7em;
+    margin-top: 3%;
+    margin-right: 45%;
+}
+
+.consejos{
+    text-align: left;
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 3%;
+}
+
+.consejo{
+    margin-top: 4%;
+}
+/*---------------------------------*/
+
+.linea-final-Articulo{
+    color: #000;
+}
+
+/*---------------------------------*/
+
+/* Articulo 2: Rabanito */
+#realizar-subt-rabanito{
+    margin-right: 55%;
+}
+/*---------------------------------*/
+
+/* Articulo 3: Tomate */
+#realizar-subt-tomate{
+    text-align: left;
+    margin-left: 23%;
+}
+
+/* Partners */
+/* Egg */
+article.partners{
+    padding-bottom: 25em;
+    text-align: left;
+}
+
+#partner-lona-img{
+    position: absolute;
+    background-image: black;
+    color: #181E23;
+}
+
+.partner-egg-titulo{
+    font-size: 4em;
+    font-weight: 900;
+    color: #FFC170;
+    position: relative;
+    margin-left: 15em;
+    margin-top: 44em;
+}
+
+#partner-huevo-img{
+    position: absolute;
+    margin-left: 30em;
+}
+
+.partner-egg-subtitulo{
+    position: relative;
+    margin-left: 33em;
+}
+/*---------------------------------*/
+
+/* -Footer- */
+footer{
+    /* margin-top: -1%;*/
+    background-color: #7a7a7756;
+    text-align: center;
+}
+
+
+.foot-subtitulo{
+    padding-top: 2%;
+    font-size: 2em;
+    line-height: 2;
+    color: #181E23;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.iconos{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+/* Iconos - Redes Sociales Footer*/
+#ico-face{
+    width: 5em;
+    height: 5em;
+    margin-right: 5em;
+}
+
+#ico-twit{
+    width: 5em;
+    height: 5em;
+    margin-right: 5em;
+}
+
+#ico-inst{
+    width: 5em;
+    height: 5em;
+    margin-right: 5em;
+}
+
+#ico-gmail{
+    width: 5em;
+    height: 5em;
+    
+}
+
+.foot-copyright{
+    font-size: 1em;
+    text-align: end;
+    padding-top: 1em;
+    padding-bottom: 0.3%;
+    padding-right: 0.5%;
+    opacity: 0.3;
+}
+/*---------------------------------*/

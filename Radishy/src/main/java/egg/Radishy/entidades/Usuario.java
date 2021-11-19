@@ -1,16 +1,19 @@
-package egg.Radishy.entidades;
+package egg.Radishy.Entidades;
 
-import egg.Radishy.enumeraciones.Genero;
-import egg.Radishy.enumeraciones.Localidad;
+import egg.Radishy.Enumeraciones.Genero;
+import egg.Radishy.Enumeraciones.Localidad;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+//import javax.persistence.Inheritance;
+//import javax.persistence.InheritanceType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+//@Inheritance(strategy = InheritanceType.JOINED) // algo de la security
 public class Usuario implements Serializable {
 
     @Id
@@ -22,6 +25,7 @@ public class Usuario implements Serializable {
     private String password;
     private String apodo;
     private Boolean alta;
+    private String email;
     private Boolean enSesion;
     
     @Enumerated(EnumType.STRING)
@@ -30,7 +34,11 @@ public class Usuario implements Serializable {
     @Enumerated(EnumType.STRING)
     private Localidad localidad;
 
+    //@ManyToOne
+    //private Cultivo cultivo
+    
     public Usuario() {
+        enSesion = false;
     }
 
     public Boolean getAlta() {
@@ -50,6 +58,7 @@ public class Usuario implements Serializable {
         this.enSesion = enSesion;
         this.genero = genero;
         this.localidad = localidad;
+        this.enSesion = false;
     }
 
     public Boolean getEnSesion() {
@@ -111,5 +120,15 @@ public class Usuario implements Serializable {
         this.localidad = localidad;
     }
     
+    public void setEnSesion (boolean enSesion) {
+        this.enSesion = enSesion;
+    }
     
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

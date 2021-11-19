@@ -5,7 +5,7 @@
  */
 package egg.Radishy.Repositorios;
 
-import egg.Radishy.entidades.Cultivo;
+import egg.Radishy.Entidades.Cultivo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,3 +17,5 @@ import org.springframework.stereotype.Repository;
 public interface Cultivo_repositorio extends JpaRepository<Cultivo, String>{
     
 }
+
+// ES ESTEEEEEEEEEEE 

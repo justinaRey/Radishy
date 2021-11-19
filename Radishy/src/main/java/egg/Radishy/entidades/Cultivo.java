@@ -1,7 +1,7 @@
 
-package egg.Radishy.entidades;
+package egg.Radishy.Entidades;
 
-import egg.Radishy.enumeraciones.Mes;
+import egg.Radishy.Enumeraciones.Mes;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -27,10 +27,12 @@ public class Cultivo implements Serializable {
     private Mes finEpocaSiembra;
     
     private String metodo;
-    private Integer profSiembraCM;
+    
     private Integer tiempoGerminar;
     private Integer tiempoTransplantar;
     private Integer tiempoCosechar;
+    
+    private Integer profundidadSiembraCM;
 
     public Cultivo() {
     }
@@ -41,12 +43,10 @@ public class Cultivo implements Serializable {
         this.inicioEpocadeSiembra = inicioEpocadeSiembra;
         this.finEpocaSiembra = finEpocaSiembra;
         this.metodo = metodo;
-        this.profSiembraCM = profSiembraCM;
         this.tiempoGerminar = tiempoGerminar;
         this.tiempoTransplantar = tiempoTransplantar;
         this.tiempoCosechar = tiempoCosechar;
     }
-
     
     public String getId() {
         return id;
@@ -87,15 +87,7 @@ public class Cultivo implements Serializable {
     public void setMetodo(String metodo) {
         this.metodo = metodo;
     }
-
-    public Integer getProfSiembraCM() {
-        return profSiembraCM;
-    }
-
-    public void setProfSiembraCM(Integer profSiembraCM) {
-        this.profSiembraCM = profSiembraCM;
-    }
-
+    
     public Integer getTiempoGerminar() {
         return tiempoGerminar;
     }
@@ -120,5 +112,11 @@ public class Cultivo implements Serializable {
         this.tiempoCosechar = tiempoCosechar;
     }
     
-    
+    public Integer getProfundidadSiembraCM() {
+        return profundidadSiembraCM;
+    }
+
+    public void setProfundidadSiembraCM(Integer profSiembraCM) {
+        this.profundidadSiembraCM = profSiembraCM;
+    }
 }
