@@ -7,7 +7,7 @@ package egg.Radishy.Controladores;
 
 import egg.Radishy.Entidades.CultivoUsuario;
 import egg.Radishy.Errores.Errores_servicio;
-import egg.Radishy.Servicios.SesionIniciada_servicio;
+import egg.Radishy.Servicios.CultivoUsuario_servicio;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,12 +26,12 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/sesion")
-public class SesionIniciada_controller {
+public class CultivoUsuario_controller {
   
    @Autowired
-    private SesionIniciada_servicio servicio;
+    private CultivoUsuario_servicio servicio;
     
-   @GetMapping("/sesion")
+   @GetMapping("/")
    public String index(){
        return "index";
    }
@@ -50,7 +50,7 @@ public class SesionIniciada_controller {
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("usuario", nusuario);
-            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CultivoUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
             return "usuario";
         }
         return "redirect:/sesion";
@@ -65,7 +65,7 @@ public class SesionIniciada_controller {
             servicio.cerrarSesion();
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
-            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CultivoUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "redirect:/"; //index.html si no es con redirect
     }
@@ -87,7 +87,7 @@ public class SesionIniciada_controller {
             modelo.put("error", ex.getMessage());
             modelo.put("idCultivo", idCultivo);
             modelo.put("fechaSembrado", fechaSembrado);
-            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CultivoUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
             return "aggCultivo";
         }
         return "redirect:/sesion/iniciada/agregar-mis-cultivos"; //aggCultivo.html si no es con redirect
@@ -103,7 +103,7 @@ public class SesionIniciada_controller {
             modelo.put("cultivosSesIn", misCultivos);
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
-            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CultivoUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
             return "redirect:/sesion/iniciar"; // usuario.html si no va redirect
         }
         return "misCultivos";
@@ -118,7 +118,7 @@ public class SesionIniciada_controller {
             modelo.put("confirmacion", "El culivo seleccionado ha sido eliminado de sus cultivos con éxito");
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
-            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CultivoUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "misCultivos";
     }
@@ -126,13 +126,13 @@ public class SesionIniciada_controller {
     
     /*   controlador para eliminar todos los cultivos que posee el usuario    */
     
-    @GetMapping("/sesion/iniciada/mis-cultivos/eliminar-todos-cultivos")
+    @GetMapping("/iniciada/mis-cultivos/eliminar-todos-cultivos")
     public String eliminarTodosCultivos(ModelMap modelo){
         try {
             servicio.vaciarMisCultivos();
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
-            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CultivoUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "misCultivos";
     }

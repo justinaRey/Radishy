@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
  * @author usuario
  */
 @Repository
-public interface SesionIniciada_repositorio extends JpaRepository<CultivoUsuario, String>{
+public interface CultivoUsuario_repositorio extends JpaRepository<CultivoUsuario, String>{
         
     @Query("select cu from CultivoUsuario cu where cu.usuario = :usuario")
     public CultivoUsuario findByUsuario(@Param("usuario") Usuario usuario);  // este ya estaba de antes 
