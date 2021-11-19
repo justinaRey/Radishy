@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Contacto</title>
     <meta charset="UTF-8">
@@ -62,13 +62,13 @@
           </div>
         </div>
       </nav>
-    <form action="">
+    <form class="m-5" th:action="@{/save/contacto}" method="POST" th:object="${CONTACTO}">
         <h2>CONTACTO</h2>
-        <input type="nombre" name="nombre" id="nombre" placeholder="Ingrese su nombre"><br>
-        <input type="email" name="email"id="e-mail" placeholder="Ingrese su correo electronico"><br>
-        <input type="nombre" name="Telefono" id="telefono" placeholder="Ingrese su numero de telefono"><br>
+        <input type="nombre" name="nombre" th:field="*{nombre}" id="nombre" placeholder="Ingrese su nombre"><br>
+        <input type="email" name="email"th:field="*{e-mail}" id="e-mail" placeholder="Ingrese su correo electronico"><br>
+        <input type="nombre" name="Telefono" th:field="*{Telefono}" id="telefono" placeholder="Ingrese su numero de telefono"><br>
         <textarea type="textarea" name="mensaje" placeholder="Escriba aqui su mensaje"></textarea><br>
-        <input type="button" value="ENVIAR" id="boton">
+        <input type="button" value="ENVIAR" th:field="*{ENVIAR}"id="boton">
 
     </form>
     <section>

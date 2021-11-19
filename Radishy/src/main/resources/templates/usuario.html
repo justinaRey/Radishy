@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Contacto</title>
     <meta charset="UTF-8">
@@ -64,9 +64,10 @@
       <section class="form-login">
           <h5>Login</h5>
           
-          <input class="controls"type ="text" name="usuario"id="nombre" value=""placeholder="Ingrese su nombre de usuario"> 
-          <input class="controls"type ="text" name="password"id="contraseña" value=""placeholder="Ingrese su contraseña">
-          <input class="button"type="submit" name="" value="Ingresar">
+          <input class="controls"type ="text" name="usuario"id="nombre" th.value="nombre"placeholder="Ingrese su nombre de usuario o "> 
+          <input class="controls"type ="text" name="password"id="password" th.value="password"placeholder="Ingrese su contraseña">
+          <button type="button" class="btn btn-link" style="color: rgb(211, 149, 149);"><a th:href="@{/SesionIniciada/loginsuccessful" class="link"></a></button>
+
           <p><a href="a"></a>¿Olvidaste tu contraseña?</p>
         
       </section>
@@ -79,8 +80,8 @@
             <a href="https://twitter.com/Radishy0"><img src="/IMAGENES/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
             <a href="https://www.instagram.com/radishy.1/"><img src="../IMAGENES/instagram.png" alt="Icono Instagram"
                 id="ico-inst"></a>
-            <a href="https://mail.google.com/mail/u/0/#search/radishycompany%40gmail.com?compose=new"><img
-                src="../IMAGENES/email.png" alt="Icono Gmail" id="ico-gmail"></a>
+            <a href="https://mail.google.com/mail/u/0/#search/radishycompany%40gmail.com?compose=new">
+              <img src="../IMG/email.png" alt="Icono Gmail" id="ico-gmail"></a>
           </div>
         </div>
         <h2 class="typography" id="foot-copyr">2021 Copyright Radishy - Todos los derechos reservados.</h2>

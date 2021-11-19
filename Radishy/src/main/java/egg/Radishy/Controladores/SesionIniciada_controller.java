@@ -33,14 +33,14 @@ public class SesionIniciada_controller {
     
    @GetMapping("/sesion")
    public String index(){
-       return "index.html";
+       return "redirect:/index";
    }
    
     /*           controladores para regular el inicio de la sesión            */ 
     
     @GetMapping("/iniciar")
     public String iniciarSesion(){
-        return "usuario.html";
+        return "usuario";
     }
     
     @PostMapping("/iniciada")

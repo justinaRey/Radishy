@@ -1,0 +1,120 @@
+body{
+    background-image:url("../IMG/pumpkin.jpg");
+    background-size: 100vw 100vh;
+    background-attachment:fixed;
+    margin:0px;
+    padding:10px 20px;
+}
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+.form-register{
+    width: 400px;
+    background: #22374d;
+    padding:30px;
+    margin:auto;
+    margin-top:80px;
+    border-radius: 4px;
+    font-family: 'Calibri';
+    color: white;
+    box-shadow:7px 13px 37px #000 ;
+}
+.form-register{
+    font-size: 22px;
+    margin-bottom: 20px;
+
+}
+.controls{
+    width: 100%;
+    background: #22374d;
+    padding:10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border:1px solid #1f53c5;
+    font-size: 18px;
+
+}
+
+.form-register p{
+    height: 40px;
+    text-align:center;
+    font-size:18px ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+.form-register a{
+    color:white;
+    text-decoration:none ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+.form-register a:hover{
+    color: white;
+    text-decoration:underline;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+.form-register .botons{
+    width:100%;
+    background: #1f53c5;
+    border:none;
+    padding:12px;
+    color:white;
+    margin-left: 16px 0;
+    font-size: 16px;
+
+}
+/* -Footer- */
+footer{
+    margin-top: -1%;
+    background-color: #7A7A77;
+    opacity: 0.4;
+    text-align: center;
+}
+.typography{
+    font-family: 'Roboto', sans-serif;
+}
+h1.typography{
+    padding-top: 2%;
+    font-size: 3em;
+    line-height: 2;
+    color: #181E23;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.iconos{
+    margin-top: 4%;
+}
+/* Iconos - Redes Sociales Footer*/
+#ico-face{
+    width: 5em;
+    height: 5em;
+    margin-right: 5em;
+}
+#ico-twit{
+    width: 5em;
+    height: 5em;
+    margin-right: 5em;
+}
+#ico-inst{
+    width: 5em;
+    height: 5em;
+    margin-right: 5em;
+    margin-bottom: em;
+}
+#ico-gmail{
+    width: 5em;
+    height: 5em;   
+}
+h2.typography{
+    text-align: end;
+    padding-top: 3em;
+    padding-bottom: 0.3%;
+    padding-right: 0.5%;
+    opacity: 0.7;
+}
