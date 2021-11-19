@@ -5,7 +5,7 @@ import egg.Radishy.Entidades.Usuario;
 import egg.Radishy.Enumeraciones.Genero;
 import egg.Radishy.Enumeraciones.Localidad;
 import egg.Radishy.Errores.Errores_servicio;
-import egg.Radishy.enumeraciones.Role;
+import egg.Radishy.enumeraciones.Roles;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class Usuario_servicio{
         u.setPassword(encoder.encode(password));
         
         //Cualquier usuario que se cree va a tener el rol "user"
-        u.setRol(Role.USER);
+        u.setRol(Roles.USER);
 
         u.setApodo(apodo);
         u.setGenero(genero);

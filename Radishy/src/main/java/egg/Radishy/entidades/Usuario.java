@@ -2,19 +2,16 @@ package egg.Radishy.Entidades;
 
 import egg.Radishy.Enumeraciones.Genero;
 import egg.Radishy.Enumeraciones.Localidad;
-import egg.Radishy.enumeraciones.Role;
+import egg.Radishy.enumeraciones.Roles;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.Inheritance;
-//import javax.persistence.InheritanceType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.JOINED) // algo de la security
 public class Usuario implements Serializable {
 
     @Id
@@ -36,7 +33,7 @@ public class Usuario implements Serializable {
     private Localidad localidad;
     
     @Enumerated(EnumType.STRING)
-    private Role rol;
+    private Roles rol;
 
     //@ManyToOne
     //private Cultivo cultivo
@@ -139,14 +136,14 @@ public class Usuario implements Serializable {
     /**
      * @return the rol
      */
-    public Role getRol() {
+    public Roles getRol() {
         return rol;
     }
 
     /**
      * @param rol the rol to set
      */
-    public void setRol(Role rol) {
+    public void setRol(Roles rol) {
         this.rol = rol;
     }
 }

@@ -1,6 +1,6 @@
 package egg.Radishy.enumeraciones;
 
 
-public enum Role {
+public enum Roles {
     ADMIN,USER
 }
