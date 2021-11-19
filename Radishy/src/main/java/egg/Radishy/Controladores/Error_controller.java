@@ -34,7 +34,6 @@ public class Error_controller implements ErrorController{
                 break;
             case 500:
                 mensajeError = "El servidor no pudo realizar la petición con éxito.";
-                //return "500.html";
                 break;
         }
         
