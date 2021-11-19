@@ -200,7 +200,7 @@ hr.linea{
 /* Partners */
 /* Egg */
 article.partners{
-    padding-bottom: 25em;
+/*    padding-bottom: ; */      /* -------> surgía error aquí */
     text-align: left;
 }
 
@@ -215,8 +215,10 @@ article.partners{
     font-weight: 900;
     color: #FFC170;
     position: relative;
-    margin-left: 15em;
-    margin-top: 44em;
+    text-align: center;
+    padding-bottom: 30em;
+    margin-bottom: 20em;
+    background-color: aquamarine;
 }
 
 #partner-huevo-img{
