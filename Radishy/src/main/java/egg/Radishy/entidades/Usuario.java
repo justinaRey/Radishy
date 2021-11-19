@@ -2,6 +2,7 @@ package egg.Radishy.Entidades;
 
 import egg.Radishy.Enumeraciones.Genero;
 import egg.Radishy.Enumeraciones.Localidad;
+import egg.Radishy.enumeraciones.Role;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -33,6 +34,9 @@ public class Usuario implements Serializable {
     
     @Enumerated(EnumType.STRING)
     private Localidad localidad;
+    
+    @Enumerated(EnumType.STRING)
+    private Role rol;
 
     //@ManyToOne
     //private Cultivo cultivo
@@ -121,7 +125,7 @@ public class Usuario implements Serializable {
     }
     
     public void setEnSesion (boolean enSesion) {
-        this.enSesion = enSesion;
+        this.setEnSesion((Boolean) enSesion);
     }
     
     public String getEmail() {
@@ -130,5 +134,19 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the rol
+     */
+    public Role getRol() {
+        return rol;
+    }
+
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(Role rol) {
+        this.rol = rol;
     }
 }

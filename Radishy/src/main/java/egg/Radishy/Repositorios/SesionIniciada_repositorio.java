@@ -21,10 +21,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SesionIniciada_repositorio extends JpaRepository<CultivoUsuario, String>{
         
-    @Query("select s from SesionIniciada s where s.usuario = :usuario")
+    @Query("select cu from CultivoUsuario cu where cu.usuario = :usuario")
     public CultivoUsuario findByUsuario(@Param("usuario") Usuario usuario);  // este ya estaba de antes 
-    
-    @Query("Select s from SesionIniciada s where s.usuario.enSesion = true")
+
+    @Query("Select cu from CultivoUsuario cu where cu.usuario.enSesion = true")
     public List<CultivoUsuario> cultivosUsuario();
     
     // no se si se hace así    
