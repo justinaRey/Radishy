@@ -31,6 +31,7 @@ public class CultivoUsuario_controller {
    @Autowired
     private CultivoUsuario_servicio servicio;
     
+   // podría ser que derive a una pág con toda la info del usuario, por si la quiere modificar
    @GetMapping("/")
    public String index(){
        return "index";
@@ -85,8 +86,12 @@ public class CultivoUsuario_controller {
             modelo.put("confirmacion", "El cultivo seleccionado se ha agregado a sus cultivos con éxito"); //aviso de cultivo agregado
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
-            modelo.put("idCultivo", idCultivo);
-            modelo.put("fechaSembrado", fechaSembrado);
+            if (idCultivo != null){
+                modelo.put("idCultivo", idCultivo);
+            }
+            if(fechaSembrado != null){
+                modelo.put("fechaSembrado", fechaSembrado);
+            }
             Logger.getLogger(CultivoUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
             return "aggCultivo";
         }
@@ -130,6 +135,7 @@ public class CultivoUsuario_controller {
     public String eliminarTodosCultivos(ModelMap modelo){
         try {
             servicio.vaciarMisCultivos();
+            modelo.put("confirmacion", "Su lista de cultivos personales se encuentra ahora vacía");
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(CultivoUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
