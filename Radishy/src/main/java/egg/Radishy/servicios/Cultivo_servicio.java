@@ -40,7 +40,7 @@ public class Cultivo_servicio {
         try {
             List<Cultivo> lista = listarCultivos();
             for (Cultivo cultivo : lista) {
-                if(nombre == cultivo.getNombre()){
+                if(nombre.equals(cultivo.getNombre())){  // cambio de == a equals ---> es un string
                     throw new Errores_servicio("El nombre ingresado ya está en la lista de cultivos.");
                 }
             }
