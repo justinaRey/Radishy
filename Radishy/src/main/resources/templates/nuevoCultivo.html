@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-=======
-<html lang="en">
->>>>>>> 513b884877fb0409032ce4229ad65205ce71c2ec
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,7 +71,7 @@
               </a>
               <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" th:href="@{/cultivos/listarCultivos}">Ver mis cultivos</a></li>
-                <li><a class="dropdown-item" href="#">Cargar un cultivo</a></li>
+                <li><a class="dropdown-item" th:href="@{/sesion/iniciada/agregar-mis-cultivos}">Cargar un cultivo</a></li>
                 <li>
                   <a class="dropdown-item" th:href="@{/cultivos/agregarCultivo}">Crear un nuevo cultivo</a>
                 </li>
@@ -170,7 +166,7 @@
           <br />
           <br />
           
-          <button href="#" class="boxx">Agregar cultivo</button>
+          <button href="#" class="boxx">Crear cultivo</button>
         </div>
       </div>
       <!---->

@@ -5,9 +5,11 @@
  */
 package egg.Radishy.Controladores;
 
+import egg.Radishy.Entidades.SesionIniciada;
 import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.Servicios.SesionIniciada_servicio;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,7 +99,8 @@ public class SesionIniciada_controller {
     @GetMapping("/iniciada/mis-cultivos")
     public String verMisCultivos(ModelMap modelo){
         try {
-            servicio.misCultivos();
+            List<SesionIniciada> misCultivos = servicio.misCultivos();
+            modelo.put("cultivosSesIn", misCultivos);
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
