@@ -4,7 +4,7 @@
     <title>Contacto</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width">
-    <meta http-equiv="X-UA Compatible"content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA Compatible" content="width=device-width, initial-scale=1.0">
     <!--Tipografia: 'Roboto' .Thin 100-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,12 +43,12 @@
               </li>
   
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#" style="text-align: center; font-size: 20px;"
+                <a class="nav-link active" href="#" style="text-align: center; font-size: 20px;"
                   >Contacto</a>
               </li>
-              
+<!--              borre aria-current="page" del a-->
               <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#" style="text-align: center; font-size: 20px;"
+                  <a class="nav-link active" href="#" style="text-align: center; font-size: 20px;"
                     >Sobre nosotros</a>
               </li>
             </ul>
@@ -60,7 +60,7 @@
           </div>
         </div>
       </nav>
-      <title>Formulario de Registro</title>
+<!--      <title>Formulario de Registro</title>-->
       <form class="m-5" th:action="@{/save/usuario}" method="POST" th:object="${REGISTRO}">
       <section class="form-register">
           <h4>Registro</h4>
@@ -93,9 +93,9 @@
             <label class="form-check-label" for="flexCheckChecked">Estoy de acuerdo con <a href="#"> Términos y Condiciones
             </label>
           </div>
-          </p>
           
-          <input class="botons"type="submit"value="Registrar">
+          
+          <input class="botons" type="submit" value="Registrar">
           <p><a href="#">¿Ya tengo cuenta?</a></p>
 
           </section>

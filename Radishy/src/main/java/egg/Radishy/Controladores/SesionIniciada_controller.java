@@ -33,7 +33,7 @@ public class SesionIniciada_controller {
     
    @GetMapping("/sesion")
    public String index(){
-       return "redirect:/index";
+       return "index";
    }
    
     /*           controladores para regular el inicio de la sesión            */ 
@@ -51,7 +51,7 @@ public class SesionIniciada_controller {
             modelo.put("error", ex.getMessage());
             modelo.put("usuario", nusuario);
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "usuario.hmtl";
+            return "usuario";
         }
         return "redirect:/sesion";
     }
