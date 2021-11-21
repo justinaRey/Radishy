@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Cultivo implements Serializable {
+public class Cultivo implements Serializable { // OBS: corregir(o borrar) constructor con params, ver tema de los tiempos y ajustar los sets de estos
     
     @Id
     @GeneratedValue(generator = "uuid")
@@ -28,39 +28,42 @@ public class Cultivo implements Serializable {
     
     private String metodo;
     
-    private Integer tiempoGerminar;
-    private Integer tiempoTransplantar;
-    private Integer tiempoCosechar;
+    // comentados porque los utilizo desp con mínimo y máximo + concatenación ---> estos probablemente se borren desp
+//    private Integer tiempoGerminar;
+//    private Integer tiempoTransplantar;
+//    private Integer tiempoCosechar;
     
     private Integer profundidadSiembraCM;
     
     private Integer tiempoGerminarMin; // en reemplazo a tiempoGerminar, se ponen dos con el tiempo min y max que puede tardar
     private Integer tiempoGerminarMax;
-    //private String tiempoGerminar; // concatenación de t.germinar min + max junto con la palabra días
+    private String tiempoParaGerminar; // concatenación de t.germinar min + max junto con la palabra días
     
     private Integer tiempoTransplantarMin;
     private Integer tiempoTransplantarMax;
-    //private String tiempoParaTransplantar; // concatenación de ambos tiempos de transplante + la palabra días
+    private String tiempoParaTransplantar; // concatenación de ambos tiempos de transplante + la palabra días
     
     private Integer tiempoCosecharMin;
     private Integer tiempoCosecharMax;
-    //private String tiempoCosechar; // concatenación de tiempo de cosecha min y max sumado a la palabra días
+    private String tiempoParaCosechar; // concatenación de tiempo de cosecha min y max sumado a la palabra días
+
+    private Boolean modificable;
     
-    // Saqué el fechaDeSembrado porque lo incorporé a la sesión iniciada
-
     public Cultivo() {
+        modificable = false;
     }
 
-    public Cultivo(String id, String nombre, Mes inicioEpocadeSiembra, Mes finEpocaSiembra, String metodo, Integer profSiembraCM, Integer tiempoGerminar, Integer tiempoTransplantar, Integer tiempoCosechar) {
-        this.id = id;
-        this.nombre = nombre;
-        this.inicioEpocadeSiembra = inicioEpocadeSiembra;
-        this.finEpocaSiembra = finEpocaSiembra;
-        this.metodo = metodo;
-        this.tiempoGerminar = tiempoGerminar;
-        this.tiempoTransplantar = tiempoTransplantar;
-        this.tiempoCosechar = tiempoCosechar;
-    }
+    //REVISAR EL CONSTRUCTOR CON LOS PARÁMETROS RECIBIDOS.
+//    public Cultivo(String id, String nombre, Mes inicioEpocadeSiembra, Mes finEpocaSiembra, String metodo, Integer profSiembraCM, Integer tiempoGerminar, Integer tiempoTransplantar, Integer tiempoCosechar) {
+//        this.id = id;
+//        this.nombre = nombre;
+//        this.inicioEpocadeSiembra = inicioEpocadeSiembra;
+//        this.finEpocaSiembra = finEpocaSiembra;
+//        this.metodo = metodo;
+//        this.tiempoGerminar = tiempoGerminar;
+//        this.tiempoTransplantar = tiempoTransplantar;
+//        this.tiempoCosechar = tiempoCosechar;
+//    }
     
     public String getId() {
         return id;
@@ -102,29 +105,29 @@ public class Cultivo implements Serializable {
         this.metodo = metodo;
     }
     
-    public Integer getTiempoGerminar() {
-        return tiempoGerminar;
-    }
-
-    public void setTiempoGerminar(Integer tiempoGerminar) {
-        this.tiempoGerminar = tiempoGerminar;
-    }
-
-    public Integer getTiempoTransplantar() {
-        return tiempoTransplantar;
-    }
-
-    public void setTiempoTransplantar(Integer tiempoTransplantar) {
-        this.tiempoTransplantar = tiempoTransplantar;
-    }
-
-    public Integer getTiempoCosechar() {
-        return tiempoCosechar;
-    }
-
-    public void setTiempoCosechar(Integer tiempoCosechar) {
-        this.tiempoCosechar = tiempoCosechar;
-    }
+//    public Integer getTiempoGerminar() {
+//        return tiempoGerminar;
+//    }
+//
+//    public void setTiempoGerminar(Integer tiempoGerminar) {
+//        this.tiempoGerminar = tiempoGerminar;
+//    }
+//
+//    public Integer getTiempoTransplantar() {
+//        return tiempoTransplantar;
+//    }
+//
+//    public void setTiempoTransplantar(Integer tiempoTransplantar) {
+//        this.tiempoTransplantar = tiempoTransplantar;
+//    }
+//
+//    public Integer getTiempoCosechar() {
+//        return tiempoCosechar;
+//    }
+//
+//    public void setTiempoCosechar(Integer tiempoCosechar) {
+//        this.tiempoCosechar = tiempoCosechar;
+//    }
     
     public Integer getProfundidadSiembraCM() {
         return profundidadSiembraCM;
@@ -179,6 +182,7 @@ public class Cultivo implements Serializable {
     
 //    public String getTiempoGerminar () {
 //          return this.tiempoGerminar;
+    
     public Integer getTiempoTransplantarMin() {
         if (this.tiempoTransplantarMin != null){
             return tiempoTransplantarMin;
@@ -271,4 +275,15 @@ public class Cultivo implements Serializable {
     
 //    public String getTiempoCosechar () {
 //          return this.tiempoCosechar;
+    //}
+
+    public Boolean getModificable() {
+        return modificable;
+    }
+
+    public void setModificable(Boolean modificable) {
+        this.modificable = modificable;
+    }
+    
+    
 }

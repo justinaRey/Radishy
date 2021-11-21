@@ -2,20 +2,19 @@ package egg.Radishy.Entidades;
 
 import egg.Radishy.Enumeraciones.Genero;
 import egg.Radishy.Enumeraciones.Localidad;
+import egg.Radishy.enumeraciones.Roles;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.Inheritance;
-//import javax.persistence.InheritanceType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.JOINED) // algo de la security
 public class Usuario implements Serializable {
 
+    //Atributos:
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -23,22 +22,24 @@ public class Usuario implements Serializable {
 
     private String nombre;
     private String password;
-    private String apodo;
-    private Boolean alta;
-    private String email;
+    private String apodo; // opcional, lo podemos dejar como lo podemos sacar
+    private Boolean alta; // opcional, se deja si se hace el dar de baja o eliminar un usuario
+    private String email; // no sirve de mucho ya que no usamos el mail sender, podemos activar el enviar un link al mail si olvidó la contraseña
     private Boolean enSesion;
     
-    //@Enumerated(EnumType.STRING)
-    //private Genero genero;
+    // sección de los enums (investigarlos)
+    @Enumerated(EnumType.STRING)
+    private Genero genero;
     
-    //@Enumerated(EnumType.STRING)
-    //private Localidad localidad;
+    @Enumerated(EnumType.STRING)
+    private Localidad localidad;
 
-    //@ManyToOne
-    //private Cultivo cultivo
+    @Enumerated(EnumType.STRING)
+    private Roles rol;
     
     public Usuario() {
         enSesion = false;
+        rol = Roles.USER; // no sé si así se coloca el rol usuario
     }
 
     public Boolean getAlta() {
@@ -56,8 +57,8 @@ public class Usuario implements Serializable {
         this.apodo = apodo;
         this.alta = alta;
         this.enSesion = enSesion;
-        //this.genero = genero;
-        //this.localidad = localidad;
+        this.genero = genero;
+        this.localidad = localidad;
         this.enSesion = false;
     }
 
@@ -104,21 +105,21 @@ public class Usuario implements Serializable {
         this.apodo = apodo;
     }
 
-//    public Genero getGenero() {
-//        return genero;
-//    }
-//
-//    public void setGenero(Genero genero) {
-//        this.genero = genero;
-//    }
-//
-//    public Localidad getLocalidad() {
-//        return localidad;
-//    }
-//
-//    public void setLocalidad(Localidad localidad) {
-//        this.localidad = localidad;
-//    }
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
+    public Localidad getLocalidad() {
+        return localidad;
+    }
+
+    public void setLocalidad(Localidad localidad) {
+        this.localidad = localidad;
+    }
     
     public void setEnSesion (boolean enSesion) {
         this.enSesion = enSesion;
@@ -131,4 +132,19 @@ public class Usuario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    /**
+     * @return the rol
+     */
+    public Roles getRol() {
+        return rol;
+    }
+
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(Roles rol) {
+        this.rol = rol;
+    }
+
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class Error_controller implements ErrorController{
+public class Error_controller implements ErrorController{ // agregar una opción más que sea un html donde diga: <h1>Lo sentimos</h1><p> No es posible acceder a la ubicación que solicitó o realizar la acción que intentó</p><h5>Nuestras más sinceras disculpas</h5><h7>El equipo de Radishy</h7>
     
     @RequestMapping(value = "/error",method = {RequestMethod.GET, RequestMethod.POST})
     public String mostrarPagError(ModelMap modelo, HttpServletRequest httpServletRequest){

@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/usuario")
-public class Usuario_controller {
+public class Usuario_controller { // falta agregarle lo q pasaría si se quiere acceder a la dirección puesta en la barra de navegación pero aún no se cumplen con los requisitos para hacerlo
     
-    @Autowired
+    @Autowired // uS ---> servicio del usuario
     private Usuario_servicio uS;
     
     @GetMapping("")
@@ -72,15 +72,15 @@ public class Usuario_controller {
         }
         return "";
     }
-     
+    
     @PostMapping("modificacion/{id}")
-    public String guardarModificacion(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, @RequestParam String password, @RequestParam String apodo, @RequestParam Genero genero, @RequestParam Localidad localidad){
+    public String guardarModificacion(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, @RequestParam String passwordActual, @RequestParam String passwordNueva, @RequestParam String passwordNueva2, @RequestParam String apodo, @RequestParam Genero genero, @RequestParam Localidad localidad){
         try {
-            uS.modificarUsuario(id, nombre, password, apodo, genero, localidad);
+            uS.modificarUsuario(id, nombre, passwordActual, passwordNueva, apodo, genero, localidad); // hay que agregar la passwordNueva2
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
-            modelo.put("password", password);
+//            modelo.put("password", password);
             modelo.put("apodo", apodo);
             modelo.put("genero", genero);
             modelo.put("localidad", localidad);

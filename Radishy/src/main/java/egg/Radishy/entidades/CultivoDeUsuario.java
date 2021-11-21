@@ -7,13 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class SesionIniciada implements Serializable {
+public class CultivoDeUsuario implements Serializable { // OBS: constructor con params, tema de sumarle el prom de las fechas, 
     //Atributos
     @Id
     @GeneratedValue(generator = "uuid")
@@ -26,26 +26,29 @@ public class SesionIniciada implements Serializable {
     @ManyToOne
     private Cultivo cultivo;
     
-    @DateTimeFormat(pattern = "YY-MM-dd")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     private Date fechaDeSembrado;
   
   //Las siguientes fechas son para agregar si se puede, q toma en cuenta los datos de germinación, transplante y cosecha y los implementa a la fecha de sembrado 
-    
+    //@Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "YY-MM-dd")
 //    private Date fechaGermiadoProm;
-//    
+    
+//    @Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "YY-MM-dd")
 //    private Date fechaTransplanteProm;
-//    
+    
+//    @Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "YY-MM-dd")
 //    private Date fechaCosechaAprox;
     
     // constructores:
-    public SesionIniciada(){
+    public CultivoDeUsuario(){
         
     }
     
-    public SesionIniciada (Usuario usuario, Cultivo cultivo, Date fechaDeSembrado){
+    public CultivoDeUsuario (Usuario usuario, Cultivo cultivo, Date fechaDeSembrado){
         this.cultivo = cultivo;
         this.fechaDeSembrado = fechaDeSembrado;
         this.usuario = usuario;

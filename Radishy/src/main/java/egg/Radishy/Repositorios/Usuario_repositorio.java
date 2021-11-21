@@ -14,23 +14,28 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface Usuario_repositorio extends JpaRepository<Usuario, String>{
-
+    
+    // devuelve la cantidad de usuarios con 'enSesion' true
     @Query("Select count(u) from Usuario u where u.enSesion = true")
     public int cantidadEnSesionTrue();
     
+    // busca al usuario con la sesión en true
     @Query("Select u from Usuario u where u.enSesion = true")
     public Usuario findByEnSesion();
     
+    // busca al usuario según su nombre de usuario
     @Query("Select u from Usuario u where u.nombre = :nombre")
     public Usuario findByNombreUsuario(@Param("nombre") String nombre);
     
-    // estas dos son las agregadas
+    // devuelve una lista con todas las sesiones iniciadas
     @Query("Select u from Usuario u where u.enSesion = true")
     public List<Usuario> findSesionesIniciadas ();
     
+    // busca al usuario según su id
     @Query("SELECT c FROM Usuario c WHERE c.id = :id")
     public Usuario buscarPorId(@Param("id") String id);
     
+    // devuelve la cantidad de usuarios que contienen el mismo nombre de usuario
     @Query("Select count(u) from Usuario u where u.nombre = :nombre")
     public int cantidadUsuariosNombre(@Param("nombre") String nombre);
 }
