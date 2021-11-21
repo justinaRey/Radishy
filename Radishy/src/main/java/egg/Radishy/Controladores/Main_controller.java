@@ -17,4 +17,13 @@ public class Main_controller {
         return "index";
     }
 
+    @GetMapping("contacto")
+    public String contacto (){
+        return "contacto";
+    }
+    
+    @GetMapping("info/quienes-somos-?")
+    public String infoNuestra(){
+        return "info";
+    }
 }
