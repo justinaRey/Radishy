@@ -41,6 +41,6 @@ public interface Usuario_repositorio extends JpaRepository<Usuario, String>{
     
     ////////////////////////////////////////////////////////////////////////////
     
-    @Query("Select * from Usuario")
+    @Query("Select u from Usuario u")
     public List<Usuario> nombresDeUsuarios();
 }
