@@ -33,16 +33,18 @@ public class Security extends WebSecurityConfigurerAdapter {
 //
 //    // COMENTADO XQ ESTÁ DISTINTO A LO Q VOY VIENDO DE VIDEO
 //    
-////    @Autowired
-////    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-////        auth
-////                .userDetailsService(userService)
-////                .passwordEncoder(passwordEncoder());
-////    }
-//    
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
+        auth
+                .userDetailsService(userService)
+                .passwordEncoder(passwordEncoder());
     }
+//    
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//        .userDetailsService(userService)
+//        .passwordEncoder(new BCryptPasswordEncoder());
+//    }
     
     
 //
@@ -149,7 +151,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .loginProcessingUrl("/logincheck")
-                .defaultSuccessUrl("/inicio")
+                .defaultSuccessUrl("/")
                 .failureUrl("/login?error=error").permitAll()
                 .and().logout()
                 .logoutUrl("/logout")

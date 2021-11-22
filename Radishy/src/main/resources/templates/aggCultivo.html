@@ -97,10 +97,10 @@
         <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Fecha de sembrado">   
         <br>
         <br>
-        <button th:href="@{/iniciada/agregado-mis-cultivos}" class="boxx">Agregar cultivo</button>
+        <button th:action="@{/sesion/iniciada/agregado-mis-cultivos}" class="boxx">Agregar cultivo</button>
         <br>
         <br>
-        <button type="button" class="btn btn-link" style="color: black;"><a th:href="@{/cultivos/agregarCultivo}" class="link">¿No encuentras un cultivo?</a></button>
+        <button type="button" class="btn btn-link" style="color: black;"><a th:action="@{/cultivos/agregarCultivo}" class="link">¿No encuentras un cultivo?</a></button>
       </div>
     </div>
   </body>
