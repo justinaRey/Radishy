@@ -27,11 +27,7 @@ public class Usuario_controller {
     
     @Autowired
     private Usuario_servicio uS;
-    
-    @GetMapping("")
-    String mostrarUsuario(){
-        return "usuario";
-    }
+
     
     @GetMapping("/registrar")
     String registrarUsuario(ModelMap modelo){

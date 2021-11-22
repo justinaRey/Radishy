@@ -11,17 +11,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-/**
- *
- * @author Fabri
- */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class Security extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private User_servicio userService;
+    private User_servicio userDetailsServiceImpl;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -32,7 +28,7 @@ public class Security extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(userService)
+                .userDetailsService(userDetailsServiceImpl)
                 .passwordEncoder(passwordEncoder());
     }
 
@@ -40,29 +36,18 @@ public class Security extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.headers().frameOptions().sameOrigin()
-                
                 .and().authorizeRequests()
-                .antMatchers("/css/*", "/img/*", "/js/*").permitAll()
-                
+                .antMatchers("/CSS/*", "/IMG/*", "/JS/*").permitAll()
                 .antMatchers("/").permitAll()
-                
-                .anyRequest().authenticated()
-  
                 .and().formLogin()
-                           
                 .loginPage("/login")
-                            
-                .usernameParameter("nombre")
+                .usernameParameter("username")
                 .passwordParameter("password")
-                     
-                .defaultSuccessUrl("/")
-                         
                 .loginProcessingUrl("/logincheck")
-                .failureUrl("/").permitAll()
+                .defaultSuccessUrl("/inicio")
+                .failureUrl("/login?error=error").permitAll()
                 .and().logout()
-                            
                 .logoutUrl("/logout")
-                   
                 .logoutSuccessUrl("/login?logout")
                 .and().csrf().disable();
     }

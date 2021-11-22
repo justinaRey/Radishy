@@ -31,42 +31,42 @@ public class SesionIniciada_controller {
     
    @GetMapping("/sesion")
    public String index(){
-       return "index.html";
+       return "index";
    }
    
     /*           controladores para regular el inicio de la sesión            */ 
     
-    @GetMapping("/sesion/iniciar")
-    public String iniciarSesion(){
-        return "usuario.html";
-    }
-    
-    @PostMapping("/sesion/iniciada")
-    public String iniciar_sesion(ModelMap modelo, @RequestParam String nusuario, @RequestParam String password){
-        try {
-            servicio.iniciarSesion(nusuario, password);
-        } catch (Errores_servicio ex) {
-            modelo.put("error", ex.getMessage());
-            modelo.put("usuario", nusuario);
-            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "usuario.hmtl";
-        }
-        return "redirect:/sesion";
-    }
+//    @GetMapping("/sesion/iniciar")
+//    public String iniciarSesion(){
+//        return "usuario.html";
+//    }
+//    
+//    @PostMapping("/sesion/iniciada")
+//    public String iniciar_sesion(ModelMap modelo, @RequestParam String nusuario, @RequestParam String password){
+//        try {
+//            servicio.iniciarSesion(nusuario, password);
+//        } catch (Errores_servicio ex) {
+//            modelo.put("error", ex.getMessage());
+//            modelo.put("usuario", nusuario);
+//            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+//            return "usuario.hmtl";
+//        }
+//        return "redirect:/sesion";
+//    }
     
     
     /*             controlador para cerrar la sesión del usuario              */
     
-    @GetMapping("/sesion/iniciada/cerrar")
-    public String cerrarSesion(ModelMap modelo) {
-        try {
-            servicio.cerrarSesion();
-        } catch (Errores_servicio ex) {
-            modelo.put("error", ex.getMessage());
-            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return "redirect:/"; //index.html si no es con redirect
-    }
+//    @GetMapping("/sesion/iniciada/cerrar")
+//    public String cerrarSesion(ModelMap modelo) {
+//        try {
+//            servicio.cerrarSesion();
+//        } catch (Errores_servicio ex) {
+//            modelo.put("error", ex.getMessage());
+//            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return "redirect:/"; //index.html si no es con redirect
+//    }
     
     
     /*      controlador que agrega un cultivo a los cultivos del usuario      */

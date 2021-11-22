@@ -21,10 +21,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SesionIniciada_repositorio extends JpaRepository<CultivoUsuario, String>{
         
-    @Query("select s from SesionIniciada s where s.usuario = :usuario")
+    @Query("select s from CultivoUsuario s where s.usuario = :usuario")
     public CultivoUsuario findByUsuario(@Param("usuario") Usuario usuario);  // este ya estaba de antes 
  
-    @Query("Select s from SesionIniciada s where s.usuario.enSesion = true")
+    @Query("select s from CultivoUsuario s where s.usuario.enSesion = true")
     public List<CultivoUsuario> cultivosUsuario();
     
     // no se si se hace así    
@@ -32,19 +32,19 @@ public interface SesionIniciada_repositorio extends JpaRepository<CultivoUsuario
    // public List<SesionIniciada> cultivosUsuarioVista(); // borre c.riego
     
     // como creo que se hace
-    @Query("Select c.nombre from Cultivo c, SesionIniciada s where s.id = :id")
+    @Query("select c.nombre from Cultivo c, CultivoUsuario s where s.id = :id")
     public String nombreCultivo(@Param("id") String id); 
     
-    @Query("Select c.metodo from Cultivo c, SesionIniciada s where s.id = :id")
+    @Query("select c.metodo from Cultivo c, CultivoUsuario s where s.id = :id")
     public String metodoCultivo (@Param("id") String id);
     
-    @Query("Select c.profundidadSiembraCM from Cultivo c, SesionIniciada s where s.id = :id")
+    @Query("select c.profundidadSiembraCM from Cultivo c, CultivoUsuario s where s.id = :id")
     public String profundidadSiembra (@Param("id") String id);
     
     //@Query("Select c.riego from Cultivo c, SesionIniciada s where s.id = :id")
     //public String riegoCultivo (@Param("id") String id);
     
-    @Query("Select s.fechaDeSembrado from SesionIniciada s where s.id = :id")
+    @Query("select s.fechaDeSembrado from CultivoUsuario s where s.id = :id")
     public Date fechaSembradoCultivo (@Param("id") String id);
     
 //    @Query("Select s.fechaGerminadoProm from SesionIniciada s where s.id = :id")
