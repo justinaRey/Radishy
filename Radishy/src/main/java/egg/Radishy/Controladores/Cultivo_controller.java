@@ -20,7 +20,7 @@ public class Cultivo_controller {
     @GetMapping("/listarCultivos")
     public String listarCultivos(Model model){
         model.addAttribute("cultivos",cS.listarCultivos());
-        return ""; // Nombre del html que muestra la tabla de info de los cultivos
+        return "listarCultivos"; // Nombre del html que muestra la tabla de info de los cultivos
     }
     
     @GetMapping("/agregarCultivo")

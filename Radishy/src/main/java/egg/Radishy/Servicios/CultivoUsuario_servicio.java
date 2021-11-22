@@ -10,27 +10,27 @@ import egg.Radishy.Entidades.CultivoUsuario;
 import egg.Radishy.Entidades.Usuario;
 import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.Repositorios.Cultivo_repositorio;
-import egg.Radishy.Repositorios.SesionIniciada_repositorio;
 import egg.Radishy.Repositorios.Usuario_repositorio;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import egg.Radishy.Repositorios.CultivoUsuario_repositorio;
 
 /**
  *
  * @author usuario
  */
 @Service
-public class SesionIniciada_servicio {
+public class CultivoUsuario_servicio {
     
    // corregir método de mis cultivos
     @Autowired
     Usuario_repositorio usuarioRepositorio;
     
     @Autowired
-    SesionIniciada_repositorio repositorioSesIn;
+    CultivoUsuario_repositorio repositorioSesIn;
     
     @Autowired
     Cultivo_repositorio cultivoRepositorio;

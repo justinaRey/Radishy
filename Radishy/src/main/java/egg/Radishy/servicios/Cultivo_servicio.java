@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Cultivo_servicio {
+    //agregados por mi modificarCultivo() y bajarCultivo()
     
     @Autowired Cultivo_repositorio cR;
     
@@ -27,20 +28,52 @@ public class Cultivo_servicio {
         cultivo.setTiempoTransplantar(tTransplantar);
         return cR.save(cultivo);
     }
-    /*
-    public Cultivo modificarCultivo(){
-        
+   
+    // modificarCultivo(): recibe el id, y los atributos que quiera modificar el usuario del cultivo
+    public void modificarCultivo(String id, String nombre, Mes inSiemb, Mes finSiemb, String met, Integer tGer, Integer tTrans, Integer tCos, Integer profSiemb) throws Errores_servicio{
+        Cultivo cultivo = cR.findById(id).get();
+        if (cultivo.getModificable()){
+            if (nombre != null) {
+                cultivo.setNombre(nombre);
+            }
+            if (inSiemb != null) {
+                cultivo.setInicioEpocadeSiembra(inSiemb);
+            }
+            if (finSiemb != null) {
+                cultivo.setFinEpocaSiembra(finSiemb);
+            }
+            if (met != null) {
+                cultivo.setMetodo(met);
+            }
+            if (tGer != null) {
+                cultivo.setTiempoGerminar(tGer);
+            }
+            if (tTrans != null) {
+                cultivo.setTiempoTransplantar(tTrans);
+            }
+            if (tCos != null) {
+                cultivo.setTiempoCosechar(tCos);
+            }
+            if (profSiemb != null){
+                cultivo.setProfundidadSiembraCM(profSiemb);
+            }
+            cR.save(cultivo);
+        } else {
+            throw new Errores_servicio("No es posible modificar la información del cultivo seleccionado, ya que este ha sido cargado por defecto");
+        }
     }
     
-    public Cultivo bajarCultivo(){
-        
-    }*/
+    // bajarCultivo(): elimina al cultivo de la base de datos del cual recibe el id
+    public void bajarCultivo(String id){
+        Cultivo cultivo = cR.findById(id).get();
+        cR.delete(cultivo);
+    }
     
     public void validarCultivo(String nombre, Mes iniSiembra, Mes finSiembra, String metodo, Integer profSiembra, Integer tGerminar, Integer tTransplantar, Integer tCosechar) throws Errores_servicio{
         try {
             List<Cultivo> lista = listarCultivos();
             for (Cultivo cultivo : lista) {
-                if(nombre == cultivo.getNombre()){
+                if(nombre.equals(cultivo.getNombre())){  // cambio de == a equals ---> es un string
                     throw new Errores_servicio("El nombre ingresado ya está en la lista de cultivos.");
                 }
             }
