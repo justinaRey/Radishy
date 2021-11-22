@@ -91,13 +91,13 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
 
     // MÉTODO QUE YO CREE POR MODIFICACIONES Q EN MI OPINIÓN IBAN (todo tiene un porque)
     
-    @Transactional
+    @Transactional // ver tema del encriptado de la contra, en qué me afecta
     public Usuario cambiarDatosUsuario (String id, String nombre, String passAct, String passNew, String passNew2, String apodo, String email, Genero genero, Localidad localidad) throws Errores_servicio{
         Usuario usuario = uR.buscarPorId(id);
         if (passAct == null){
             throw new Errores_servicio("Para guardar los cambios, debe ingresar su contraseña actual");
         }
-        if (!passAct.equals(usuario.getPassword())){
+        if (!passAct.equals(usuario.getPassword())){ // tema de spring security
             throw new Errores_servicio("No ha ingresado correctamente su contraseña, por ende los cambios no pueden guardarse");
         }
         if (nombre != null){

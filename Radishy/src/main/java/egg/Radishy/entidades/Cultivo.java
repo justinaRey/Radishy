@@ -47,10 +47,10 @@ public class Cultivo implements Serializable { // OBS: corregir(o borrar) constr
     private Integer tiempoCosecharMax;
     private String tiempoParaCosechar; // concatenación de tiempo de cosecha min y max sumado a la palabra días
 
-    private Boolean modificable;
+    private Boolean modificable; // en true es xq permite que el usuario haga modificaciones
     
     public Cultivo() {
-        modificable = false;
+        modificable = true;
     }
 
     //REVISAR EL CONSTRUCTOR CON LOS PARÁMETROS RECIBIDOS.
@@ -161,27 +161,30 @@ public class Cultivo implements Serializable { // OBS: corregir(o borrar) constr
         this.tiempoGerminarMax = tiempoGerminar;
     }
     
-//    public void setTiempoGerminar(){
-//        this.tiempoGerminar = "";
-//        if (getTiempoGerminarMin != 0){
-//           this.tiempoGerminar = String.ValueOff(getTiempoGerminarMin);
-//        }
-//        if (getTiempoGerminarMax != 0) {
-//            if(getTiempoGerminarMin == 0){    
-//               this.tiempoGerminar = String.ValueOff(getTiempoGerminarMax);
-//            } else {
-//               this.tiempoGerminar = this.tiempoGerminar.concat(" - ");
-//               this.tiempoGerminar = this.tiempoGerminar.concat(getTiempoGerminarMax);
-//            }
-//        }
-//        if (getTiempoGerminarMin == 0 && getTiempoGerminarMax == 0){
-//            this.tiempoGerminar.concat(" - ");
-//        } else {
-//            this.tiempoGerminar.concat(" días");
-//    }
-    
-//    public String getTiempoGerminar () {
-//          return this.tiempoGerminar;
+    // estaba comentado y lo descomenté ahora
+    public void setTiempoParaGerminar(){
+        this.tiempoParaGerminar = "";
+        if (getTiempoGerminarMin() != 0){
+           this.tiempoParaGerminar = String.valueOf(getTiempoCosecharMin());
+        }
+        if (getTiempoGerminarMax() != 0) {
+            if(getTiempoGerminarMin() == 0){    
+               this.tiempoParaGerminar = String.valueOf(getTiempoGerminarMax());
+            } else {
+               this.tiempoParaGerminar = this.tiempoParaGerminar.concat(" - ");
+               this.tiempoParaGerminar = this.tiempoParaGerminar.concat(String.valueOf(getTiempoGerminarMax()));
+            }
+        }
+        if (getTiempoGerminarMin() == 0 && getTiempoGerminarMax() == 0){
+            this.tiempoParaGerminar.concat(" - ");
+        } else {
+            this.tiempoParaGerminar.concat(" días");
+        }
+    }
+    // estaba comentado y descomenté
+    public String getTiempoParaGerminar () {
+        return this.tiempoParaGerminar;
+    }
     
     public Integer getTiempoTransplantarMin() {
         if (this.tiempoTransplantarMin != null){
@@ -190,7 +193,7 @@ public class Cultivo implements Serializable { // OBS: corregir(o borrar) constr
             return 0;
         }
     }
-
+    
     public void setTiempoTransplantarMin(Integer tiempoTransplantar) {
         this.tiempoTransplantarMin = tiempoTransplantar;
     }
@@ -207,27 +210,30 @@ public class Cultivo implements Serializable { // OBS: corregir(o borrar) constr
         this.tiempoTransplantarMax = tiempoTransplantar;
     }
     
-//    public void setTiempoParaTransplantar(){
-//        this.tiempoParaTransplantar = "";
-//        if (getTransplantarMin != 0){
-//           this.tiempoParaTransplantar = String.ValueOff(getTiempoTransplantarMin);
-//        }
-//        if (getTiempoTransplantarMax != 0) {
-//            if(getTiempoTransplantarMin == 0){    
-//               this.tiempoParaTransplantar = String.ValueOff(getTiempoTransplantarMax);
-//            } else {
-//               this.tiempoParaTransplantar = this.tiempoParaTransplantar.concat(" - ");
-//               this.tiempoParaTransplantar = this.tiempoParaTransplantar.concat(getTiempoGerminarMax);
-//            }
-//        }
-//        if (getTiempoTransplantarMin == 0 && getTiempoTransplantarMax == 0){
-//            this.tiempoParaTransplantar.concat(" - ");
-//        } else {
-//            this.tiempoParaTransplantar.concat(" días");
-//    }
-    
-//    public String getTiempoParaTransplantar () {
-//          return this.tiempoParaTransplantar;
+    // estaba comentado y lo descomenté
+    public void setTiempoParaTransplantar(){
+        this.tiempoParaTransplantar = "";
+        if (getTiempoTransplantarMin() != 0){
+           this.tiempoParaTransplantar = String.valueOf(getTiempoTransplantarMin());
+        }
+        if (getTiempoTransplantarMax() != 0) {
+            if(getTiempoTransplantarMin() == 0){    
+               this.tiempoParaTransplantar = String.valueOf(getTiempoTransplantarMax());
+            } else {
+               this.tiempoParaTransplantar = this.tiempoParaTransplantar.concat(" - ");
+               this.tiempoParaTransplantar = this.tiempoParaTransplantar.concat(String.valueOf(getTiempoGerminarMax()));
+            }
+        }
+        if (getTiempoTransplantarMin() == 0 && getTiempoTransplantarMax() == 0){
+            this.tiempoParaTransplantar.concat(" - ");
+        } else {
+            this.tiempoParaTransplantar.concat(" días");
+        }
+    }
+    // estaba comentado y descomenté
+    public String getTiempoParaTransplantar () {
+          return this.tiempoParaTransplantar;
+    }
     
     public Integer getTiempoCosecharMin() {
         if (this.tiempoCosecharMin != null){
@@ -252,30 +258,31 @@ public class Cultivo implements Serializable { // OBS: corregir(o borrar) constr
     public void setTiempoCosecharMax(Integer tiempoCosechar) {
         this.tiempoCosecharMax = tiempoCosechar;
     }
-    
-//    public void setTiempoCosechar(){
-//        this.tiempoCosechar = "";
-//        if (getTiempoCosecharMin != 0){
-//           this.tiempoCosechar = String.ValueOff(getTiempoCosecharMin);
-//        }
-//        if (getTiempoCosecharMax != 0) {
-//            if(getTiempoCosecharMin == 0){    
-//               this.tiempoCosechar = String.ValueOff(getTiempoCosecharMax);
-//            } else {
-//               this.tiempoCosechar = this.tiempoCosechar.concat(" - ");
-//               this.tiempoCosechar = this.tiempoCosechar.concat(getTiempoCosecharMax);
-//            }
-//        }
-//        if (getTiempoCosecharMin == 0 && getTiempoCosecharMax == 0){
-//            this.tiempoCosechar.concat(" - ");
-//        } else {
-//            this.tiempoCosechar.concat(" días");
-//        }
-//    }
-    
-//    public String getTiempoCosechar () {
-//          return this.tiempoCosechar;
-    //}
+   
+    // estaba comentado y descomenté
+    public void setTiempoParaCosechar(){
+        this.tiempoParaCosechar = "";
+        if (getTiempoCosecharMin() != 0){
+           this.tiempoParaCosechar = String.valueOf(getTiempoCosecharMin());
+        }
+        if (getTiempoCosecharMax() != 0) {
+            if(getTiempoCosecharMin() == 0){    
+               this.tiempoParaCosechar = String.valueOf(getTiempoCosecharMax());
+            } else {
+               this.tiempoParaCosechar = this.tiempoParaCosechar.concat(" - ");
+               this.tiempoParaCosechar = this.tiempoParaCosechar.concat(String.valueOf(getTiempoCosecharMax()));
+            }
+        }
+        if (getTiempoCosecharMin() == 0 && getTiempoCosecharMax() == 0){
+            this.tiempoParaCosechar.concat(" - ");
+        } else {
+            this.tiempoParaCosechar.concat(" días");
+        }
+    }
+    // estaba comentado y descomenté
+    public String getTiempoCosechar () {
+          return this.tiempoParaCosechar;
+    }
 
     public Boolean getModificable() {
         return modificable;
