@@ -10,5 +10,5 @@ package egg.Radishy.enumeraciones;
  * @author usuario
  */
 public enum Roles {
-    ADMIN,USER
+    ADMIN,USER;
 }
