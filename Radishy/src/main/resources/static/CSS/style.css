@@ -3,12 +3,13 @@ body{
     background-image: url("../IMG/Wallpaper/wallpaper.png");
     font-family: 'Roboto', sans-serif;
     color: #FFFFFF;
+    margin-top: 40em;
 }
 
 /*--- -Main- ---*/
 main{
     background-color: #44558d9f;
-    margin-top: 0.5%;
+    margin-top: 53%;
     margin-bottom: 0.5%;
     text-align: center;
     padding-bottom: 5%;
@@ -16,14 +17,15 @@ main{
 
 /* -Article- */
 article{
-    margin-top: 10%;
+    margin-top: 50%;
 }
 
 /* Parte principal */
-#main-tip{
-    margin-top: 5%;
-    height: 20%;
-    width: 20%;
+#main-Principal-IMG{
+    margin-top: 15%;
+    margin-bottom: 10%;
+    height: 40%;
+    width: 40%;
 }
 
 .img-principal{
@@ -200,14 +202,16 @@ hr.linea{
 /* Partners */
 /* Egg */
 article.partners{
-    padding-bottom: ;
-    text-align: left;
+    text-align: center;
+    margin-bottom: 15%;
 }
 
 #partner-lona-img{
     position: absolute;
     background-image: black;
     color: #181E23;
+    display: flex;
+    align-items: center;
 }
 
 .partner-egg-titulo{
@@ -216,19 +220,17 @@ article.partners{
     color: #FFC170;
     position: relative;
     text-align: center;
-    padding-bottom: 30em;
-    margin-bottom: 20em;
-    background-color: aquamarine;
+    padding-top: 5%;
 }
 
 #partner-huevo-img{
-    position: absolute;
-    margin-left: 30em;
+    margin-top: 2%;
+    position: relative;
 }
 
 .partner-egg-subtitulo{
+    font-weight: 800;
     position: relative;
-    margin-left: 33em;
 }
 /*---------------------------------*/
 

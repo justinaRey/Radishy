@@ -1,0 +1,20 @@
+
+body{
+    background-image: url("../IMG/Wallpaper/wallpaper.png");
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+}
+
+/*--- -Main- ---*/
+main{
+    background-color: #44558d9f;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+/* -Article- */
+article{
+    margin-top: 10%;
+}
