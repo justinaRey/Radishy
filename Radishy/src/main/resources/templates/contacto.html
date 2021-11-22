@@ -64,11 +64,11 @@
       </nav>
     <form class="m-5" th:action="@{/save/contacto}" method="POST" th:object="${CONTACTO}">
         <h2>CONTACTO</h2>
-        <input type="nombre" name="nombre" th:field="*{nombre}" id="nombre" placeholder="Ingrese su nombre"><br>
-        <input type="email" name="email"th:field="*{e-mail}" id="e-mail" placeholder="Ingrese su correo electronico"><br>
-        <input type="nombre" name="Telefono" th:field="*{Telefono}" id="telefono" placeholder="Ingrese su numero de telefono"><br>
+        <input type="nombre" name="nombre" id="nombre" placeholder="Ingrese su nombre"><br>
+        <input type="email" name="email" id="e-mail" placeholder="Ingrese su correo electronico"><br>
+        <input type="nombre" name="Telefono" id="telefono" placeholder="Ingrese su numero de telefono"><br>
         <textarea type="textarea" name="mensaje" placeholder="Escriba aqui su mensaje"></textarea><br>
-        <input type="button" value="ENVIAR" th:field="*{ENVIAR}"id="boton">
+        <input type="button" value="ENVIAR" id="boton">
 
     </form>
     <section>
@@ -82,8 +82,8 @@
         <div class="iconos">
           <a href="https://www.facebook.com/profile.php?id=100074247235177"><img src="/IMAGENES/facebook.png"
               alt="Icono Facebook" id="ico-face"></a>
-          <a href="https://twitter.com/Radishy0"><img src="/IMAGENES/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
-          <a href="https://www.instagram.com/radishy.1/"><img src="/IMAGENES/instagram.png" alt="Icono Instagram"
+          <a href="https://twitter.com/Radishy0"><img src="/IMG/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
+          <a href="https://www.instagram.com/radishy.1/"><img src="/IMG/instagram.png" alt="Icono Instagram"
               id="ico-inst"></a>
           <a href="https://mail.google.com/mail/u/0/#search/radishycompany%40gmail.com?compose=new"><img
               src="/IMAGENES/email.png" alt="Icono Gmail" id="ico-gmail"></a>
