@@ -37,7 +37,7 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
     String registrarUsuario(ModelMap modelo){
         modelo.put("genero", Genero.values());
         modelo.put("localidad", Localidad.values());
-        return "nuevoUsuario";
+        return "nuevousuario";
     }
     
     
