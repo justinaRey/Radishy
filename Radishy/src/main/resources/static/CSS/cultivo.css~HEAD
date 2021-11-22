@@ -1,7 +1,8 @@
 .calendar{
     background-color: rgba(0, 241, 229, 0.171);
-    margin-right: 70%;
+    margin-right: 60%;
     margin-bottom: 0%;
+    padding-bottom: 35%;
 }
 
 .imagen{
@@ -27,6 +28,7 @@
 
 /* Footer */
 footer{
+    margin-top: 0%;
     background-color: #7A7A77;
     opacity: 0.4;
     text-align: center;

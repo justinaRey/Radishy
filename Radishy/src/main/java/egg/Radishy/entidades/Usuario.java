@@ -29,14 +29,18 @@ public class Usuario implements Serializable {
     private String email;
     private Boolean enSesion;
     
-    @Enumerated(EnumType.STRING)
-    private Genero genero;
+    //@Enumerated(EnumType.STRING)
+    //private Genero genero;
     
+
     @Enumerated(EnumType.STRING)
     private Localidad localidad;
     
     @Enumerated(EnumType.STRING)
     private Role rol;
+
+    //@Enumerated(EnumType.STRING)
+    //private Localidad localidad;
 
     //@ManyToOne
     //private Cultivo cultivo
@@ -60,8 +64,8 @@ public class Usuario implements Serializable {
         this.apodo = apodo;
         this.alta = alta;
         this.enSesion = enSesion;
-        this.genero = genero;
-        this.localidad = localidad;
+        //this.genero = genero;
+        //this.localidad = localidad;
         this.enSesion = false;
     }
 
@@ -108,21 +112,21 @@ public class Usuario implements Serializable {
         this.apodo = apodo;
     }
 
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
-    }
-
-    public Localidad getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(Localidad localidad) {
-        this.localidad = localidad;
-    }
+//    public Genero getGenero() {
+//        return genero;
+//    }
+//
+//    public void setGenero(Genero genero) {
+//        this.genero = genero;
+//    }
+//
+//    public Localidad getLocalidad() {
+//        return localidad;
+//    }
+//
+//    public void setLocalidad(Localidad localidad) {
+//        this.localidad = localidad;
+//    }
     
     public void setEnSesion (boolean enSesion) {
         this.setEnSesion((Boolean) enSesion);

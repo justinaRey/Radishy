@@ -26,5 +26,5 @@ public class Login_controller {
         }
         return "usuario";
     }
-
+    
 }

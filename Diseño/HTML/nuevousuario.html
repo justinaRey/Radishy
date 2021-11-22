@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Registro</title>
+    <title>Contacto</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width">
-    <meta http-equiv="X-UA Compatible" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA Compatible"content="width=device-width, initial-scale=1.0">
     <!--Tipografia: 'Roboto' .Thin 100-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,10 +17,10 @@
         <div class="container-fluid">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <a class="navbar-brand" href="/">
-              <img src="/IMG/radishy.png" alt="" width="44" height="38" />
+              <img src="../IMG/radishy.png" alt="" width="44" height="38" />
             </a>
   
-            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle active"
@@ -41,28 +41,30 @@
                   </li>
                 </ul>
               </li>
-  <!--
+  
               <li class="nav-item">
-                 <a class="nav-link active" href="#" style="text-align: center; font-size: 20px; Registro;" </a>
+                <a class="nav-link active" aria-current="page" href="#" style="text-align: center; font-size: 20px;"
+                  >Contacto</a>
               </li>
+              
               <li class="nav-item">
-                  <a class="nav-link active" href="#" style="text-align: center; font-size: 20px;">Sobre nosotros</a>
+                  <a class="nav-link active" aria-current="page" href="#" style="text-align: center; font-size: 20px;"
+                    >Sobre nosotros</a>
               </li>
-            -->
+            </ul>
   
             <a class="navbar-brand" href="/">
-              <img src="/IMG/2561496_user_icon.png" alt="" width="40" height="40"/>
+              <img src="../IMG/2561496_user_icon.png" alt="" width="40" height="40"/>
             </a>
             
           </div>
         </div>
       </nav>
-     <title>Formulario de Registro</title>
-     <form>
+      <title>Formulario de Registro</title>
       <section class="form-register">
-            Registro
+          <h4>Registro</h4>
           <input class="controls"type ="text" name="nombre"id="nombre" placeholder="Ingrese su nombre">
-          <input class="controls"type ="text" name="apellido"id="apellido"placeholder="Ingrese su apellido">
+          <input class="controls"type ="text" name="apellido"id="apellido" placeholder="Ingrese su apellido">
           <div class="col-md-4">
             <label for="inputState" class="form-label">Género</label>
             <select id="inputState" class="form-select">
@@ -81,8 +83,8 @@
               <option selected>Castelar</option>
             </select>
           </div>
-          <input class="controls"type ="email" name="e-mail" id="e-mail" placeholder="Ingrese su correo electronico">
-          <input class="controls"type ="password" name="password" id="password" placeholder="Ingrese su contraseña">
+          <input class="controls"type ="email" name="e-mail"id="e-mail" placeholder="Ingrese su correo electronico">
+          <input class="controls"type ="password" name="password"id="password" placeholder="Ingrese su contraseña">
 
          
           <div class="form-check">
@@ -90,13 +92,12 @@
             <label class="form-check-label" for="flexCheckChecked">Estoy de acuerdo con <a href="#"> Términos y Condiciones
             </label>
           </div>
+          </p>
           
-          
-          <input class="botons" type="submit" value="Registrar">
+          <input class="botons"type="submit"value="Registrar">
           <p><a href="#">¿Ya tengo cuenta?</a></p>
 
           </section>
-      </form>
 
 
 
@@ -105,13 +106,13 @@
 
 
       </section>
-      <footer>
+      <footer th:replace="/fragment/footer.html :: footer">
         <div class="foot-1">
           <h1 class="typography" id="foot-socialNet">Redes Sociales</h1>
           <div class="iconos">
-            <a href="https://www.facebook.com/profile.php?id=100074247235177"><img src="/IMG/facebook.png"alt="Icono Facebook" id="ico-face"></a>
-            <a href="https://twitter.com/Radishy0"><img src="/IMG/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
-            <a href="https://www.instagram.com/radishy.1/"><img src="/IMG/instagram.png" alt="Icono Instagram"id="ico-inst"></a>
+            <a href="https://www.facebook.com/profile.php?id=100074247235177"><img src="/IMAGENES/facebook.png"alt="Icono Facebook" id="ico-face"></a>
+            <a href="https://twitter.com/Radishy0"><img src="/IMAGENES/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
+            <a href="https://www.instagram.com/radishy.1/"><img src="/IMAGENES/instagram.png" alt="Icono Instagram"id="ico-inst"></a>
             <a href="https://mail.google.com/mail/u/0/#search/radishycompany%40gmail.com?compose=new"><img src="/IMAGENES/email.png" alt="Icono Gmail" id="ico-gmail"></a>
           </div>
         </div>

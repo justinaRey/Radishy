@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <title>Contacto</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width">
-    <meta http-equiv="X-UA Compatible" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA Compatible"content="width=device-width, initial-scale=1.0">
     <!--Tipografia: 'Roboto' .Thin 100-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
         <div class="container-fluid">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <a class="navbar-brand" href="/">
-              <img src="../IMAGENES/radishy.png" alt="" width="44" height="38" />
+              <img src="../IMG/radishy.png" alt="" width="44" height="38" />
             </a>
   
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -50,22 +50,22 @@
               </li>
               
               <li class="nav-item">
-                  <a class="nav-link active" href="#" style="text-align: center; font-size: 20px;"
+                  <a class="nav-link active" aria-current="page" href="#" style="text-align: center; font-size: 20px;"
                     >Sobre nosotros</a>
               </li>
             </ul>
   
             <a class="navbar-brand" href="/">
-              <img src="../IMAGENES/2561496_user_icon.png" alt="" width="40" height="40"/>
+              <img src="../IMG/2561496_user_icon.png" alt="" width="40" height="40"/>
             </a>
-            <!--              borre aria-current="page" del a-->
+            
           </div>
         </div>
       </nav>
-    <form class="m-5" th:action="@{/save/contacto}" method="POST" th:object="${CONTACTO}">
+    <form action="">
         <h2>CONTACTO</h2>
         <input type="nombre" name="nombre" id="nombre" placeholder="Ingrese su nombre"><br>
-        <input type="email" name="email" id="e-mail" placeholder="Ingrese su correo electronico"><br>
+        <input type="email" name="email"id="e-mail" placeholder="Ingrese su correo electronico"><br>
         <input type="nombre" name="Telefono" id="telefono" placeholder="Ingrese su numero de telefono"><br>
         <textarea type="textarea" name="mensaje" placeholder="Escriba aqui su mensaje"></textarea><br>
         <input type="button" value="ENVIAR" id="boton">
@@ -82,8 +82,8 @@
         <div class="iconos">
           <a href="https://www.facebook.com/profile.php?id=100074247235177"><img src="/IMAGENES/facebook.png"
               alt="Icono Facebook" id="ico-face"></a>
-          <a href="https://twitter.com/Radishy0"><img src="/IMG/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
-          <a href="https://www.instagram.com/radishy.1/"><img src="/IMG/instagram.png" alt="Icono Instagram"
+          <a href="https://twitter.com/Radishy0"><img src="/IMAGENES/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
+          <a href="https://www.instagram.com/radishy.1/"><img src="/IMAGENES/instagram.png" alt="Icono Instagram"
               id="ico-inst"></a>
           <a href="https://mail.google.com/mail/u/0/#search/radishycompany%40gmail.com?compose=new"><img
               src="/IMAGENES/email.png" alt="Icono Gmail" id="ico-gmail"></a>

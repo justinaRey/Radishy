@@ -35,8 +35,8 @@ public class Usuario_servicio{
         u.setRol(Role.USER);
 
         u.setApodo(apodo);
-        u.setGenero(genero);
-        u.setLocalidad(localidad);
+        //u.setGenero(genero);
+        //u.setLocalidad(localidad);
         u.setAlta(Boolean.TRUE);
 
         return uR.save(u);
@@ -59,8 +59,8 @@ public class Usuario_servicio{
                 u.setRol(u.getRol());
                 
                 u.setApodo(apodo);
-                u.setGenero(genero);
-                u.setLocalidad(localidad);
+                //u.setGenero(genero);
+                //u.setLocalidad(localidad);
                 u.setAlta(Boolean.TRUE);
 
             } else {

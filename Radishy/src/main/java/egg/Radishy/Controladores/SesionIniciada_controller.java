@@ -1,13 +1,12 @@
-                          /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package egg.Radishy.Controladores;
 
+
+import egg.Radishy.Entidades.CultivoUsuario;
 import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.Servicios.SesionIniciada_servicio;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +35,13 @@ public class SesionIniciada_controller {
    
     /*           controladores para regular el inicio de la sesión            */ 
     
-//    @GetMapping("/sesion/iniciar")
+
+//    @GetMapping("/iniciar")
 //    public String iniciarSesion(){
-//        return "usuario.html";
+//        return "usuario";
 //    }
 //    
-//    @PostMapping("/sesion/iniciada")
+//    @PostMapping("/iniciada")
 //    public String iniciar_sesion(ModelMap modelo, @RequestParam String nusuario, @RequestParam String password){
 //        try {
 //            servicio.iniciarSesion(nusuario, password);
@@ -49,15 +49,17 @@ public class SesionIniciada_controller {
 //            modelo.put("error", ex.getMessage());
 //            modelo.put("usuario", nusuario);
 //            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-//            return "usuario.hmtl";
+//            return "usuario";
 //        }
 //        return "redirect:/sesion";
 //    }
+//>>>>>>> f0fba785b4be190fa998d97219a5cf5b1d3cc753
     
     
     /*             controlador para cerrar la sesión del usuario              */
     
-//    @GetMapping("/sesion/iniciada/cerrar")
+
+//    @GetMapping("/iniciada/cerrar")
 //    public String cerrarSesion(ModelMap modelo) {
 //        try {
 //            servicio.cerrarSesion();
@@ -67,16 +69,18 @@ public class SesionIniciada_controller {
 //        }
 //        return "redirect:/"; //index.html si no es con redirect
 //    }
+
     
     
     /*      controlador que agrega un cultivo a los cultivos del usuario      */
+        
     
-    @GetMapping("/sesion/iniciada/agregar-mis-cultivos")
+    @GetMapping("/iniciada/agregar-mis-cultivos")
     public String agregarMiCultivo(){
-        return "aggCultivo.html";
+        return "aggCultivo";
     }
     
-    @PostMapping("/sesion/iniciada/agregado-mis-cultivos")
+    @PostMapping("/iniciada/agregado-mis-cultivos")
     public String agregadoMiCultivo(ModelMap modelo, @RequestParam String idCultivo, @RequestParam Date fechaSembrado){
         try {
             servicio.agregarMiCultivo(idCultivo, fechaSembrado);
@@ -86,7 +90,7 @@ public class SesionIniciada_controller {
             modelo.put("idCultivo", idCultivo);
             modelo.put("fechaSembrado", fechaSembrado);
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "aggCultivo.html";
+            return "aggCultivo";
         }
         return "redirect:/sesion/iniciada/agregar-mis-cultivos"; //aggCultivo.html si no es con redirect
     }
@@ -94,15 +98,10 @@ public class SesionIniciada_controller {
     
     /*              controlador para el listado de los cultivos               */
     
-    @GetMapping("/sesion/iniciada/mis-cultivos")
+    @GetMapping("/iniciada/mis-cultivos")
     public String verMisCultivos(ModelMap modelo){
-        try {
-            servicio.misCultivos();
-        } catch (Errores_servicio ex) {
-            modelo.put("error", ex.getMessage());
-            Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "redirect:/sesion/iniciar"; // usuario.html si no va redirect
-        }
+        List<CultivoUsuario> misCultivos = servicio.misCultivos(); // usuario.html si no va redirect
+        modelo.put("cultivosSesIn", misCultivos);
         return "misCultivos";
     }
     
@@ -131,6 +130,6 @@ public class SesionIniciada_controller {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(SesionIniciada_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "misCultivos.hmtl";
+        return "misCultivos";
     }
 }
