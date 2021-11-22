@@ -93,7 +93,14 @@
           </div>
         </div>
       </nav>
-     <form>
+<!--    <div class="container">
+           <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+               <span th:text="${error}"></span>
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+           </div>
+       </div>-->
+
+     <form class="m-5" th:action="@{/usuario/registro}" method="POST">
       <section class="form-register">
             Registro
           <input th:value="${nombre}" class="controls" type ="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
@@ -101,14 +108,14 @@
           <input th:value="${apodo}" class="controls" type ="text" name="apodo" id="apodo" placeholder="Ingrese su nombre de usuario">
           <div class="col-md-4">
             <label for="inputState" class="form-label">Género</label>
-            <select id="inputState" class="form-select">
-              <option th:each="genero: $(generos)" th:value="$(genero)" th:text="$(genero)" placeholder="Seleccione su género"></option>
+            <select id="inputState" class="form-select" name="genero">
+              <option th:each="genero: ${generos}" th:value="${genero}" th:text="${genero}" placeholder="Seleccione su género"></option>
             </select>
           </div>
           <div class="col-md-4">
             <label for="inputState" class="form-label">Localidad</label>
-            <select id="inputState" class="form-select">
-              <option th:each="localidad: $(localidades)" th:value="$(localidad)" th:text="$(localidad)" placeholder="Seleccione su localidad"></option>
+            <select id="inputState" class="form-select" name="localidad">
+              <option th:each="localidad: ${localidades}" th:value="${localidad}" th:text="${localidad}" placeholder="Seleccione su localidad"></option>
             </select>
           </div>
           <input th:value="${email}" class="controls" type ="email" name="e-mail" id="e-mail" placeholder="Ingrese su correo electronico">
@@ -119,8 +126,6 @@
         <br />
           <br />
           <br />
-          
-          
           <input th:action="@{/usuario/registro}" class="botons" type="submit" value="Registrar">
           <p><a href="#">¿Ya tengo cuenta?</a></p>
 

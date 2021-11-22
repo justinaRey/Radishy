@@ -113,27 +113,47 @@ public class Security extends WebSecurityConfigurerAdapter {
 //        http.formLogin().disable();
 //    }
 
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests().antMatchers("/css/*", "/img/*", "/js/*").permitAll()
+//                // INICIO DE SESIÓN
+//                .and().formLogin()
+//                    // url donde se cargan los datos
+//                    .loginPage("/login")
+//                    .usernameParameter("username").passwordParameter("password")
+//                    // urls a donde te deriva
+//                    .defaultSuccessUrl("/").loginProcessingUrl("/logincheck").failureUrl("/login?error=error")
+//                    .permitAll() // quienes tienen acceso a loguearse
+//                // CIERRE DE LA SESIÓN
+//                .and().logout()
+//                    // url donde se cierra la sesión
+//                    .logoutUrl("/logout")
+//                    // urls a donde te deriva el cierre de sesión
+//                    .logoutSuccessUrl("/")
+//                // ALGO DEL CAMBIO DE PESTAÑAS
+//                .and().csrf().disable()
+//                
+//                
+//                ;
+//    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/*", "/img/*", "/js/*").permitAll()
-                // INICIO DE SESIÓN
+
+        http.headers().frameOptions().sameOrigin()
+                .and().authorizeRequests()
+                .antMatchers("/CSS/*", "/IMG/*", "/JS/*").permitAll()
+                .antMatchers("/").permitAll()
                 .and().formLogin()
-                    // url donde se cargan los datos
-                    .loginPage("/login")
-                    .usernameParameter("username").passwordParameter("password")
-                    // urls a donde te deriva
-                    .defaultSuccessUrl("/").loginProcessingUrl("/logincheck").failureUrl("/login?error=error")
-                    .permitAll() // quienes tienen acceso a loguearse
-                // CIERRE DE LA SESIÓN
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .loginProcessingUrl("/logincheck")
+                .defaultSuccessUrl("/inicio")
+                .failureUrl("/login?error=error").permitAll()
                 .and().logout()
-                    // url donde se cierra la sesión
-                    .logoutUrl("/logout")
-                    // urls a donde te deriva el cierre de sesión
-                    .logoutSuccessUrl("/")
-                // ALGO DEL CAMBIO DE PESTAÑAS
-                .and().csrf().disable()
-                
-                
-                ;
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .and().csrf().disable();
     }
 }

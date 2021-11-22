@@ -35,8 +35,8 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
     
     @GetMapping("/registrar")
     String registrarUsuario(ModelMap modelo){
-        modelo.put("genero", Genero.values());
-        modelo.put("localidad", Localidad.values());
+        modelo.put("generos", Genero.values());
+        modelo.put("localidades", Localidad.values());
         return "nuevousuario";
     }
     
@@ -57,7 +57,7 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
             
             Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "redirect:/usuario";
+        return "redirect:/login";
     }
     
     @GetMapping("/modificar/{id}")
