@@ -17,8 +17,8 @@ public class Main_controller {
         return "index";
     }
 
-    @GetMapping("contacto")
-    public String contacto (){
+    @GetMapping("nuestro-contacto")
+    public String contacte (){
         return "contacto";
     }
     

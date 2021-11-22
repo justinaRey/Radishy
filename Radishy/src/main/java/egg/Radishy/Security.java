@@ -21,8 +21,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class Security extends WebSecurityConfigurerAdapter {
-
-    
+//
+//    
     @Autowired
     private User_servicio userService;
 
@@ -30,48 +30,55 @@ public class Security extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    
-    @Autowired
+//
+//    // COMENTADO XQ ESTÁ DISTINTO A LO Q VOY VIENDO DE VIDEO
+//    
+////    @Autowired
+////    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+////        auth
+////                .userDetailsService(userService)
+////                .passwordEncoder(passwordEncoder());
+////    }
+//    
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userService)
-                .passwordEncoder(passwordEncoder());
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-
-        http.headers().frameOptions().sameOrigin()
-                
-                .and().authorizeRequests()
-                .antMatchers("/css/*", "/img/*", "/js/*").permitAll()
-                
-                .antMatchers("/").permitAll()
-                
-                .anyRequest().authenticated()
-  
-                .and().formLogin()
-                           
-                .loginPage("/login")
-                            
-                .usernameParameter("nombre")
-                .passwordParameter("password")
-                     
-                .defaultSuccessUrl("/")
-                         
-                .loginProcessingUrl("/logincheck")
-                .failureUrl("/").permitAll()
-                .and().logout()
-                            
-                .logoutUrl("/logout")
-                   
-                .logoutSuccessUrl("/login?logout")
-                .and().csrf().disable();
+        auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
     }
     
     
-        /////////////////////////
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//
+//        http.headers().frameOptions().sameOrigin()
+//                
+//                .and().authorizeRequests()
+//                .antMatchers("/css/*", "/img/*", "/js/*").permitAll()
+//                
+//                .antMatchers("/").permitAll()
+//                
+//                .anyRequest().authenticated()
+//  
+//                .and().formLogin()
+//                           
+//                .loginPage("/login")
+//                            
+//                .usernameParameter("nombre")
+//                .passwordParameter("password")
+//                     
+//                .defaultSuccessUrl("/")
+//                         
+//                .loginProcessingUrl("/logincheck")
+//                .failureUrl("/").permitAll()
+//                .and().logout()
+//                            
+//                .logoutUrl("/logout")
+//                   
+//                .logoutSuccessUrl("/login?logout")
+//                .and().csrf().disable();
+//    }
+    
+    
+        ///////////////////////// ARRIBA LO SUPUESTAMENTE ANDANTE BIEN, ABAJO LO NO ///////////////////////////
     
     
 //    UserDetailService
@@ -105,4 +112,28 @@ public class Security extends WebSecurityConfigurerAdapter {
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http.formLogin().disable();
 //    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/css/*", "/img/*", "/js/*").permitAll()
+                // INICIO DE SESIÓN
+                .and().formLogin()
+                    // url donde se cargan los datos
+                    .loginPage("/login")
+                    .usernameParameter("username").passwordParameter("password")
+                    // urls a donde te deriva
+                    .defaultSuccessUrl("/").loginProcessingUrl("/logincheck").failureUrl("/login?error=error")
+                    .permitAll() // quienes tienen acceso a loguearse
+                // CIERRE DE LA SESIÓN
+                .and().logout()
+                    // url donde se cierra la sesión
+                    .logoutUrl("/logout")
+                    // urls a donde te deriva el cierre de sesión
+                    .logoutSuccessUrl("/")
+                // ALGO DEL CAMBIO DE PESTAÑAS
+                .and().csrf().disable()
+                
+                
+                ;
+    }
 }

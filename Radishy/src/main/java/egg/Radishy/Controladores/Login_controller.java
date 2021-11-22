@@ -11,19 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/login")
 public class Login_controller { 
-    @GetMapping("/SesionIniciada")
-    public String SesionIniciada(){
-      /*  try{
-         }
-        catch(Exception e){
-        }
-*/
-        return "redirect:/usuario";
+    
+    @GetMapping("")
+    public String login(){
+        return "loguearse";
     }
-    @GetMapping("/SesionIniciada/loginsuccessful")
-   public String loginsuccessful(){
-    return "index";
-}
+    
+//    @GetMapping("/SesionIniciada")
+//    public String SesionIniciada(){
+//      /*  try{
+//         }
+//        catch(Exception e){
+//        }
+//*/
+//        return "redirect:/usuario";
+//    }
+//    @GetMapping("/SesionIniciada/loginsuccessful")
+//   public String loginsuccessful(){
+//    return "index";
+//}
    
 
 }
