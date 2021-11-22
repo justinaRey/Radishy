@@ -27,12 +27,13 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
     
     //MÉTODO QUE YA ESTABA + MIS COMENTARIOS X MI MODIFICACIÓN EN EL SERVICIO
     @Transactional
-    public Usuario crearUsuario(String nombre, String password, String apodo, Genero genero, Localidad localidad) throws Errores_servicio {
-        validar(nombre, password, apodo, genero, localidad);
+    public Usuario crearUsuario(String nombre, String apellido, String password, String apodo, Genero genero, Localidad localidad) throws Errores_servicio {
+        validar(nombre, apellido, password, apodo, genero, localidad);
         
         Usuario u = new Usuario();
         
         u.setNombre(nombre);
+        u.setApellido(apellido);
         //Encriptamos el password con el metodo encode
         u.setPassword(encoder.encode(password)); 
         u.setApodo(apodo);
@@ -64,30 +65,30 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
     /////////////////// Métodos para modificar los usuarios ////////////////////
     ////////////////////////////////////////////////////////////////////////////
     
-    @Transactional
-    public Usuario modificarUsuario(String id, String nombre, String passwordNueva, String passwordActual, String apodo, Genero genero, Localidad localidad) throws Errores_servicio { //comparar contraseña actual ing con contraseña del usuario
-        Usuario u;
-        try { 
-            validar(nombre, passwordActual, apodo, genero, localidad); // este está mal puesto, las validaciones se deben hacer en este método, a excepción del de la contraseña actual
-            Optional<Usuario> rta = uR.findById(id);
-            if (rta.isPresent()) {
-                u = uR.findById(id).get();
-                u.setNombre(nombre);
-                u.setPassword(passwordNueva);  // no se encripta la contraseña
-                u.setApodo(apodo);
-                //u.setGenero(genero);
-                //u.setLocalidad(localidad);
-                u.setAlta(Boolean.TRUE);
-
-            } else {
-                throw new Errores_servicio("No se encontró el ID del usuario seleccionado.");
-            }
-        } catch (Errores_servicio e) {
-            System.err.println(e.getMessage());
-            return null;
-        }
-        return uR.save(u);
-    }
+//    @Transactional
+//    public Usuario modificarUsuario(String id, String nombre, String passwordNueva, String passwordActual, String apodo, Genero genero, Localidad localidad) throws Errores_servicio { //comparar contraseña actual ing con contraseña del usuario
+//        Usuario u;
+//        try { 
+//            validar(nombre, passwordActual, apodo, genero, localidad); // este está mal puesto, las validaciones se deben hacer en este método, a excepción del de la contraseña actual
+//            Optional<Usuario> rta = uR.findById(id);
+//            if (rta.isPresent()) {
+//                u = uR.findById(id).get();
+//                u.setNombre(nombre);
+//                u.setPassword(passwordNueva);  // no se encripta la contraseña
+//                u.setApodo(apodo);
+//                //u.setGenero(genero);
+//                //u.setLocalidad(localidad);
+//                u.setAlta(Boolean.TRUE);
+//
+//            } else {
+//                throw new Errores_servicio("No se encontró el ID del usuario seleccionado.");
+//            }
+//        } catch (Errores_servicio e) {
+//            System.err.println(e.getMessage());
+//            return null;
+//        }
+//        return uR.save(u);
+//    }
 
     // MÉTODO QUE YO CREE POR MODIFICACIONES Q EN MI OPINIÓN IBAN (todo tiene un porque)
     
@@ -167,10 +168,13 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
     ////////////////////////// Validaciones de datos ///////////////////////////
     ////////////////////////////////////////////////////////////////////////////
     
-    private void validar(String nombre, String password, String apodo, Genero genero, Localidad localidad) throws Errores_servicio { // chequear por las dudas
+    private void validar(String nombre, String apellido, String password, String apodo, Genero genero, Localidad localidad) throws Errores_servicio { // chequear por las dudas
         try {
             if (nombre == null || nombre.isEmpty()) {
                 throw new Errores_servicio("El nombre ingresado no es válido.");
+            }
+            if (apellido == null || apellido.isEmpty()) {
+                throw new Errores_servicio("El apellido ingresado no es válido.");
             }
             if (password == null || password.isEmpty()) {
                 throw new Errores_servicio("La contraseña ingresada no es válida.");

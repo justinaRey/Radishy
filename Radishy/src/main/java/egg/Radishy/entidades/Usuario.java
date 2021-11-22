@@ -21,6 +21,7 @@ public class Usuario implements Serializable {
     private String id;
 
     private String nombre;
+    private String apellido;
     private String password;
     private String apodo; // opcional, lo podemos dejar como lo podemos sacar
     private Boolean alta; // opcional, se deja si se hace el dar de baja o eliminar un usuario
@@ -88,6 +89,14 @@ public class Usuario implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getPassword() {

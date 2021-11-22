@@ -42,13 +42,14 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
     
     
     @PostMapping("/registro")
-    public String guardarRegistro(ModelMap modelo, @RequestParam String nombre, @RequestParam String password, @RequestParam String apodo, @RequestParam Genero genero, @RequestParam Localidad localidad) {
+    public String guardarRegistro(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String password, @RequestParam String apodo, @RequestParam Genero genero, @RequestParam Localidad localidad) {
         
         try {
-            uS.crearUsuario(nombre, password, apodo, genero, localidad);
+            uS.crearUsuario(nombre, apellido, password, apodo, genero, localidad);
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
+            modelo.put("apellido", apellido);
             modelo.put("password", password);
             modelo.put("apodo", apodo);
             modelo.put("genero", genero);
@@ -73,22 +74,22 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
         return "";
     }
     
-    @PostMapping("modificacion/{id}")
-    public String guardarModificacion(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, @RequestParam String passwordActual, @RequestParam String passwordNueva, @RequestParam String passwordNueva2, @RequestParam String apodo, @RequestParam Genero genero, @RequestParam Localidad localidad){
-        try {
-            uS.modificarUsuario(id, nombre, passwordActual, passwordNueva, apodo, genero, localidad); // hay que agregar la passwordNueva2
-        } catch (Errores_servicio ex) {
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-//            modelo.put("password", password);
-            modelo.put("apodo", apodo);
-            modelo.put("genero", genero);
-            modelo.put("localidad", localidad);
-            
-            Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return "redirect:/save/usuario";
-    }
+//    @PostMapping("modificacion/{id}")
+//    public String guardarModificacion(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, @RequestParam String passwordActual, @RequestParam String passwordNueva, @RequestParam String passwordNueva2, @RequestParam String apodo, @RequestParam Genero genero, @RequestParam Localidad localidad){
+//        try {
+//            uS.modificarUsuario(id, nombre, passwordActual, passwordNueva, apodo, genero, localidad); // hay que agregar la passwordNueva2
+//        } catch (Errores_servicio ex) {
+//            modelo.put("error", ex.getMessage());
+//            modelo.put("nombre", nombre);
+////            modelo.put("password", password);
+//            modelo.put("apodo", apodo);
+//            modelo.put("genero", genero);
+//            modelo.put("localidad", localidad);
+//            
+//            Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return "redirect:/save/usuario";
+//    }
     
     
 //  Hacer un GetMapping si quieren mostrar los datos del usuario antes de eliminarlo. 

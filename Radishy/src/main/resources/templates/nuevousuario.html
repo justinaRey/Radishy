@@ -96,97 +96,36 @@
      <form>
       <section class="form-register">
             Registro
-          <input class="controls"type ="text" name="nombre"id="nombre" placeholder="Ingrese su nombre">
-          <input class="controls"type ="text" name="apellido"id="apellido"placeholder="Ingrese su apellido">
+          <input th:value="${nombre}" class="controls" type ="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
+          <input th:value="${apellido}" class="controls" type ="text" name="apellido" id="apellido" placeholder="Ingrese su apellido">
+          <input th:value="${apodo}" class="controls" type ="text" name="apodo" id="apodo" placeholder="Ingrese su nombre de usuario">
           <div class="col-md-4">
             <label for="inputState" class="form-label">Género</label>
             <select id="inputState" class="form-select">
-              <option selected>Otro</option>
-              <option selected>Femenino</option>
-              <option selected>Masculino</option>
+              <option th:each="genero: $(generos)" th:value="$(genero)" th:text="$(genero)" placeholder="Seleccione su género"></option>
             </select>
           </div>
           <div class="col-md-4">
             <label for="inputState" class="form-label">Localidad</label>
             <select id="inputState" class="form-select">
-              <option selected>Mar del Plata</option>
-              <option selected>Rosario</option>
-              <option selected>Banfield</option>
-              <option selected>Bahia Blanca</option>
-              <option selected>Castelar</option>
+              <option th:each="localidad: $(localidades)" th:value="$(localidad)" th:text="$(localidad)" placeholder="Seleccione su localidad"></option>
             </select>
           </div>
-          <input class="controls" type ="email" name="e-mail" id="e-mail" placeholder="Ingrese su correo electronico">
-          <input class="controls" type ="password" name="password" id="password" placeholder="Ingrese su contraseña">
+          <input th:value="${email}" class="controls" type ="email" name="e-mail" id="e-mail" placeholder="Ingrese su correo electronico">
+          <input th:value="${password}" class="controls" type ="password" name="password" id="password" placeholder="Ingrese su contraseña">
 
 
     <div class="segundoFondo">
         <br />
-        <h1>Crear nuevo cultivo</h1>
-        <br>
-        <br />
-        <div class="mb-3" style="padding-left: 25%; padding-right: 25%">
-          <input
-            type="nombre"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Nombre"
-          />
-  
-          <br />
-          <br />
-          <input
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Profundida de siembra en cm"
-          />
-          <br />
-          <br />
-          <input
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tiempo de germinar (dias)"
-          />
-          <br>
-          <br>
-          <input
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tiempo de transplantar (dias)"
-          />
-          <br>
-          <br>
-          <input
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tiempo de cosecha (dias)"
-          />
-          <br>
-          <h5 style="text-align: initial; font-size: 1em">Epoca de siembra</h5>
-          <input class="fechis" type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
-          <script type="text/javascript">
-            $(function () {
-              $('input[name="daterange"]').daterangepicker();
-            });
-          </script>
           <br />
           <br />
           
           
-          <input class="botons" type="submit" value="Registrar">
+          <input th:action="@{/usuario/registro}" class="botons" type="submit" value="Registrar">
           <p><a href="#">¿Ya tengo cuenta?</a></p>
 
           </section>
       </form>
-
-
-
-
-
 
 
       </section>
