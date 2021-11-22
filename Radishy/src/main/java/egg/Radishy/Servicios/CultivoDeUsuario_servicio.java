@@ -27,20 +27,26 @@ import org.springframework.stereotype.Service;
 public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero tiene errores
     
    // corregir método de mis cultivos
-    @Autowired
-    Usuario_repositorio usuarioRepositorio;
+//    @Autowired
+//    Usuario_repositorio usuarioRepositorio;
     
     @Autowired
-    CultivoDeUsuario_repositorio repositorioSesIn;
+    CultivoDeUsuario_repositorio repositorioCultUsu;
     
-    @Autowired
-    Cultivo_repositorio cultivoRepositorio;
+    @Autowired 
+    Cultivo_servicio cultivoServicio;
+    
+    @Autowired 
+    Usuario_servicio usuarioServicio;
+    
+//    @Autowired
+//    Cultivo_repositorio cultivoRepositorio;
     
     // vaciarMisCultivos(): elimina todos los cultivos pertenecientes al usuario
     public void vaciarMisCultivos () throws Errores_servicio{
         chequearEsteSesionIniciada();
-        Usuario usuario = usuarioRepositorio.findByEnSesion();
-        List<CultivoDeUsuario> sesionUsuario = repositorioSesIn.findCultivosDelUsuario();
+        Usuario usuario = usuarioServicio.findByEnSesion();
+        List<CultivoDeUsuario> sesionUsuario = repositorioCultUsu.findCultivosDelUsuario();
         for (CultivoDeUsuario sesIn : sesionUsuario) {
             eliminarMiCultivo(sesIn.getId());
         }
@@ -49,9 +55,9 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     // eliminarMiCultivo(): elimina al cultivo de la lista de cultivos del usuario seleccionado
     public void eliminarMiCultivo (String idSesIn) throws Errores_servicio{
         chequearEsteSesionIniciada();
-        Optional<CultivoDeUsuario> rta = repositorioSesIn.findById(idSesIn);
+        Optional<CultivoDeUsuario> rta = repositorioCultUsu.findById(idSesIn);
         if (rta.isPresent()){
-            repositorioSesIn.delete(rta.get());
+            repositorioCultUsu.delete(rta.get());
         } else {
             throw new Errores_servicio("No se encontró el cultivo que desea eliminar de sus cultivos");
         }
@@ -62,12 +68,12 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
         chequearEsteSesionIniciada();
         if (idCultivo != null && fechaSembrado != null){
             CultivoDeUsuario sesion = new CultivoDeUsuario();
-            Cultivo cultivo = cultivoRepositorio.findById(idCultivo).get();
-            Usuario usuario = usuarioRepositorio.findByEnSesion();
+            Cultivo cultivo = cultivoServicio.findById(idCultivo);
+            Usuario usuario = usuarioServicio.findByEnSesion();
             sesion.setCultivo(cultivo);
             sesion.setUsuario(usuario);
             sesion.setFechaDeSembrado(fechaSembrado);
-            repositorioSesIn.save(sesion);
+            repositorioCultUsu.save(sesion);
         } else {
             throw new Errores_servicio("Todos los campos deben estar completos, revise nuevamente el formulario");
         }
@@ -76,7 +82,7 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     // misCultivos(): devuelve una lista con todos los cultivos que posee el usuario en sesión
     public List<CultivoDeUsuario> misCultivos() throws Errores_servicio{
         chequearEsteSesionIniciada();
-        List<CultivoDeUsuario> cultivosSesIn = repositorioSesIn.findCultivosDelUsuario();
+        List<CultivoDeUsuario> cultivosSesIn = repositorioCultUsu.findCultivosDelUsuario();
         if (cultivosSesIn.isEmpty()){
             throw new Errores_servicio("No posee cultivos aún");
         } else {
@@ -124,13 +130,13 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     public void iniciarSesion(String usuario, String password) throws Errores_servicio {
         chequeoEstenSesionesCerradas();
         if (usuario != null) {
-            if (usuarioRepositorio.cantidadUsuariosNombre(usuario) != 0) {
-                Usuario usu = usuarioRepositorio.findByNombreUsuario(usuario);
+            if (usuarioServicio.cantidadUsuariosNombre(usuario) != 0) {
+                Usuario usu = usuarioServicio.findByNombreUsuario(usuario);
                 if (password != null){
                     String contrasenia = usu.getPassword();
                     if (contrasenia.equals(password)){
                         usu.setEnSesion(true);
-                        usuarioRepositorio.save(usu);
+                        usuarioServicio.save(usu);
                     } else {
                         throw new Errores_servicio("El usuario y/o contraseña introducidos no son correctos");
                     }
@@ -149,9 +155,9 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     public void cerrarSesion () throws Errores_servicio{
         chequearEsteSesionIniciada();
     //    if (usuarioRepositorio.cantidadEnSesionTrue() != 0) {
-        Usuario usuario = usuarioRepositorio.findByEnSesion();
+        Usuario usuario = usuarioServicio.findByEnSesion();
         usuario.setEnSesion(false);
-        usuarioRepositorio.save(usuario);
+        usuarioServicio.save(usuario);
     //    } else {
     //        throw new Error_servicio_("No se puede cerrar sesión si no hay ninguna sesión iniciada");
     //    }   
@@ -163,7 +169,7 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     
     // chequeoEstenSesionesCerradas(): corrobora que no haya ninguna sesión iniciada
     public void chequeoEstenSesionesCerradas() throws Errores_servicio{
-        if (usuarioRepositorio.cantidadEnSesionTrue() != 0){
+        if (usuarioServicio.cantidadEnSesionTrue() != 0){
             throw new Errores_servicio("Ya hay una sesión iniciada.\nCiérrela para poder iniciar sesión con otra cuenta de usuario.");
         }
     }
@@ -174,12 +180,12 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     
     // chequearEsteSesionIniciada(): corrobora que haya una sesión iniciada
     public void chequearEsteSesionIniciada () throws Errores_servicio{
-        int cantSesIn = usuarioRepositorio.cantidadEnSesionTrue();
+        int cantSesIn = usuarioServicio.cantidadEnSesionTrue();
         if (cantSesIn != 1){
             if (cantSesIn < 1) {
                 throw new Errores_servicio("No ha iniciado sesión");
             } else {
-                List<Usuario> sesionesIniciadas = usuarioRepositorio.findSesionesIniciadas();
+                List<Usuario> sesionesIniciadas = usuarioServicio.findSesionesIniciadas();
                 for (Usuario sesionIniciada : sesionesIniciadas) {
                     cerrarSesiones(sesionIniciada);
                 }
@@ -191,6 +197,6 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     // cerrarSesiones(): se utiliza en el chequeo de las sesiones iniciadas, recibe un usuario que debe cerrarle la sesion
     public void cerrarSesiones (Usuario u) {
         u.setEnSesion(false);
-        usuarioRepositorio.save(u);
+        usuarioServicio.save(u);
     }
 }

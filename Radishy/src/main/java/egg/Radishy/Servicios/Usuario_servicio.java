@@ -237,9 +237,30 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
         return u;
     }
     
-        //Método para buscar usuario por nombre
+    //Método para buscar usuario por nombre
     public Usuario findByNombreUsuario(String nombre){
        Usuario usuario = uR.findByNombreUsuario(nombre);
         return usuario;
+    }
+    
+    //Busca al usuario con el enSesion en true
+    public Usuario findByEnSesion() {
+        return uR.findByEnSesion();
+    }
+    
+    public int cantidadUsuariosNombre (String nombre){
+        return uR.cantidadUsuariosNombre(nombre);
+    }
+    
+    public Usuario save (Usuario usuario) {
+        return uR.save(usuario);
+    }
+    
+    public int cantidadEnSesionTrue(){
+        return uR.cantidadEnSesionTrue();
+    }
+    
+    public List<Usuario> findSesionesIniciadas(){
+        return uR.findSesionesIniciadas();
     }
 }

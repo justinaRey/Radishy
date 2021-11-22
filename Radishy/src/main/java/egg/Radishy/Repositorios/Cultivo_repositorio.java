@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Cultivo_repositorio extends JpaRepository<Cultivo, String>{
     
+    
 }
 
 // ES ESTEEEEEEEEEEE 
