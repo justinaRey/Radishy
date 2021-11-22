@@ -10,8 +10,6 @@ import egg.Radishy.Entidades.CultivoDeUsuario;
 import egg.Radishy.Entidades.Usuario;
 import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.Repositorios.CultivoDeUsuario_repositorio;
-import egg.Radishy.Repositorios.Cultivo_repositorio;
-import egg.Radishy.Repositorios.Usuario_repositorio;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -27,8 +25,6 @@ import org.springframework.stereotype.Service;
 public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero tiene errores
     
    // corregir método de mis cultivos
-//    @Autowired
-//    Usuario_repositorio usuarioRepositorio;
     
     @Autowired
     CultivoDeUsuario_repositorio repositorioCultUsu;
@@ -39,8 +35,6 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     @Autowired 
     Usuario_servicio usuarioServicio;
     
-//    @Autowired
-//    Cultivo_repositorio cultivoRepositorio;
     
     // vaciarMisCultivos(): elimina todos los cultivos pertenecientes al usuario
     public void vaciarMisCultivos () throws Errores_servicio{
