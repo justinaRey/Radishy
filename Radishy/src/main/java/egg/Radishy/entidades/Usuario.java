@@ -38,6 +38,7 @@ public class Usuario implements Serializable {
     private Roles rol;
     
     public Usuario() {
+        alta = true;
         enSesion = false;
         rol = Roles.USER; // no sé si así se coloca el rol usuario
     }

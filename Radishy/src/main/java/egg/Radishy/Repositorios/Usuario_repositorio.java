@@ -38,4 +38,9 @@ public interface Usuario_repositorio extends JpaRepository<Usuario, String>{
     // devuelve la cantidad de usuarios que contienen el mismo nombre de usuario
     @Query("Select count(u) from Usuario u where u.nombre = :nombre")
     public int cantidadUsuariosNombre(@Param("nombre") String nombre);
+    
+    ////////////////////////////////////////////////////////////////////////////
+    
+    @Query("Select * from Usuario")
+    public List<Usuario> nombresDeUsuarios();
 }

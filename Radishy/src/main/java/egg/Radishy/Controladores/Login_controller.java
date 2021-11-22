@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/login")
-
 public class Login_controller { 
     @GetMapping("/SesionIniciada")
     public String SesionIniciada(){
