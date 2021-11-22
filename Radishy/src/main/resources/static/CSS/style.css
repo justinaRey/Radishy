@@ -3,13 +3,12 @@ body{
     background-image: url("../IMG/Wallpaper/wallpaper.png");
     font-family: 'Roboto', sans-serif;
     color: #FFFFFF;
-    margin-top: 40em;
 }
 
 /*--- -Main- ---*/
 main{
     background-color: #44558d9f;
-    margin-top: 53%;
+    margin-top: 0.5%;
     margin-bottom: 0.5%;
     text-align: center;
     padding-bottom: 5%;
@@ -17,7 +16,7 @@ main{
 
 /* -Article- */
 article{
-    margin-top: 50%;
+    margin-top: 5%;
 }
 
 /* Parte principal */
@@ -202,12 +201,8 @@ hr.linea{
 /* Partners */
 /* Egg */
 article.partners{
-<<<<<<< HEAD
     text-align: center;
     margin-bottom: 15%;
-=======
-    text-align: left;
->>>>>>> 102037823aab9e7c790f4cd42ed2903fc0ce9e63
 }
 
 #partner-lona-img{
