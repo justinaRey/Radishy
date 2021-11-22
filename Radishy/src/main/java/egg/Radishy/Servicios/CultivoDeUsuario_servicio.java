@@ -36,6 +36,15 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     Usuario_servicio usuarioServicio;
     
     
+    ////////////////////////////////////////////////////////////////////////////
+    /////////////////// SECCIÓN RELACIONADA A LOS CULTIVOS /////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    
+    
+    /////////////////////// Eliminación de los cultivos ////////////////////////
+    
+    /*  Eliminar todos los cultivos del usuario, formas de hacerlo:  */
+    
     // vaciarMisCultivos(): elimina todos los cultivos pertenecientes al usuario
     public void vaciarMisCultivos () throws Errores_servicio{
         chequearEsteSesionIniciada();
@@ -46,10 +55,30 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
         }
     }
     
+    // MÉTODO QUE NO AGREGÉ XQ EL ANTERIOR QUIZÁ NO SE USE X EL ENsESIÓN
+    
+    // elimina todos los cultivos del usuario (recibe el id)
+    public void eliminarTodosCultivos (String idUsuario) throws Errores_servicio{
+        Optional<Usuario> rta = usuarioServicio.findById(idUsuario);
+        if (rta.isPresent()){
+            Usuario usu = rta.get();
+            //List<CultivoDeUsuario> cultivosUsu = repositorioCultUsu.findCultivosDelUsuario();
+            List<CultivoDeUsuario> cultivosUsu = repositorioCultUsu.findCultivosDelUsuarioByUsuario(usu);
+            if (cultivosUsu.isEmpty()){
+                throw new Errores_servicio("No se pueden vaciar sus cultivos ya que usted no poseía cultivos propios");
+            }
+            repositorioCultUsu.deleteAll(cultivosUsu); // en teoría me borraría todos los que se ingresaron a la lista 'cultivosUsu'
+        } else {
+            throw new Errores_servicio("No se ha encontrado al usuario del cual se quieren elimianr los cultivos");
+        }
+    }
+    
+    /*  Eliminar un cultivo en específico del usuario  */
+    
     // eliminarMiCultivo(): elimina al cultivo de la lista de cultivos del usuario seleccionado
-    public void eliminarMiCultivo (String idSesIn) throws Errores_servicio{
-        chequearEsteSesionIniciada();
-        Optional<CultivoDeUsuario> rta = repositorioCultUsu.findById(idSesIn);
+    public void eliminarMiCultivo (String idCultUsu) throws Errores_servicio{
+        chequearEsteSesionIniciada(); // se puede sacar quizás, si no se usa el enSesion
+        Optional<CultivoDeUsuario> rta = repositorioCultUsu.findById(idCultUsu);
         if (rta.isPresent()){
             repositorioCultUsu.delete(rta.get());
         } else {
@@ -57,12 +86,16 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
         }
     }
     
-    // agregarMiCultivo(): recibe el id de
+    ////////////////////// Incorporación de los cultivos ///////////////////////
+    
+    /*  Agrega un cultivo al usuario  */
+    
+    // agregarMiCultivo(): recibe el id del cultivo
     public void agregarMiCultivo (String idCultivo, Date fechaSembrado) throws Errores_servicio{
         chequearEsteSesionIniciada();
         if (idCultivo != null && fechaSembrado != null){
             CultivoDeUsuario sesion = new CultivoDeUsuario();
-            Cultivo cultivo = cultivoServicio.findById(idCultivo);
+            Cultivo cultivo = cultivoServicio.findByIdGet(idCultivo);
             Usuario usuario = usuarioServicio.findByEnSesion();
             sesion.setCultivo(cultivo);
             sesion.setUsuario(usuario);
@@ -73,52 +106,81 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
         }
     }
     
+    // MÉTODO QUE YO AGREGUÉ XQ MEPA QUE ESTÁ MAL EL QUE HICE ANTES
+    
+    // crea el 'cultivoDeUsuario' recibiendo los id del cultivo y usuario
+    public CultivoDeUsuario incorporarMiCultivo (String idCultivo, String idUsuario, Date fechaSembrado) throws Errores_servicio{
+        validarDatos(idUsuario, idCultivo, fechaSembrado);
+        Optional<Usuario> rtau = usuarioServicio.findById(idUsuario);
+        if (!rtau.isPresent()){
+            throw new Errores_servicio("El usuario ingresado no existe/no se ha logueado");
+        }
+        Optional<Cultivo> rtac = cultivoServicio.findById(idUsuario);
+        if (!rtac.isPresent()){
+            throw new Errores_servicio("El cultivo ingresado no existe.\nSi desea puede ir a agregarlo o seleccionar otro cultivo de los que le presentamos toda la información");
+        }
+        Usuario usu = rtau.get();
+        Cultivo cult = rtac.get();
+        CultivoDeUsuario cdu = new CultivoDeUsuario();
+        cdu.setCultivo(cult);
+        cdu.setFechaDeSembrado(fechaSembrado);
+        cdu.setUsuario(usu);
+        return repositorioCultUsu.save(cdu);
+    }
+    
+    ///////////////////////// Muestra de los cultivos //////////////////////////
+    
     // misCultivos(): devuelve una lista con todos los cultivos que posee el usuario en sesión
     public List<CultivoDeUsuario> misCultivos() throws Errores_servicio{
         chequearEsteSesionIniciada();
-        List<CultivoDeUsuario> cultivosSesIn = repositorioCultUsu.findCultivosDelUsuario();
-        if (cultivosSesIn.isEmpty()){
+        List<CultivoDeUsuario> cultivosUsu = repositorioCultUsu.findCultivosDelUsuario();
+        if (cultivosUsu.isEmpty()){
             throw new Errores_servicio("No posee cultivos aún");
         } else {
-            return cultivosSesIn;
+            return cultivosUsu;
         }
     }
     
-    /*         Todos los campos por separado que hacen ha los datos a mostrar por pantalla de 'mis cultivos'        */
+    // MÉTODO QUE YO HAGO XQ EL ANTERIOR PUEDE ESTAR MAL (X LA VALIDACIÓN)
     
-    public String nombreCultivo (CultivoDeUsuario sesion){
-        return sesion.getCultivo().getNombre();
+    public List<CultivoDeUsuario> verCultivosUsuario (String idUsu)throws Errores_servicio{
+        Optional<Usuario> rta = usuarioServicio.findById(idUsu);
+        if (rta.isPresent()){
+            Usuario usu = rta.get();
+            List<CultivoDeUsuario> cdu = repositorioCultUsu.findCultivosDelUsuarioByUsuario(usu);
+            if(cdu.isEmpty()){
+                throw new Errores_servicio("Aún no posee cultivos vinculados a su cuenta");
+            }
+            return cdu;
+        } else {
+            throw new Errores_servicio("No ha iniciado sesión o su usuario no existe.\nPor favor, vaya a iniciar sesión o registrarse para poder proceder");
+        }
     }
     
-    public String metodoCultivo(CultivoDeUsuario sesion){
-        return sesion.getCultivo().getMetodo();
+    ///////////////////////// Modificación de cultivo //////////////////////////
+    
+    // modifica al cultivo seleccionado (fecha de sembrado, ya que es el único atributo que puede modificarse)
+    public CultivoDeUsuario modificarCDUfechaSembrado (String idCDU, Date fechaSem)throws Errores_servicio{
+        if (idCDU == null) {
+            throw new Errores_servicio("No ha ingresado cuál de sus cultivos es el que pretende modificar");
+        }
+        Optional<CultivoDeUsuario> rta = repositorioCultUsu.findById(idCDU);
+        if (rta.isPresent()){
+            CultivoDeUsuario cdu = rta.get();
+            if (fechaSem != null) {
+                cdu.setFechaDeSembrado(fechaSem);
+            }
+        return repositorioCultUsu.save(cdu);
+        } else {
+            throw new Errores_servicio("No se ha logrado encontrar al cultivo seleccionado dentro de los cultivos que posee en su usuario");
+        }
     }
     
-    public int profundidadCultivo (CultivoDeUsuario sesion) {
-        return sesion.getCultivo().getProfundidadSiembraCM();
-    }
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////// SECCIÓN DEDICADA A LOS DATOS DEL USUARIO /////////////////
+    ////////////////////////////////////////////////////////////////////////////
     
-//    public String riegoCultivo (SesionIniciada sesion) {
-//        return sesion.getCultivo().getRiego();
-//    }
-    
-    public Date fechaSembradoCultivo (CultivoDeUsuario sesion){
-        return sesion.getFechaDeSembrado();
-    }
-    
-//    public Date fechaGerminadoCultivo (SesionIniciada sesion) {
-//        return sesion.getFechaGermiadoProm();
-//    }
-//    
-//    public Date fechaTransplanteCultivo (SesionIniciada sesion) {
-//        return sesion.getFechaTransplanteProm();
-//    }
-//    
-//    public Date fechaCosechaCultivo (SesionIniciada sesion) {
-//        return sesion.getFechaCosechaAprox();
-//    }
-    
-    /*              métodos para iniciar la sesión y cerrarla                 */
+    //////////////////////// Inicio de la sesión (mal) /////////////////////////
     
     // iniciarSesion(): inicia la sesión del usuario según los datos ingresados
     public void iniciarSesion(String usuario, String password) throws Errores_servicio {
@@ -145,6 +207,8 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
         }
     }
     
+    //////////////////////// Cierre de la sesión (mal) /////////////////////////
+    
     // cerrarSesion(): cierra la sesion del usuario que esté abierta
     public void cerrarSesion () throws Errores_servicio{
         chequearEsteSesionIniciada();
@@ -159,7 +223,9 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     
     
     
-    /*               control de que estén todas las sesiones cerradas         */
+    /////////////////// Validaciones sobre estado del usuario //////////////////
+    
+    /*            control de que no haya ninguna sesión iniciada              */
     
     // chequeoEstenSesionesCerradas(): corrobora que no haya ninguna sesión iniciada
     public void chequeoEstenSesionesCerradas() throws Errores_servicio{
@@ -167,8 +233,6 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
             throw new Errores_servicio("Ya hay una sesión iniciada.\nCiérrela para poder iniciar sesión con otra cuenta de usuario.");
         }
     }
-    
-    
     
     /*               control de que haya una sesión iniciada                  */
     
@@ -188,9 +252,29 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
         }
     }
     
+    /*                cierre de todas las sesiones iniciadas                  */
+    
     // cerrarSesiones(): se utiliza en el chequeo de las sesiones iniciadas, recibe un usuario que debe cerrarle la sesion
     public void cerrarSesiones (Usuario u) {
         u.setEnSesion(false);
         usuarioServicio.save(u);
     }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////////  SECCIÓN DE VALIDACIONES DE DATOS  /////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    
+    // corrobora que todos los parámetros sean no nulos
+    public void validarDatos(String idUsu, String idCult, Date fechaSem) throws Errores_servicio{
+        if (idUsu == null) {
+            throw new Errores_servicio("No ha iniciado sesión!\nDebe ir a iniciarla, o registrase en caso de no poseer una, para poder agregar un cultivo a su cuenta");
+        }
+        if (idCult == null){
+            throw new Errores_servicio("No ha ingresado el cultivo que quiere agregar a sus cultivos");
+        }
+        if (fechaSem == null){
+            throw new Errores_servicio("No ha ingresado la fecha de sembrado de su cultivo");
+        }
+    }
+    /////////////////////// Eliminación de los cultivos ////////////////////////
 }

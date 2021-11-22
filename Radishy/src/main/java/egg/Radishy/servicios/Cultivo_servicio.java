@@ -302,7 +302,11 @@ public class Cultivo_servicio { // OBS: modificar el validar s/los atributos act
         return cR.findAll();
     }
     
-    public Cultivo findById(String id) {
+    public Cultivo findByIdGet(String id) {
         return cR.findById(id).get();
+    }
+    
+    public Optional<Cultivo> findById(String id){
+        return cR.findById(id);
     }
 }

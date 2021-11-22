@@ -7,7 +7,6 @@ package egg.Radishy.Repositorios;
 
 import egg.Radishy.Entidades.CultivoDeUsuario;
 import egg.Radishy.Entidades.Usuario;
-import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

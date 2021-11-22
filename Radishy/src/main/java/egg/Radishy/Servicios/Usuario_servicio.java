@@ -263,4 +263,8 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
     public List<Usuario> findSesionesIniciadas(){
         return uR.findSesionesIniciadas();
     }
+    
+    public Optional<Usuario> findById (String id){
+        return uR.findById(id);
+    }
 }
