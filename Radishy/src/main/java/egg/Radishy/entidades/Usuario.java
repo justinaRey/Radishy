@@ -2,18 +2,16 @@ package egg.Radishy.Entidades;
 
 import egg.Radishy.Enumeraciones.Genero;
 import egg.Radishy.Enumeraciones.Localidad;
+import egg.Radishy.enumeraciones.Roles;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.Inheritance;
-//import javax.persistence.InheritanceType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.JOINED) // algo de la security
 public class Usuario implements Serializable {
 
     @Id
@@ -28,11 +26,14 @@ public class Usuario implements Serializable {
     private String email;
     private Boolean enSesion;
     
-    @Enumerated(EnumType.STRING)
-    private Genero genero;
+    //@Enumerated(EnumType.STRING)
+    //private Genero genero;
+    
+//    @Enumerated(EnumType.STRING)
+//    private Localidad localidad;
     
     @Enumerated(EnumType.STRING)
-    private Localidad localidad;
+    private Roles rol;
 
     //@ManyToOne
     //private Cultivo cultivo
@@ -56,8 +57,8 @@ public class Usuario implements Serializable {
         this.apodo = apodo;
         this.alta = alta;
         this.enSesion = enSesion;
-        this.genero = genero;
-        this.localidad = localidad;
+        //this.genero = genero;
+        //this.localidad = localidad;
         this.enSesion = false;
     }
 
@@ -68,9 +69,6 @@ public class Usuario implements Serializable {
     public void setEnSesion(Boolean enSesion) {
         this.enSesion = enSesion;
     }
-
-    
-
     
     public String getId() {
         return id;
@@ -104,24 +102,24 @@ public class Usuario implements Serializable {
         this.apodo = apodo;
     }
 
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
-    }
-
-    public Localidad getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(Localidad localidad) {
-        this.localidad = localidad;
-    }
+//    public Genero getGenero() {
+//        return genero;
+//    }
+//
+//    public void setGenero(Genero genero) {
+//        this.genero = genero;
+//    }
+//
+//    public Localidad getLocalidad() {
+//        return localidad;
+//    }
+//
+//    public void setLocalidad(Localidad localidad) {
+//        this.localidad = localidad;
+//    }
     
     public void setEnSesion (boolean enSesion) {
-        this.enSesion = enSesion;
+        this.setEnSesion((Boolean) enSesion);
     }
     
     public String getEmail() {
@@ -130,5 +128,19 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the rol
+     */
+    public Roles getRol() {
+        return rol;
+    }
+
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(Roles rol) {
+        this.rol = rol;
     }
 }

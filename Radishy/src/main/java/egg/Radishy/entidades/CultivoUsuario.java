@@ -31,14 +31,14 @@ public class CultivoUsuario implements Serializable {
     private Date fechaDeSembrado;
   
   //Las siguientes fechas son para agregar si se puede, q toma en cuenta los datos de germinación, transplante y cosecha y los implementa a la fecha de sembrado 
-    
-//    @DateTimeFormat(pattern = "YY-MM-dd")
+//    @Temporal(TemporalType.DATE)
+//    @DateTimeFormat(pattern = "YYYY-MM-dd")
 //    private Date fechaGermiadoProm;
-//    
-//    @DateTimeFormat(pattern = "YY-MM-dd")
+//    @Temporal(TemporalType.DATE)
+//    @DateTimeFormat(pattern = "YYYY-MM-dd")
 //    private Date fechaTransplanteProm;
-//    
-//    @DateTimeFormat(pattern = "YY-MM-dd")
+//    @Temporal(TemporalType.DATE)
+//    @DateTimeFormat(pattern = "YYYY-MM-dd")
 //    private Date fechaCosechaAprox;
     
     // constructores:

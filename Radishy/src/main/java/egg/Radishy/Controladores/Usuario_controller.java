@@ -87,7 +87,7 @@ public class Usuario_controller {
             
             Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "";
+        return "redirect:/save/usuario";
     }
     
     

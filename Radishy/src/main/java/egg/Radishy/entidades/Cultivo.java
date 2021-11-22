@@ -34,6 +34,9 @@ public class Cultivo implements Serializable {
     
     private Integer profundidadSiembraCM;
 
+    // modificable: la agregué yo para saber si los datos del cultivo son modificables o no. (true que si lo son, y false que no)
+    private boolean modificable;
+    
     public Cultivo() {
     }
 
@@ -46,6 +49,7 @@ public class Cultivo implements Serializable {
         this.tiempoGerminar = tiempoGerminar;
         this.tiempoTransplantar = tiempoTransplantar;
         this.tiempoCosechar = tiempoCosechar;
+        this.modificable = true;
     }
     
     public String getId() {
@@ -119,4 +123,14 @@ public class Cultivo implements Serializable {
     public void setProfundidadSiembraCM(Integer profSiembraCM) {
         this.profundidadSiembraCM = profSiembraCM;
     }
+
+    public boolean getModificable() {
+        return modificable;
+    }
+
+    public void setModificable(boolean modificable) {
+        this.modificable = modificable;
+    }
+    
+    
 }
