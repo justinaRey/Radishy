@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <div th:replace="/Fragments/head :: head"></div>
@@ -26,6 +26,11 @@
 
       <!--Form-->
       <div class="card-body">
+          <div sec:authorize="isAuthenticated()">
+          <h1 style="color: white;">NO PUEDE ENTRAR ACÁ</h1>
+          <h1 style="color: white;">YA TIENE SESIÓN INICIADA</h1>
+      </div>
+          <div sec:authorize="!isAuthenticated()">
         <form th:action="@{/logincheck}" method="POST" class="col-6 mx-auto">
           <div class="mb-3">
             <label for="nombre" class="form-label">Nombre de usuario</label>
@@ -40,6 +45,7 @@
           <a class="olvidar-contra" th:href="@{/usuario/probando}" th:value="${username}">¿Olvidaste tu contraseña?</a>
           <p class="registrar">¿No tienes una cuenta? <a href="/usuario/registrar">Registrate</a></p>
         </form>
+              </div>
       </div>
 
     </div>

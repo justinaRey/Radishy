@@ -31,9 +31,7 @@
                         Mis cultivos
                     </a>
                     <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/login}">Ver mis cultivos</a></li>
-                        <li><a class="dropdown-item" th:href="@{/login}">Cargar un cultivo</a></li>
-                        <li><a class="dropdown-item" th:href="@{/login}">Crear un nuevo cultivo</a></li>
+                        <li><a class="dropdown-item" th:href="@{/cultivos/listarCultivos}">Ver todos los cultivos</a></li>
                     </ul>
                 </li>
                 </div>
@@ -42,7 +40,6 @@
 
                 <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/info/quienes-somos}" style="text-align: center; font-size: 20px;">Sobre nosotros</a></li>
                 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/cultivos/agregarCultivo}" style="text-align: center; font-size: 20px;">Receta</a></li>
             </ul>
             <div sec:authorize="isAuthenticated()">
                     <a class="navbar-brand" th:href="@{/logout}">

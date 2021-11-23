@@ -2,7 +2,7 @@
 
 <!--   ESTE HTML NO ES, ESTÁ MAL, ES = A NUEVOcULTIVO, EL CONTENIDO DE ÉSTE ESTABA EN TXT DENTRO DE CARPETA EGG  -->
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,6 +47,7 @@
       type="text/css"
       href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"
     />
+    <link rel="stylesheet" href="/CSS/FragmentsStyle/footer.css">
 </head>
 <body>
     <nav th:replace="/Fragments/navbar :: navbar"></nav>
@@ -63,10 +64,15 @@
                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
            </div>
        </div>-->
-
+    <div sec:authorize="isAuthenticated()">
+              <h1 style="color: white;">NO PUEDE ENTRAR ACÁ</h1>
+              <h1 style="color: white;">YA TIENE SESIÓN INICIADA</h1>
+          </div>
+    <div sec:authorize="!isAuthenticated()">
      <form class="m-5" th:action="@{/usuario/registro}" method="POST">
       <section class="form-register">
             Registro
+            <br>
           <input th:value="${nombre}" class="controls" type ="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
           <br>
           <input th:value="${apellido}" class="controls" type ="text" name="apellido" id="apellido" placeholder="Ingrese su apellido">
@@ -102,23 +108,13 @@
 
           </section>
       </form>
-
+</div>
 
       </section>
-      <footer>
-        <div class="foot-1">
-          <h1 class="typography" id="foot-socialNet">Redes Sociales</h1>
-          <div class="iconos">
-            <a href="https://www.facebook.com/profile.php?id=100074247235177"><img src="/IMG/facebook.png"alt="Icono Facebook" id="ico-face"></a>
-            <a href="https://twitter.com/Radishy0"><img src="/IMG/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
-            <a href="https://www.instagram.com/radishy.1/"><img src="/IMG/instagram.png" alt="Icono Instagram"id="ico-inst"></a>
-            <a href="https://mail.google.com/mail/u/0/#search/radishycompany%40gmail.com?compose=new"><img src="/IMAGENES/email.png" alt="Icono Gmail" id="ico-gmail"></a>
-          </div>
-
-        </div>
       </div>
       <!---->
+      <footer th:replace="/Fragments/footer :: footer"></footer>
 </body>
 
-<footer th:replace="/Fragments/footer :: footer"></footer>
+
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,8 +22,8 @@
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"
     ></script>
-    <link href="../Css/cultivo.css" rel="stylesheet" type="text/css" />
-    <link href="../Css/aggCultivo.css" rel="stylesheet" type="text/css" />
+    <link href="/CSS/cultivo.css" rel="stylesheet" type="text/css" />
+    <link href="/CSS/aggCultivo.css" rel="stylesheet" type="text/css" />
     <script
       type="text/javascript"
       src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"
@@ -44,6 +44,7 @@
       type="text/css"
       href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"
     />
+    <link rel="stylesheet" href="/CSS/FragmentsStyle/footer.css">
 </head>
 <body class="boddy">
     <nav th:replace="/Fragments/navbar :: navbar"></nav>
@@ -54,6 +55,11 @@
            </div>
        </div>
     <div class="segundoFondo">
+        <div sec:authorize="!isAuthenticated()">
+          <h1 style="color: white;">NO PUEDE ENTRAR ACÁ</h1>
+          <h1 style="color: white;">DEBE INICIAR SESIÓN</h1>
+      </div>
+        <div sec:authorize="isAuthenticated()">
         <form th:action="@{/cultivos/guardarCultivo}" method="POST" class="col-6 mx-auto">
             <br />
             <h1>Crear nuevo cultivo</h1>
@@ -61,10 +67,9 @@
             <br />
             <div class="mb-3" style="padding-left: 25%; padding-right: 25%">
               <input th:value="${nombre}" name="nombre" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre"/>
-
+              <br>
               <input th:value="${metodo}" name="metodo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Método"/>
 
-              <br />
               <br />
               <input
                 th:value="${profSiembraCM}" name="profSiembraCM"
@@ -74,7 +79,6 @@
                 placeholder="Profundida de siembra en cm"
               />
               <br />
-              <br />
               <input
                   th:value="${tiempoGerminar}" name="tiempoGerminar"
                 type="number"
@@ -83,7 +87,6 @@
                 placeholder="Tiempo de germinar (dias)"
               />
               <br>
-              <br>
               <input
                   th:value="${tiempoTransplantar}" name="tiempoTransplantar"
                 type="number"
@@ -91,7 +94,6 @@
                 id="exampleFormControlInput1"
                 placeholder="Tiempo de transplantar (dias)"
               />
-              <br>
               <br>
               <input
                   th:value="${tiempoCosechar}" name="tiempoCosechar"
@@ -128,6 +130,7 @@
               <button type="submit" class="boxx">Crear cultivo</button>
             </div>
         </form>
+            </div>
       </div>
       <!---->
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,6 +26,7 @@
         <link href="/CSS/cultivo.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="/CSS/aggCultivo.css">
         <link rel="stylesheet" href="/CSS/carrousel.css">
+        <link rel="stylesheet" href="/CSS/FragmentsStyle/footer.css">
     </head>
 
     <body class="boddy">
@@ -75,10 +76,6 @@
                 </div>
             </div>
         </nav>
-
-
-
-
         <script type="text/javascript">
             function ocultarTexto() {
                 document.getElementById('texto').style.display = 'none';
@@ -92,8 +89,6 @@
                 document.getElementById('rabanito').style.display = 'block';
             }
         </script>
-
-
         <div class="segundoFondo" style="padding-bottom: 37%">
             <h1 class="titulo">Los cultivos disponibles</h1>
                 <a th:each=" p,iterator : ${cultivos}">
@@ -163,21 +158,6 @@
             </script>
         </div>
 
-
-
-        <footer th:fragment="footer">
-            <div class="foot-1">
-                <h1 class="typography">Redes Sociales</h1>
-                <div class="iconos">
-                    <a href=""><img src="/IMG/facebook.png" alt="Icono Facebook" id="ico-face"></a>
-                    <a href=""><img src="/IMG/twitter.png" alt="Icono Twitter" id="ico-twit"></a>
-                    <a href=""><img src="/IMG/instagram.png" alt="Icono Instagram" id="ico-inst"></a>
-                    <a href=""><img src="/IMG/email.png" alt="Icono Gmail" id="ico-gmail"></a>
-                </div>
-            </div>
-            <h2 class="typography">2021 Copyright Radishy - Todos los derechos reservados.</h2>
-        </footer>
+        <footer th:replace="/Fragments/footer :: footer"></footer>
     </body>
-
-
 </html>

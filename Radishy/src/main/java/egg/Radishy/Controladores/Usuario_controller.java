@@ -139,6 +139,6 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
 
     @GetMapping("probando")
     public String probando(){
-        return "probando";
+        return "olvidastetucontrasenia";
     }
 }
