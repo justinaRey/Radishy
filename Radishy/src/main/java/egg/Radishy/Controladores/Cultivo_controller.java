@@ -22,6 +22,8 @@ public class Cultivo_controller {
         model.addAttribute("cultivos",cS.listarCultivos());
         return "misCultivos"; // Nombre del html que muestra la tabla de info de los cultivos
     }
+
+    
     
     @GetMapping("/agregarCultivo")
     public String agregarCultivo(){

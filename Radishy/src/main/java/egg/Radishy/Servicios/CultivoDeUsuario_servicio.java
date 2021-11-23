@@ -10,11 +10,13 @@ import egg.Radishy.Entidades.CultivoDeUsuario;
 import egg.Radishy.Entidades.Usuario;
 import egg.Radishy.Errores.Errores_servicio;
 import egg.Radishy.Repositorios.CultivoDeUsuario_repositorio;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 /**
@@ -91,7 +93,7 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     /*  Agrega un cultivo al usuario  */
     
     // agregarMiCultivo(): recibe el id del cultivo
-    public void agregarMiCultivo (String idCultivo, Date fechaSembrado) throws Errores_servicio{
+    public void agregarMiCultivo (String idCultivo, java.sql.Date fechaSembrado) throws Errores_servicio{
         chequearEsteSesionIniciada();
         if (idCultivo != null && fechaSembrado != null){
             CultivoDeUsuario sesion = new CultivoDeUsuario();
@@ -277,4 +279,20 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
         }
     }
     /////////////////////// Eliminación de los cultivos ////////////////////////
+
+    public java.sql.Date convertirADate(String fecha) throws Exception{
+//        Calendar now = Calendar.getInstance();
+//        int anio = Integer.parseInt(fecha.substring(0, 3));
+//        int mes = Integer.parseInt(fecha.substring(5, 6));
+//        int dia = Integer.parseInt(fecha.substring(8, 9));
+//        now.set(anio, mes, dia);
+//        
+//        System.out.println(now);
+        //Date date2 = new SimpleDateFormat("YYYY-MM-dd").parse("2021-11-10");
+        java.sql.Date date = java.sql.Date.valueOf( fecha );
+//        System.out.println(anio);
+//        System.out.println(mes);
+//        System.out.println(dia);
+        return date;
+    }
 }

@@ -2,7 +2,7 @@ package egg.Radishy.Entidades;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,9 +26,9 @@ public class CultivoDeUsuario implements Serializable { // OBS: constructor con 
     @ManyToOne
     private Cultivo cultivo;
     
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "YYYY-MM-dd")
-    private Date fechaDeSembrado;
+//    @Temporal(TemporalType.DATE)
+//    @DateTimeFormat(pattern = "YYYY-MM-dd")
+    private java.sql.Date fechaDeSembrado;
   
   //Las siguientes fechas son para agregar si se puede, q toma en cuenta los datos de germinación, transplante y cosecha y los implementa a la fecha de sembrado 
     //@Temporal(TemporalType.DATE)
@@ -48,12 +48,12 @@ public class CultivoDeUsuario implements Serializable { // OBS: constructor con 
         
     }
     
-    public CultivoDeUsuario (Usuario usuario, Cultivo cultivo, Date fechaDeSembrado){
+    public CultivoDeUsuario (Usuario usuario, Cultivo cultivo, java.sql.Date fechaDeSembrado){
         this.cultivo = cultivo;
         this.fechaDeSembrado = fechaDeSembrado;
         this.usuario = usuario;
-        Calendar c = Calendar.getInstance();
-        c.setTime(fechaDeSembrado);
+//        Calendar c = Calendar.getInstance();
+//        c.setTime(fechaDeSembrado);
 //        int cosechaProm = (this.cultivo.getCosecharMin()+this.cultivo.getCosacharMax())/2;
 //        int germinadoProm = (this.cultivo.getGerminarMax()+this.cultivo.getGerminarMin())/2;
 //        int transplanteProm = (this.cultivo.getTransplantarMax()+this.cultivo.getTransplantarMin())/2;
@@ -86,11 +86,11 @@ public class CultivoDeUsuario implements Serializable { // OBS: constructor con 
         this.cultivo = cultivo;
     }
 
-    public Date getFechaDeSembrado() {
+    public java.sql.Date getFechaDeSembrado() {
         return fechaDeSembrado;
     }
 
-    public void setFechaDeSembrado(Date fechaDeSembrado) {
+    public void setFechaDeSembrado(java.sql.Date fechaDeSembrado) {
         this.fechaDeSembrado = fechaDeSembrado;
     }
 

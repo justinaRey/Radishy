@@ -84,17 +84,22 @@
       <br>
       <h1>Nuevo cultivo</h1>
       <br>
+      <form th:action="@{/sesion/iniciada/agregado-mis-cultivos}" method="POST" class="col-6 mx-auto">
       <div class="mb-3" style="padding-left: 25%; padding-right: 25%;">
-        <input type="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
+        <label for="inputState" class="form-label">Cultivo</label>
+            <select id="inputState" class="form-select" name="idCultivo">
+              <option th:each="cultivo: ${cultivos}" th:value="${cultivo.id}" th:text="${cultivo.nombre}" placeholder="Seleccione un cultivo"></option>
+            </select>
         <br>
         <br>
-        <input type="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Tipo de cultivo">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tipo de cultivo">
         <br>
         <br>
-        <input type="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Región">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Región">
         <br>
         <h5 style="text-align: initial; font-size: 1em;">Fecha de sembrado</h5>
-        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Fecha de sembrado">   
+        <input th:value="${fechaSembrado}" name="fechaSembrado" type="date" class="form-control" id="exampleFormControlInput1" placeholder="Fecha de sembrado">   
         <br>
         <br>
         <button th:action="@{/sesion/iniciada/agregado-mis-cultivos}" class="boxx">Agregar cultivo</button>
@@ -102,6 +107,7 @@
         <br>
         <button type="button" class="btn btn-link" style="color: black;"><a th:action="@{/cultivos/agregarCultivo}" class="link">¿No encuentras un cultivo?</a></button>
       </div>
+      </form>
     </div>
   </body>
 

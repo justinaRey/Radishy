@@ -16,6 +16,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import javax.servlet.http.HttpSession;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
 
 /**
  *
@@ -49,6 +53,11 @@ public class User_servicio implements UserDetailsService{
             boolean accountNonLocked = true;
             List<GrantedAuthority> authorities = new ArrayList();
             authorities.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol()));
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuariosession", usuario);
+            usuario.setEnSesion(!usuario.getEnSesion());
+            usuarioServicio.save(usuario);
             return new User(usuario.getNombre(), usuario.getPassword(), enabled, accountNonExipired, credentialNonExpired, accountNonLocked, authorities); // en video musetra solamente el get nombre y password, y desp los permisos)
             
 //            return new User(nombre, usuario.getPassword(), losPermisosSerian); // lo que para mí debe devolver 
