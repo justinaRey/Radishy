@@ -1,59 +1,19 @@
 <!DOCTYPE html>
 <html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
 
-<head th:insert="/Fragments/head :: head">
-
+<head>
+  <div th:insert="/Fragments/head :: head">
+  </div>
   <!--CSS-->
-  <link rel="stylesheet" href="/CSS/style.css">
-
+  <link rel="stylesheet" href="../CSS/style.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(0, 187, 178);">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a class="navbar-brand" href="/">
-          <img src="../Img/radishy.png" alt="" width="44" height="38" />
-        </a>
-
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" style="text-align: center; font-size: 20px; margin-left: 4%;"
-              href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Mis cultivos
-            </a>
-            <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Ver mis cultivos</a></li>
-              <li><a class="dropdown-item" href="#">Cargar un cultivo</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Crear un nuevo cultivo</a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"
-              style="text-align: center; font-size: 20px;">Contacto</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" style="text-align: center; font-size: 20px;">Sobre
-              nosotros</a>
-          </li>
-        </ul>
-
-        <a class="navbar-brand" href="/">
-          <img src="../Img/2561496_user_icon.png" alt="" width="40" height="40" />
-        </a>
-
-      </div>
-    </div>
-  </nav>
-
-
+  <nav th:replace="/Fragments/navbar :: navbar"></nav>
+  
   <main class="container">
     <img src="../IMG/Main/Imagen-Principal.png" alt="Logo" id="main-Principal-IMG">
-    
+
     <!--Zanahoria-->
     <article class="zanahoria">
 
