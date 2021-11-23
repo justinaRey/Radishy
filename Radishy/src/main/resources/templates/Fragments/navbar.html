@@ -1,12 +1,35 @@
-<!DOCTYPE html>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(0, 187, 178);">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!--Logo-Rabanito-->
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="/IMG/radishy.png" alt="" width="44" height="38" />
+            </a>
 
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!--Mis cultivos-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active"
+                        style="text-align: center; font-size: 20px; margin-left: 4%;" href="#" id="navbarDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Mis cultivos
+                    </a>
+                    <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/cultivos/listarCultivos}">Ver mis cultivos</a></li>
+                        <li><a class="dropdown-item" th:href="@{/sesion/iniciada/agregar-mis-cultivos}">Cargar un cultivo</a></li>
+                        <li><a class="dropdown-item" th:href="@{/cultivos/agregarCultivo}">Crear un nuevo cultivo</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/cultivos/agregarCultivo}" style="text-align: center; font-size: 20px;">Contacto</a></li>
+
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/cultivos/agregarCultivo}" style="text-align: center; font-size: 20px;">Sobre nosotros</a></li>
+                
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/cultivos/agregarCultivo}" style="text-align: center; font-size: 20px;">Receta</a></li>
+            </ul>
+            <a class="navbar-brand" th:href="@{/usuario}">
+                <img src="/IMG/2561496_user_icon.png" alt="" width="40" height="40" />
+            </a>
+        </div>
+    </div>
+</nav>
