@@ -29,6 +29,10 @@ public class CultivoDeUsuario implements Serializable { // OBS: constructor con 
 //    @Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "YYYY-MM-dd")
     private java.sql.Date fechaDeSembrado;
+
+    private Calendar fechaDeGerminar;
+    private Calendar fechaDeTransplantar;
+    private Calendar fechaDeCosechar;
   
   //Las siguientes fechas son para agregar si se puede, q toma en cuenta los datos de germinación, transplante y cosecha y los implementa a la fecha de sembrado 
     //@Temporal(TemporalType.DATE)
@@ -91,7 +95,49 @@ public class CultivoDeUsuario implements Serializable { // OBS: constructor con 
     }
 
     public void setFechaDeSembrado(java.sql.Date fechaDeSembrado) {
+        
         this.fechaDeSembrado = fechaDeSembrado;
+        setFechaDeGerminar();
+        setFechaDeTransplantar();
+        setFechaDeCosechar();
+    }
+
+    public Calendar getFechaDeGerminar() {
+        return fechaDeGerminar;
+    }
+
+    public void setFechaDeGerminar() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.fechaDeSembrado);
+        int num = this.cultivo.getTiempoGerminar();
+        c.add(Calendar.DATE, num);
+//        String fecha = c.toString();
+//        this.fechaDeGerminar = java.sql.Date.valueOf(fecha);
+        this.fechaDeGerminar = c;
+    }
+
+    public Calendar getFechaDeTransplantar() {
+        return fechaDeGerminar;
+    }
+
+    public void setFechaDeTransplantar() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.fechaDeSembrado);
+        c.add(Calendar.DATE, this.cultivo.getTiempoTransplantar());
+//        this.fechaDeTransplantar = java.sql.Date.valueOf(c.getTime().toString());
+this.fechaDeTransplantar = c;
+    }
+
+    public Calendar getFechaDeCosechar() {
+        return fechaDeCosechar;
+    }
+
+    public void setFechaDeCosechar() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.fechaDeSembrado);
+        c.add(Calendar.DATE, this.cultivo.getTiempoCosechar());
+//        this.fechaDeCosechar = java.sql.Date.valueOf(c.getTime().toString());
+        this.fechaDeCosechar = c;
     }
 
 //    public Date getFechaGermiadoProm() {
