@@ -60,18 +60,24 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
         return "redirect:/login";
     }
     
-    @GetMapping("/modificar/{id}")
-    public String modificarUsuario(ModelMap modelo, @PathVariable String id){
-        modelo.put("genero", Genero.values());
-        modelo.put("localidad", Localidad.values());
-        Usuario usuario;
-        try {
-            usuario = uS.buscarPorId(id);
-            modelo.put("usuario",usuario);
-        } catch (Errores_servicio ex) {
-            Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return "";
+//    @GetMapping("/modificar/{id}")
+//    public String modificarUsuario(ModelMap modelo, @PathVariable String id){
+//        modelo.put("genero", Genero.values());
+//        modelo.put("localidad", Localidad.values());
+//        Usuario usuario;
+//        try {
+//            usuario = uS.buscarPorId(id);
+//            modelo.put("usuario",usuario);
+//        } catch (Errores_servicio ex) {
+//            Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return "modificarusuario";
+//    }
+
+    @GetMapping("/modificar")
+    public String modificarUsuario(ModelMap modelo){
+        
+        return "modificarusuario";
     }
     
 //    @PostMapping("modificacion/{id}")
