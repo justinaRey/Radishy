@@ -123,4 +123,22 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
 //        }
         return "redirect:/";
     }
+
+    @PostMapping("recuperarpassword")
+    public String recuperarPass(ModelMap modelo, @RequestParam String apodo){
+        try{
+            uS.generarContrasenia(apodo);
+        }catch (Errores_servicio ex){
+            modelo.put("error", ex.getMessage());
+
+            Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "probando";
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("probando")
+    public String probando(){
+        return "probando";
+    }
 }

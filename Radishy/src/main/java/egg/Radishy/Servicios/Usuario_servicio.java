@@ -16,12 +16,17 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import egg.Radishy.Servicios.MailService;
+import java.lang.Math;
 
 @Service
 public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí deba ingresar password actual p/conf cambios y el tema del encriptado de la contraseña; validar() mal usado en modificarUsuario
 
     @Autowired  // uR ---> repositorio del usuario
     private Usuario_repositorio uR;
+
+@Autowired  // uR ---> repositorio del usuario
+    private MailService mS;
 
     @Autowired // encoder ---> relacionado a la seguridad
     private BCryptPasswordEncoder encoder;
@@ -112,7 +117,7 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
 //                throw new Errores_servicio("Su contraseña no puede tener menos de 6 caracteres");
 //            }
 //        } **La contraseña modificada no está encriptada
-        usuario.setPassword(passNew);
+        usuario.setPassword(encoder.encode(passNew));
         usuario.setNombre(nombre);
         usuario.setApodo(apodo);
         usuario.setEmail(email);
@@ -261,5 +266,22 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
 
     public Optional<Usuario> findById(String id) {
         return uR.findById(id);
+    }
+
+    public Optional<Usuario> findByUsername(String username) {
+        return uR.findByUsername(username);
+    }
+
+    public void generarContrasenia(String username) throws Errores_servicio{
+        Optional<Usuario> rta = findByUsername(username);
+        if(rta.isPresent()){
+            Usuario u = rta.get();
+            String contra = String.valueOf((int) (Math.random() * 10000));
+            u.setPassword(encoder.encode(contra));
+            save(u);
+            mS.recuperarContrasenia(u.getEmail(), contra);
+        }else{
+            throw new Errores_servicio ("El nombre de usuario ingresado es incorrecto");
+        }
     }
 }

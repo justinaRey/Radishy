@@ -37,7 +37,7 @@
           </div>
           <button type="submit" class="btn-dark px-5 py-2 ms-auto"> Iniciar sesión </button>
           <br>
-          <a class="olvidar-contra" href="/">¿Olvidaste tu contraseña?</a>
+          <a class="olvidar-contra" th:href="@{/usuario/probando}" th:value="${username}">¿Olvidaste tu contraseña?</a>
           <p class="registrar">¿No tienes una cuenta? <a href="/usuario/registrar">Registrate</a></p>
         </form>
       </div>
