@@ -22,7 +22,7 @@ public class Main_controller {
         return "contacto";
     }
     
-    @GetMapping("info/quienes-somos-?")
+    @GetMapping("info/quienes-somos")
     public String infoNuestra(){
         return "info";
     }
