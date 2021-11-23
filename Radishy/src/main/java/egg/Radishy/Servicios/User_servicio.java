@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import egg.Radishy.Servicios.CultivoDeUsuario_servicio;
 
 
 /**
@@ -30,6 +31,9 @@ public class User_servicio implements UserDetailsService{
 
     @Autowired
     private Usuario_servicio usuarioServicio;
+
+    @Autowired
+    private CultivoDeUsuario_servicio cuS;
     
 //    @Override
 //    public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
@@ -46,6 +50,7 @@ public class User_servicio implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String apodo) throws UsernameNotFoundException {
         try {
+            cuS.cerrarSesion();
             Usuario usuario = usuarioServicio.findByApodo(apodo);
             boolean enabled = true;
             boolean accountNonExipired = true;
@@ -66,6 +71,5 @@ public class User_servicio implements UserDetailsService{
         }
 
     }
-    
    
 }

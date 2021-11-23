@@ -212,15 +212,16 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     //////////////////////// Cierre de la sesión (mal) /////////////////////////
     
     // cerrarSesion(): cierra la sesion del usuario que esté abierta
-    public void cerrarSesion () throws Errores_servicio{
-        chequearEsteSesionIniciada();
-    //    if (usuarioRepositorio.cantidadEnSesionTrue() != 0) {
+    public void cerrarSesion (){
+        //chequearEsteSesionIniciada();
+        if (usuarioServicio.cantidadEnSesionTrue() != 0) {
         Usuario usuario = usuarioServicio.findByEnSesion();
         usuario.setEnSesion(false);
         usuarioServicio.save(usuario);
-    //    } else {
-    //        throw new Error_servicio_("No se puede cerrar sesión si no hay ninguna sesión iniciada");
-    //    }   
+        }
+//        } else {
+//            throw new Error_servicio_("No se puede cerrar sesión si no hay ninguna sesión iniciada");
+//        }   
     }
     
     

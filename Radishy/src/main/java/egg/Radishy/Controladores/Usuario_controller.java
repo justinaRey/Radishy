@@ -107,14 +107,14 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
 //        return "redirect:/usuario";
 //    }
 
-    @PostMapping("cerrarsesion")
-    public void cerrarSesion(ModelMap modelo){
-        try {
+    @GetMapping("cerrarsesion")
+    public String cerrarSesion(ModelMap modelo){
+//        try {
             cuS.cerrarSesion();
-        } catch (Errores_servicio ex) {
-            modelo.put("error", ex.getMessage());
-            Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+//        } catch (Errores_servicio ex) {
+//            modelo.put("error", ex.getMessage());
+//            Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        return "redirect:/";
     }
 }

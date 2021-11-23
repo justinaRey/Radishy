@@ -65,12 +65,7 @@ public class CultivoDeUsuario_controller {
     
     @GetMapping("/iniciada/cerrar")
     public String cerrarSesion(ModelMap modelo) {
-        try {
-            servicio.cerrarSesion();
-        } catch (Errores_servicio ex) {
-            modelo.put("error", ex.getMessage());
-            Logger.getLogger(CultivoDeUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        servicio.cerrarSesion();
         return "redirect:/"; //index.html si no es con redirect
     }
     

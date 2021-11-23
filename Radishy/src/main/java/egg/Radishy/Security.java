@@ -155,7 +155,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=error").permitAll()
                 .and().logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/?logout")
+                .logoutSuccessUrl("/usuario/cerrarsesion?logout")
                 .and().csrf().disable();
     }
 }
