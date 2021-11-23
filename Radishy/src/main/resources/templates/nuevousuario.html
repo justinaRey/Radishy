@@ -25,8 +25,8 @@
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"
     ></script>
-    <link href="../Css/cultivo.css" rel="stylesheet" type="text/css" />
-    <link href="../Css/aggCultivo.css" rel="stylesheet" type="text/css" />
+    <link href="/Css/cultivo.css" rel="stylesheet" type="text/css" />
+    <link href="/Css/aggCultivo.css" rel="stylesheet" type="text/css" />
     <script
       type="text/javascript"
       src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"
@@ -50,6 +50,7 @@
 </head>
 <body>
     <nav th:replace="/Fragments/navbar :: navbar"></nav>
+    
     <div class="container">
            <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
                <span th:text="${error}"></span>
@@ -67,8 +68,11 @@
       <section class="form-register">
             Registro
           <input th:value="${nombre}" class="controls" type ="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
+          <br>
           <input th:value="${apellido}" class="controls" type ="text" name="apellido" id="apellido" placeholder="Ingrese su apellido">
+          <br>
           <input th:value="${apodo}" class="controls" type ="text" name="apodo" id="apodo" placeholder="Ingrese su nombre de usuario">
+          <br>
           <div class="col-md-4">
             <label for="inputState" class="form-label">Género</label>
             <select id="inputState" class="form-select" name="genero">
@@ -81,8 +85,11 @@
               <option th:each="localidad: ${localidades}" th:value="${localidad}" th:text="${localidad}" placeholder="Seleccione su localidad"></option>
             </select>
           </div>
-          <input th:value="${email}" class="controls" type ="email" name="e-mail" id="e-mail" placeholder="Ingrese su correo electronico">
+          <input th:value="${email}" class="controls" type ="email" name="email" id="email" placeholder="Ingrese su correo electronico">
+          <br>
           <input th:value="${password}" class="controls" type ="password" name="password" id="password" placeholder="Ingrese su contraseña">
+          <br>
+          <input th:value="${password2}" class="controls" type ="password" name="password2" id="password2" placeholder="Confirme su contraseña">
 
 
     <div class="segundoFondo">
@@ -90,7 +97,8 @@
           <br />
           <br />
           <input th:action="@{/usuario/registro}" class="botons" type="submit" value="Registrar">
-          <p><a href="#">¿Ya tengo cuenta?</a></p>
+          <br>
+          <p><a th:href="@{/login}">¿Ya tengo cuenta?</a></p>
 
           </section>
       </form>

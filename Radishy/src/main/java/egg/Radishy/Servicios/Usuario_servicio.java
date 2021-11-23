@@ -52,10 +52,11 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
 //    
 //    //nuevoUsuario(): registra al usuario nuevo que se registra y valida que cumpla con las condiciones
     @Transactional
-    public Usuario nuevoUsuario(String nombre, String password, String password2, String apodo, String email, Genero genero, Localidad localidad) throws Errores_servicio {
-        validarDatosCompletos(nombre, password, password2, email, apodo, genero, localidad);
+    public Usuario nuevoUsuario(String nombre, String apellido, String password, String password2, String apodo, String email, Genero genero, Localidad localidad) throws Errores_servicio {
+        validarDatosCompletos(nombre, apellido, password, password2, email, apodo, genero, localidad);
         Usuario usuario = new Usuario();
         usuario.setApodo(apodo);
+        usuario.setApellido(apellido);
         usuario.setEmail(email);
         usuario.setGenero(genero);
         usuario.setLocalidad(localidad);
@@ -93,8 +94,8 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
 //    }
     // MÉTODO QUE YO CREE POR MODIFICACIONES Q EN MI OPINIÓN IBAN (todo tiene un porque)
     @Transactional // ver tema del encriptado de la contra, en qué me afecta
-    public Usuario cambiarDatosUsuario(String id, String nombre, String passAct, String passNew, String passNew2, String apodo, String email, Genero genero, Localidad localidad) throws Errores_servicio {
-        validarDatosCompletos(nombre, passNew, passNew2, email, apodo, genero, localidad);
+    public Usuario cambiarDatosUsuario(String id, String nombre,String apellido, String passAct, String passNew, String passNew2, String apodo, String email, Genero genero, Localidad localidad) throws Errores_servicio {
+        validarDatosCompletos(nombre,apellido, passNew, passNew2, email, apodo, genero, localidad);
         Usuario usuario = uR.buscarPorId(id);
         if (passAct == null) {
             throw new Errores_servicio("Debe ingresar su contraseña actual.");
@@ -175,11 +176,13 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
 //        }
 //    }
     // verifica que todos los campos contengan la información correspondiente
-    public void validarDatosCompletos(String nombre, String password, String password2, String email, String apodo, Genero genero, Localidad localidad) throws Errores_servicio {
+    public void validarDatosCompletos(String nombre, String apellido, String password, String password2, String email, String apodo, Genero genero, Localidad localidad) throws Errores_servicio {
         if (nombre == null || nombre.isEmpty()) {
-            throw new Errores_servicio("El nombre de usuario no puede estar vacío.");
+            throw new Errores_servicio("El nombre no puede estar vacío.");
         }
-        validarNombreUsuario(nombre);
+        if (apellido == null || apellido.isEmpty()) {
+            throw new Errores_servicio("El apellido no puede estar vacío.");
+        }
         if (password == null || password2 == null || password.isEmpty() || password2.isEmpty()) {
             throw new Errores_servicio("La contraseña no puede estar vacía.");
         }
@@ -190,8 +193,9 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
             throw new Errores_servicio("Las contraseñas no coinciden.");
         }
         if (apodo == null || apodo.isEmpty()) {
-            throw new Errores_servicio("El apodo no puede estar vacío.");
+            throw new Errores_servicio("El nombre de usuario no puede estar vacío.");
         }
+        validarNombreUsuario(apodo);
         if (email == null || email.isEmpty()) {
             throw new Errores_servicio("El email no puede estar vacío.");
         }
@@ -207,7 +211,7 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
     private void validarNombreUsuario(String nombre) throws Errores_servicio {
         List<Usuario> usuarios = uR.findAll();
         for (Usuario usuario : usuarios) {
-            if (usuario.getNombre().equals(nombre)) {
+            if (usuario.getApodo().equals(nombre)) {
                 throw new Errores_servicio("Ya se encuentra registrado un usuario con ese nombre. Inténtelo de nuevo o recupere su contraseña.");
 //              **El error es demasiado extenso
 //                throw new Errores_servicio("Ya se encuentra registrado un usuario con ese nombre de usuario\tPor favor, ingrese otro nombre de usuario.\nEn caso de que sea suyo dicho usuario y no recuerde la contraseña del mismo, proceda a intentar recuperarla");

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import egg.Radishy.Servicios.MailService;
 
 /**
  *
@@ -28,6 +29,9 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
     @Autowired // uS ---> servicio del usuario
     private Usuario_servicio uS;
 
+    @Autowired // uS ---> servicio del usuario
+    private MailService mS;
+
     @Autowired
     private CultivoDeUsuario_servicio cuS;
 
@@ -39,28 +43,30 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
 
     @GetMapping("/registrar")
     String registrarUsuario(ModelMap modelo) {
-        modelo.put("genero", Genero.values());
-        modelo.put("localidad", Localidad.values());
+        modelo.put("generos", Genero.values());
+        modelo.put("localidades", Localidad.values());
         return "nuevoUsuario";
     }
 
     @PostMapping("/registro")
 //    **En el HTML, no está la doble contraseña.
-    public String guardarRegistro(ModelMap modelo, @RequestParam String nombre, @RequestParam String pass, @RequestParam String pass2, @RequestParam String email, @RequestParam String apodo, @RequestParam Genero genero, @RequestParam Localidad localidad) {
+    public String guardarRegistro(ModelMap modelo, @RequestParam String nombre,@RequestParam String apellido, @RequestParam String password, @RequestParam String password2, @RequestParam String email, @RequestParam String apodo, @RequestParam Genero genero, @RequestParam Localidad localidad) {
 
         try {
-            uS.nuevoUsuario(nombre, pass, pass2, email, apodo, genero, localidad);
+            uS.nuevoUsuario(nombre, apellido , password, password2,apodo, email, genero, localidad);
+            mS.enviarMail(email, "Registro", "Confimarcion de usuario");
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
+            modelo.put("apellido", apellido);
             modelo.put("email", email);
             modelo.put("apodo", apodo);
-            modelo.put("genero", genero);
-            modelo.put("localidad", localidad);
-
+            modelo.put("localidades", Localidad.values());
+            modelo.put("generos", Genero.values());
             Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "nuevousuario";
         }
-        return "redirect:/usuario";
+        return "redirect:/login";
     }
 
 //    @GetMapping("/modificar/{id}")
@@ -82,9 +88,9 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
     }
 
     @PostMapping("modificacion/{id}")
-    public String guardarModificacion(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, @RequestParam String passActual, @RequestParam String passNew, @RequestParam String passNew2, @RequestParam String apodo, @RequestParam String email, @RequestParam Genero genero, @RequestParam Localidad localidad) {
+    public String guardarModificacion(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String passActual, @RequestParam String passNew, @RequestParam String passNew2, @RequestParam String apodo, @RequestParam String email, @RequestParam Genero genero, @RequestParam Localidad localidad) {
         try {
-            uS.cambiarDatosUsuario(id, nombre, passActual, passNew, passNew2, apodo, email, genero, localidad); // hay que agregar la passwordNueva2
+            uS.cambiarDatosUsuario(id, nombre,apellido, passActual, passNew, passNew2, apodo, email, genero, localidad); // hay que agregar la passwordNueva2
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
