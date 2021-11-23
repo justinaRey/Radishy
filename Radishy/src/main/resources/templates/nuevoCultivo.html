@@ -55,75 +55,79 @@
        </div>
     <div class="segundoFondo">
         <form th:action="@{/cultivos/guardarCultivo}" method="POST" class="col-6 mx-auto">
-        <br />
-        <h1>Crear nuevo cultivo</h1>
-        <br>
-        <br />
-        <div class="mb-3" style="padding-left: 25%; padding-right: 25%">
-          <input th:value="${nombre}" name="nombre" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre"/>
-          
-          <input th:value="${metodo}" name="metodo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Método"/>
-  
-          <br />
-          <br />
-          <input
-            th:value="${profSiembraCM}" name="profSiembraCM"
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Profundida de siembra en cm"
-          />
-          <br />
-          <br />
-          <input
-              th:value="${tiempoGerminar}" name="tiempoGerminar"
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tiempo de germinar (dias)"
-          />
-          <br>
-          <br>
-          <input
-              th:value="${tiempoTransplantar}" name="tiempoTransplantar"
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tiempo de transplantar (dias)"
-          />
-          <br>
-          <br>
-          <input
-              th:value="${tiempoCosechar}" name="tiempoCosechar"
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tiempo de cosecha (dias)"
-          />
-          <label for="inputState" class="form-label">Inicio</label>
-            <select id="inputState" class="form-select" name="iniSiembra">
-              <option th:each="iniSiembra: ${epocas}" th:value="${iniSiembra}" th:text="${iniSiembra}" placeholder="Seleccione mes de inicio de siembra"></option>
-            </select>
-          <br>
-          <label for="inputState" class="form-label">Fin</label>
-            <select id="inputState" class="form-select" name="finSiembra">
-              <option th:each="finSiembra: ${epocas}" th:value="${finSiembra}" th:text="${finSiembra}" placeholder="Seleccione mes de fin de siembra"></option>
-            </select>
-          <br>
-<!--          <h5 style="text-align: initial; font-size: 1em">Epoca de siembra</h5>
-          
-          <input class="fechis" type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
-          <script type="text/javascript">
-            $(function () {
-              $('input[name="daterange"]').daterangepicker();
-            });
-          </script>-->
-          <br />
-          <br />
-          
-          <button href="#" class="boxx">Crear cultivo</button>
-        </div>
-    </form>
+            <br />
+            <h1>Crear nuevo cultivo</h1>
+            <br>
+            <br />
+            <div class="mb-3" style="padding-left: 25%; padding-right: 25%">
+              <input th:value="${nombre}" name="nombre" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre"/>
+
+              <input th:value="${metodo}" name="metodo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Método"/>
+
+              <br />
+              <br />
+              <input
+                th:value="${profSiembraCM}" name="profSiembraCM"
+                type="number"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Profundida de siembra en cm"
+              />
+              <br />
+              <br />
+              <input
+                  th:value="${tiempoGerminar}" name="tiempoGerminar"
+                type="number"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Tiempo de germinar (dias)"
+              />
+              <br>
+              <br>
+              <input
+                  th:value="${tiempoTransplantar}" name="tiempoTransplantar"
+                type="number"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Tiempo de transplantar (dias)"
+              />
+              <br>
+              <br>
+              <input
+                  th:value="${tiempoCosechar}" name="tiempoCosechar"
+                type="number"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Tiempo de cosecha (dias)"
+              />
+              <h5 style="text-align: center; font-size: 1em">Epoca de siembra</h5>
+                <div style="text-align: left">
+                <label style="text-align: left" for="inputState" class="form-label">Inicio</label>
+                <select id="inputState" class="form-select" name="iniSiembra">
+                    <option th:each="iniSiembra: ${epocas}" th:value="${iniSiembra}" th:text="${iniSiembra}" placeholder="Inicio de siembra">
+                    e
+                    </option>
+                </select>
+                <br>
+                <label for="inputState" class="form-label">Fin</label>
+                <select id="inputState" class="form-select" name="finSiembra">
+                    <option th:each="finSiembra: ${epocas}" th:value="${finSiembra}" th:text="${finSiembra}" placeholder="Fin de siembra">
+                        e
+                    </option>
+                </select>
+    <!--          <label for="inputState" class="form-label">Inicio</label>
+                <select id="inputState" class="form-select" name="iniSiembra">
+                  <option th:each="iniSiembra: ${epocas}" th:value="${iniSiembra}" th:text="${iniSiembra}" placeholder="Seleccione mes de inicio de siembra"></option>
+                </select>
+              <br>
+              <label for="inputState" class="form-label">Fin</label>
+                <select id="inputState" class="form-select" name="finSiembra">
+                  <option th:each="finSiembra: ${epocas}" th:value="${finSiembra}" th:text="${finSiembra}" placeholder="Seleccione mes de fin de siembra"></option>
+                </select>-->
+              <br />
+              <button type="submit" class="boxx">Crear cultivo</button>
+            </div>
+        </form>
       </div>
       <!---->
 </body>

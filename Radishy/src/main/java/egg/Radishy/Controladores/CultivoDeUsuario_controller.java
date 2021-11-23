@@ -113,7 +113,7 @@ public class CultivoDeUsuario_controller {
     
     /*    controlador para eliminar un cultivo del listado de los cultivos    */
     
-    @GetMapping("/sesion/iniciada/mis-cultivos/eliminar-cultivo")
+    @GetMapping("/iniciada/mis-cultivos/eliminar-cultivo")
     public String eliminarCultivo(ModelMap modelo, @RequestParam String idSesIn){
         try {
             servicio.eliminarMiCultivo(idSesIn);
