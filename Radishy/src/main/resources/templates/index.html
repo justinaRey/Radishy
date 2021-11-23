@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
 
-<head th:insert="/Fragments/head :: head">
-
+<head>
+  <div th:insert="/Fragments/head :: head">
+  </div>
   <!--CSS-->
-  <link rel="stylesheet" href="/CSS/style.css">
-
+  <link rel="stylesheet" href="../CSS/style.css">
 </head>
 
 <body>
+    <nav th:replace="/Fragments/navbar :: navbar"></nav>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(0, 187, 178);">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -49,11 +50,9 @@
       </div>
     </div>
   </nav>
-
-
   <main class="container">
     <img src="../IMG/Main/Imagen-Principal.png" alt="Logo" id="main-Principal-IMG">
-    
+
     <!--Zanahoria-->
     <article class="zanahoria">
 
@@ -373,7 +372,7 @@
 
 
   </main>
-
+  
   <footer th:replace="/Fragments/footer :: footer"></footer>
 
 
