@@ -125,6 +125,12 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
         usuario.setLocalidad(localidad);
         return uR.save(usuario);
     }
+        @Transactional
+        public Usuario cambiarDatosUsuarioSinId(String nombre, String apellido, String passNew, String passNew2, String apodo, String email) throws Errores_servicio {
+        Usuario usuario = uR.findByEnSesion();
+        usuario = validarDatosCompletosSinId(nombre, apellido, passNew, passNew2, email, apodo, usuario);
+        return uR.save(usuario);
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     //////////////////// Métodos para 'eliminar' un usuario/////////////////////
@@ -191,9 +197,9 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
         if (password == null || password2 == null || password.isEmpty() || password2.isEmpty()) {
             throw new Errores_servicio("La contraseña no puede estar vacía.");
         }
-//        if (password.length() < 6){
-//            throw new Errores_servicio("La contraseña debe tener al menos 6 caracteres");
-//        } **Si se agrega esta condición, hay que informársela al usuario antes de que se registre para que no salte un error.
+        if (password.length() < 6){
+            throw new Errores_servicio("La contraseña debe tener al menos 6 caracteres");
+        } //**Si se agrega esta condición, hay que informársela al usuario antes de que se registre para que no salte un error.
         if (!password.equals(password2)) {
             throw new Errores_servicio("Las contraseñas no coinciden.");
         }
@@ -210,6 +216,36 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
         if (localidad == null) {
             throw new Errores_servicio("No ha completado su localidad.");
         }
+    }
+
+        public Usuario validarDatosCompletosSinId(String nombre, String apellido, String password, String password2, String email, String apodo, Usuario u) throws Errores_servicio {
+        if (nombre != null && !nombre.isEmpty()) {
+            u.setNombre(nombre);
+        }
+        if (apellido != null && !apellido.isEmpty()) {
+            u.setApellido(apellido);
+        }
+        if (password != null && password2 != null && !password.isEmpty()) {
+            if (password.length() < 6){
+                throw new Errores_servicio("La contraseña debe tener al menos 6 caracteres");
+            }
+            if (password.equals(password2)) {
+                u.setPassword(encoder.encode(password));
+            }else{
+                throw new Errores_servicio("Las contraseñas no coinciden");
+            }
+            
+        }
+         //**Si se agrega esta condición, hay que informársela al usuario antes de que se registre para que no salte un error.
+        
+        if (apodo != null && !apodo.isEmpty()) {
+            validarNombreUsuario(apodo);
+            u.setApodo(apodo);
+        }
+        if (email != null && !email.isEmpty()) {
+            u.setEmail(email);
+        }
+        return u;
     }
 
     // verifica que el nombre de usuario no se encuentre con otro usuario ya

@@ -96,8 +96,7 @@
 
         <div class="segundoFondo" style="padding-bottom: 37%">
             <h1 class="titulo">Los cultivos disponibles</h1>
-
-            <a th:each=" p,iterator : ${cultivos}">
+                <a th:each=" p,iterator : ${cultivos}">
                 <button class="accordion"><a th:text="${p.nombre}"></a></button>
                 <div class="panel">
                     <table>
@@ -109,32 +108,37 @@
 
                             <tr>
                                 <td class="atributos">Inicio época de siembra:</td>
-                                <!--                                <td th:text="${p.cultivo.nombre}"></td>-->
+                                <td th:text="${p.inicioEpocadeSiembra}"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="atributos">Profundida de siembra:</td>
+                                <td th:text="${p.profundidadSiembraCM}"></td> 
                             </tr>
 
                             <tr>
                                 <td class="atributos">Fin época de siembra:</td>
-                                <!--          <td th:text="${p.cultivo.nombre}"></td>  -->
+                                <td th:text="${p.finEpocaSiembra}"></td> 
                             </tr>
 
                             <tr>
                                 <td class="atributos">Método</td>
-                                <!--          <td th:text="${p.cultivo.nombre}"></td>  -->
+                                <td th:text="${p.metodo}"></td>
                             </tr>
 
                             <tr>
                                 <td class="atributos">Tiempo de germinar:</td>
-                                <!--          <td th:text="${p.cultivo.nombre}"></td>  -->
+                                <td th:text="${p.tiempoGerminar}"></td>  
                             </tr>
 
                             <tr>
                                 <td class="atributos">Tiempo hasta el transplante:</td>
-                                <!--          <td th:text="${p.cultivo.nombre}"></td>  -->
+                                <td th:text="${p.tiempoTransplantar}"></td> 
                             </tr>
 
                             <tr>
                                 <td class="atributos">Tiempo para la cosecha:</td>
-                                <!--          <td th:text="${p.cultivo.nombre}"></td>  -->
+                                <td th:text="${p.tiempoCosechar}"></td> 
                             </tr>
                         </tbody>
                     </table>

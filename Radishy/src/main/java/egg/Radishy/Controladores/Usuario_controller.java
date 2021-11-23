@@ -83,25 +83,25 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
 //        return "";
 //    }
     @GetMapping("/modificar")
-    public String modificarUsuario(ModelMap modelo, @PathVariable String id) {
+    public String modificarUsuario(ModelMap modelo) {
         return "modificarusuario";
     }
 
-    @PostMapping("modificacion/{id}")
-    public String guardarModificacion(ModelMap modelo, @PathVariable String id, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String passActual, @RequestParam String passNew, @RequestParam String passNew2, @RequestParam String apodo, @RequestParam String email, @RequestParam Genero genero, @RequestParam Localidad localidad) {
+    @PostMapping("modificacion")
+    public String guardarModificacion(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String password2, @RequestParam String password3, @RequestParam String apodo, @RequestParam String email) {
         try {
-            uS.cambiarDatosUsuario(id, nombre,apellido, passActual, passNew, passNew2, apodo, email, genero, localidad); // hay que agregar la passwordNueva2
+            uS.cambiarDatosUsuarioSinId(nombre,apellido, password2, password3, apodo, email); // hay que agregar la passwordNueva2
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
             modelo.put("apodo", apodo);
             modelo.put("email", email);
-            modelo.put("genero", genero);
-            modelo.put("localidad", localidad);
+            modelo.put("apellido", apellido);
 
             Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "modificarusuario";
         }
-        return "redirect:/usuario";
+        return "index";
     }
 
 //  Hacer un GetMapping si quieren mostrar los datos del usuario antes de eliminarlo. 
@@ -121,7 +121,7 @@ public class Usuario_controller { // falta agregarle lo q pasaría si se quiere 
 //            modelo.put("error", ex.getMessage());
 //            Logger.getLogger(Usuario_controller.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        return "redirect:/";
+        return "redirect:/?logout";
     }
 
     @PostMapping("recuperarpassword")

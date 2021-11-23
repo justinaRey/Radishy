@@ -106,7 +106,6 @@ public class CultivoDeUsuario_controller {
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(CultivoDeUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
-            return "redirect:/sesion/iniciar"; // usuario.html si no va redirect
         }
         return "misCultivos";
     }
