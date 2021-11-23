@@ -1,197 +1,205 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear un nuevo cultivo</title>
-    <link rel="shortcut icon" href="../Img/radishy.png" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script 
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-      crossorigin="anonymous"
-    ></script>
-    <link href="../Css/cultivo.css" rel="stylesheet" type="text/css" />
-    <link href="../Css/aggCultivo.css" rel="stylesheet" type="text/css" />
-    <script
-      type="text/javascript"
-      src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-    ></script>
-    
-
-    <!-- Include Date Range Picker -->
-    <script
-      type="text/javascript"
-      src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"
-    />
-</head>
-<body class="boddy">
-    <nav
-      class="navbar navbar-expand-lg navbar-light"
-      style="background-color: rgb(0, 187, 178)"
-    >
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <a class="navbar-brand" href="/">
-            <img src="../Img/radishy.png" alt="" width="44" height="38" />
-          </a>
-
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle active"
-                style="text-align: center; font-size: 20px; margin-left: 4%"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Mis cultivos
-              </a>
-              <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" th:href="@{/cultivos/listarCultivos}">Ver mis cultivos</a></li>
-                <li><a class="dropdown-item" th:href="@{/sesion/iniciada/agregar-mis-cultivos}">Cargar un cultivo</a></li>
-                <li>
-                  <a class="dropdown-item" th:href="@{/cultivos/agregarCultivo}">Crear un nuevo cultivo</a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="#"
-                style="text-align: center; font-size: 20px"
-                >Contacto</a
-              >
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="#"
-                style="text-align: center; font-size: 20px"
-                >Sobre nosotros</a
-              >
-            </li>
-          </ul>
-          <a class="navbar-brand" href="/">
-            <img
-              src="../Img/2561496_user_icon.png"
-              alt=""
-              width="40"
-              height="40"
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crear un nuevo cultivo</title>
+        <link rel="shortcut icon" href="../Img/radishy.png" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
             />
-          </a>
-        </div>
-      </div>
-    </nav>
+        <script 
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"
+        ></script>
+        <link href="../Css/cultivo.css" rel="stylesheet" type="text/css" />
+        <link href="../Css/aggCultivo.css" rel="stylesheet" type="text/css" />
+        <script
+            type="text/javascript"
+            src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+        ></script>
 
-    <div class="segundoFondo">
-        <br />
-        <h1>Crear nuevo cultivo</h1>
-        <br>
-        <br />
-        <div class="mb-3" style="padding-left: 25%; padding-right: 25%">
-          <input
-            type="nombre"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Nombre"
-          />
-  
-          <br />
-          <br />
-          <input
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Profundida de siembra en cm"
-          />
-          <br />
-          <br />
-          <input
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tiempo de germinar (dias)"
-          />
-          <br>
-          <br>
-          <input
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tiempo de transplantar (dias)"
-          />
-          <br>
-          <br>
-          <input
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tiempo de cosecha (dias)"
-          />
-          <br>
-          <h5 style="text-align: initial; font-size: 1em">Epoca de siembra</h5>
-          <input class="fechis" type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
-          <script type="text/javascript">
-            $(function () {
-              $('input[name="daterange"]').daterangepicker();
-            });
-          </script>
-          <br />
-          <br />
-          
-          <button href="#" class="boxx">Crear cultivo</button>
-        </div>
-      </div>
-      <!---->
-</body>
 
-<footer th:fragment="footer">
-    <div class="foot-1">
-      <h1 class="typography">Redes Sociales</h1>
-      <div class="iconos">
-        <a href=""
-          ><img src="../Img/facebook.png" alt="Icono Facebook" id="ico-face"
-        /></a>
-        <a href=""
-          ><img src="../Img/twitter.png" alt="Icono Twitter" id="ico-twit"
-        /></a>
-        <a href=""
-          ><img src="../Img/instagram.png" alt="Icono Instagram" id="ico-inst"
-        /></a>
-        <a href=""
-          ><img src="../Img/email.png" alt="Icono Gmail" id="ico-gmail"
-        /></a>
-      </div>
-    </div>
-    <h2 class="typography">
-      2021 Copyright Radishy - Todos los derechos reservados.
-    </h2>
-  </footer>
+        <!-- Include Date Range Picker -->
+        <script
+            type="text/javascript"
+            src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"
+        ></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"
+            />
+    </head>
+    <body class="boddy">
+        <nav
+            class="navbar navbar-expand-lg navbar-light"
+            style="background-color: rgb(0, 187, 178)"
+            >
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a class="navbar-brand" href="/">
+                        <img src="../Img/radishy.png" alt="" width="44" height="38" />
+                    </a>
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle active"
+                                style="text-align: center; font-size: 20px; margin-left: 4%"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                >
+                                Mis cultivos
+                            </a>
+                            <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" th:href="@{/cultivos/listarCultivos}">Ver mis cultivos</a></li>
+                                <li><a class="dropdown-item" th:href="@{/sesion/iniciada/agregar-mis-cultivos}">Cargar un cultivo</a></li>
+                                <li>
+                                    <a class="dropdown-item" th:href="@{/cultivos/agregarCultivo}">Crear un nuevo cultivo</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="#"
+                                style="text-align: center; font-size: 20px"
+                                >Contacto</a
+                            >
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="#"
+                                style="text-align: center; font-size: 20px"
+                                >Sobre nosotros</a
+                            >
+                        </li>
+                    </ul>
+                    <a class="navbar-brand" href="/">
+                        <img
+                            src="../Img/2561496_user_icon.png"
+                            alt=""
+                            width="40"
+                            height="40"
+                            />
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="segundoFondo">
+            <br />
+            <h1>Crear nuevo cultivo</h1>
+            <br>
+            <br />
+            <div class="mb-3" style="padding-left: 25%; padding-right: 25%">
+                <input
+                    type="nombre"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Nombre"
+                    />
+
+                <br />
+                <br />
+                <input
+                    type="number"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Profundida de siembra en cm"
+                    />
+                <br />
+                <br />
+                <input
+                    type="number"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Tiempo de germinar (dias)"
+                    />
+                <br>
+                <br>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Tiempo de transplantar (dias)"
+                    />
+                <br>
+                <br>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Tiempo de cosecha (dias)"
+                    />
+                <br>
+                <h5 style="text-align: center; font-size: 1em">Epoca de siembra</h5>
+                <div style="text-align: left">
+                <label style="text-align: left" for="inputState" class="form-label">Inicio</label>
+                <select id="inputState" class="form-select" name="iniSiembra">
+                    <option th:each="iniSiembra: ${epocas}" th:value="${iniSiembra}" th:text="${iniSiembra}" placeholder="Inicio de siembra">
+                    e
+                    </option>
+                </select>
+                <br>
+                <label for="inputState" class="form-label">Fin</label>
+                <select id="inputState" class="form-select" name="finSiembra">
+                    <option th:each="finSiembra: ${epocas}" th:value="${finSiembra}" th:text="${finSiembra}" placeholder="Fin de siembra">
+                        e
+                    </option>
+                </select>
+                </div>
+                    <br>
+
+                    <button href="#" class="boxx">Crear cultivo</button>
+            </div>
+        </div>
+        <!---->
+    </body>
+
+    <footer th:fragment="footer">
+        <div class="foot-1">
+            <h1 class="typography">Redes Sociales</h1>
+            <div class="iconos">
+                <a href=""
+                   ><img src="../Img/facebook.png" alt="Icono Facebook" id="ico-face"
+                      /></a>
+                <a href=""
+                   ><img src="../Img/twitter.png" alt="Icono Twitter" id="ico-twit"
+                      /></a>
+                <a href=""
+                   ><img src="../Img/instagram.png" alt="Icono Instagram" id="ico-inst"
+                      /></a>
+                <a href=""
+                   ><img src="../Img/email.png" alt="Icono Gmail" id="ico-gmail"
+                      /></a>
+            </div>
+        </div>
+        <h2 class="typography">
+            2021 Copyright Radishy - Todos los derechos reservados.
+        </h2>
+    </footer>
 </html>

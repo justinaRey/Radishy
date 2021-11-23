@@ -1,7 +1,43 @@
 .calendar{
     background-color: rgba(0, 241, 229, 0.171);
-    margin-right: 70%;
+    margin-right: 50%;
     margin-bottom: 0%;
+    padding-bottom: 35%;
+    position: inherit;
+    color: white;
+    text-align: center;
+}
+
+.cultivoList{
+    text-align: left;
+    position: absolute;
+    color: white;
+    width: 50%;
+}
+
+.atributos{
+    text-align: left;
+}
+
+.elDialogo{
+    align-content: center;
+    position: absolute;
+    margin-right: 17%;
+    width: 25%;
+}
+
+.seleccionar{
+    margin-left: 54%;
+    margin-right: 17%;
+    margin-top: 10%;
+    width: 25%;
+    color: white;
+    position: fixed;
+}
+
+.titulo{
+    color: white;
+    text-align: center;
 }
 
 .imagen{
@@ -67,7 +103,7 @@ h1.typography{
     width: 3em;
     height: 3em;
     margin-right: 5em;
-    margin-bottom: em;
+    margin-bottom: 3em;
 }
 
 #ico-gmail{

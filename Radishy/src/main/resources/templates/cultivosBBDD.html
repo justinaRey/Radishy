@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mis cultivos</title>
+        <title>Cultivos disponibles</title>
         <link rel="shortcut icon" href="/IMG/radishy.png" />
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -76,6 +76,9 @@
             </div>
         </nav>
 
+
+
+
         <script type="text/javascript">
             function ocultarTexto() {
                 document.getElementById('texto').style.display = 'none';
@@ -84,20 +87,24 @@
             function mostrarTexto() {
                 document.getElementById('texto').style.display = 'block';
             }
+
+            function probando() {
+                document.getElementById('rabanito').style.display = 'block';
+            }
         </script>
 
 
         <div class="segundoFondo" style="padding-bottom: 37%">
-            <h1 class="titulo">Sus cultivos</h1>
+            <h1 class="titulo">Los cultivos disponibles</h1>
 
-            <a th:each=" p,iterator : ${cultivosSesIn}">
-                <button class="accordion"><a th:text="${p.cultivo.nombre}"></a></button>
+            <a th:each=" p,iterator : ${cultivos}">
+                <button class="accordion"><a th:text="${p.nombre}"></a></button>
                 <div class="panel">
                     <table>
                         <tbody>
                             <tr>
                                 <td class="atributos">Nombre:</td>
-                                <td th:text="${p.cultivo.nombre}"></td>
+                                <td th:text="${p.nombre}"></td>
                             </tr>
 
                             <tr>
@@ -151,7 +158,6 @@
                 }
             </script>
         </div>
-
 
 
 
