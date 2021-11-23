@@ -17,13 +17,18 @@ public class Main_controller {
         return "index";
     }
 
-    @GetMapping("nuestro-contacto")
+    @GetMapping("/nuestro-contacto")
     public String contacte (){
-        return "contacto";
+        return "redirect:contacto";
     }
     
-    @GetMapping("info/quienes-somos-?")
-    public String infoNuestra(){
+    @GetMapping("/info")
+    public String info(){
         return "info";
+    }
+    
+    @GetMapping("/receta")
+    public String receta(){
+        return "receta";
     }
 }
