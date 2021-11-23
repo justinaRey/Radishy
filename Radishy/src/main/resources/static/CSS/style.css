@@ -14,7 +14,7 @@ main{
 
 /* -Article- */
 article{
-    padding-top: 20%;
+    padding-top: 10%;
 }
 
 .Titulo-principal{
@@ -50,12 +50,22 @@ article{
     margin-right: 10%;
 }
 
+.contacto{
+    padding-bottom: 20%;
+}
+
+
+
+
 /* Partners */
 /* Egg */
+/*
 article.partners{
     text-align: center;
     margin-bottom: 17%;
+
 }
+
 
 #partner-lona-img{
     position: absolute;
@@ -83,6 +93,6 @@ article.partners{
     font-weight: 800;
     position: relative;
 }
-
+*/
 
 

@@ -16,7 +16,7 @@ main{
 
 /* -Article- */
 article{
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 /* Parte principal */
@@ -198,36 +198,3 @@ hr.linea{
     margin-left: 23%;
 }
 
-/* Partners */
-/* Egg */
-article.partners{
-    text-align: center;
-    margin-bottom: 15%;
-}
-
-#partner-lona-img{
-    position: absolute;
-    background-image: black;
-    color: #181E23;
-    display: flex;
-    align-items: center;
-}
-
-.partner-egg-titulo{
-    font-size: 4em;
-    font-weight: 900;
-    color: #FFC170;
-    position: relative;
-    text-align: center;
-    padding-top: 5%;
-}
-
-#partner-huevo-img{
-    margin-top: 2%;
-    position: relative;
-}
-
-.partner-egg-subtitulo{
-    font-weight: 800;
-    position: relative;
-}
