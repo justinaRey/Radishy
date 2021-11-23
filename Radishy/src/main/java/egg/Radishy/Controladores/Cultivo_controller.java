@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.ModelMap;
 
 @Controller
 @RequestMapping("/cultivos")
@@ -22,17 +23,16 @@ public class Cultivo_controller {
         model.addAttribute("cultivos",cS.listarCultivos());
         return "misCultivos"; // Nombre del html que muestra la tabla de info de los cultivos
     }
-
-    
     
     @GetMapping("/agregarCultivo")
-    public String agregarCultivo(){
+    public String agregarCultivo(ModelMap modelo){
+        modelo.put("epocas", Mes.values());
         return "nuevoCultivo";
     }
     
     @PostMapping("/guardarCultivo")
-    public String crearCultivo(@RequestParam String nombre, @RequestParam String metodo, @RequestParam Integer profSiembraCM, @RequestParam Integer tiempoGerminarMin, @RequestParam Integer tiempoGerminarMax, @RequestParam Integer tiempoTransplantarMin, @RequestParam Integer tiempoTransplantarMax, @RequestParam Integer tiempoCosecharMin, @RequestParam Integer tiempoCosecharMax, @RequestParam Mes iniSiembra, @RequestParam Mes finSiembra) throws Errores_servicio{ // Parámetros, agregar cuando esté el form hecho
-        cS.guardarCultivo(nombre, iniSiembra, finSiembra, metodo, profSiembraCM, tiempoGerminarMin, tiempoGerminarMax, tiempoTransplantarMin, tiempoTransplantarMax, tiempoCosecharMin, tiempoCosecharMax);
+    public String crearCultivo(@RequestParam String nombre, @RequestParam String metodo, @RequestParam Integer profSiembraCM, @RequestParam Integer tiempoGerminar,  @RequestParam Integer tiempoTransplantar, @RequestParam Integer tiempoCosechar, @RequestParam Mes iniSiembra, @RequestParam Mes finSiembra) throws Errores_servicio{ // Parámetros, agregar cuando esté el form hecho
+        cS.guardarCultivo(nombre, iniSiembra, finSiembra, metodo, profSiembraCM, tiempoGerminar, tiempoTransplantar, tiempoCosechar);
         return "redirect:/cultivos/listarCultivos";
     }
     

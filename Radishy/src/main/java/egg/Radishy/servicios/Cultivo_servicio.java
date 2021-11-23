@@ -25,9 +25,9 @@ public class Cultivo_servicio { // OBS: modificar el validar s/los atributos act
     
     // Crea los cultivos que el usuario quiere agregar
     @Transactional
-    public Cultivo guardarCultivo(String nombre, Mes iniSiembra, Mes finSiembra, String metodo, Integer profSiembra, Integer tGerminarMin, Integer tGerminarMax, Integer tTransplantarMin, Integer tTransplantarMax, Integer tCosecharMin, Integer tCosecharMax) throws Errores_servicio{
-        //validarCultivo(nombre, iniSiembra, finSiembra, metodo, profSiembra, tGerminar, tTransplantar, tCosechar);
-        validarDatos(nombre, iniSiembra, finSiembra, metodo, profSiembra, tGerminarMin, tGerminarMax, tTransplantarMin, tTransplantarMax, tCosecharMin, tCosecharMax); // quizá se pueda obviar 
+    public Cultivo guardarCultivo(String nombre, Mes iniSiembra, Mes finSiembra, String metodo, Integer profSiembra, Integer tGerminar, Integer tTransplantar, Integer tCosechar) throws Errores_servicio{
+        validarCultivo(nombre, iniSiembra, finSiembra, metodo, profSiembra, tGerminar, tTransplantar, tCosechar);
+        //validarDatos(nombre, iniSiembra, finSiembra, metodo, profSiembra, tGerminarMin, tGerminarMax, tTransplantarMin, tTransplantarMax, tCosecharMin, tCosecharMax); // quizá se pueda obviar 
         Cultivo cultivo = new Cultivo();
         
         cultivo.setNombre(nombre);
@@ -35,15 +35,18 @@ public class Cultivo_servicio { // OBS: modificar el validar s/los atributos act
         cultivo.setFinEpocaSiembra(finSiembra);
         cultivo.setMetodo(metodo);
         cultivo.setProfundidadSiembraCM(profSiembra);
-        cultivo.setTiempoCosecharMax(tCosecharMax);
-        cultivo.setTiempoCosecharMin(tCosecharMin);
-        cultivo.setTiempoGerminarMax(tGerminarMax);
-        cultivo.setTiempoGerminarMin(tGerminarMin);
-        cultivo.setTiempoTransplantarMax(tTransplantarMax);
-        cultivo.setTiempoTransplantarMin(tTransplantarMin);
-        cultivo.setTiempoParaCosechar();
-        cultivo.setTiempoParaTransplantar();
-        cultivo.setTiempoParaGerminar();
+        cultivo.setTiempoCosechar(tCosechar);
+        cultivo.setTiempoTransplantar(tTransplantar);
+        cultivo.setTiempoGerminar(tGerminar);
+//        cultivo.setTiempoCosecharMax(tCosecharMax);
+//        cultivo.setTiempoCosecharMin(tCosecharMin);
+//        cultivo.setTiempoGerminarMax(tGerminarMax);
+//        cultivo.setTiempoGerminarMin(tGerminarMin);
+//        cultivo.setTiempoTransplantarMax(tTransplantarMax);
+//        cultivo.setTiempoTransplantarMin(tTransplantarMin);
+//        cultivo.setTiempoParaCosechar();
+//        cultivo.setTiempoParaTransplantar();
+//        cultivo.setTiempoParaGerminar();
         return cR.save(cultivo);
     }
     
@@ -87,117 +90,117 @@ public class Cultivo_servicio { // OBS: modificar el validar s/los atributos act
 //    }
     
     // guarda los datos ingresados para modificar los cultivos ---> ver el tema de que si no ingresó un min o max lo compare con el preexistente
-    public Cultivo modificarCultivo (String id, String nombre, Mes inSiemb, Mes finSiemb, String met, Integer tGerMin, Integer tGerMax, Integer tTransMin, Integer tTransMax, Integer tCosMin, Integer tCosMax, Integer profSiemb) throws Errores_servicio{
-        Optional<Cultivo> rta = cR.findById(id);
-        if (rta.isPresent()){
-            Cultivo cult = rta.get();
-            if (cult.getModificable()){
-                if (nombre != null){
-                    cult.setNombre(nombre);
-                }
-                if (inSiemb != null){
-                    cult.setInicioEpocadeSiembra(inSiemb);
-                }
-                if (finSiemb != null){
-                    cult.setFinEpocaSiembra(finSiemb);
-                }
-                if (met != null){
-                    cult.setMetodo(met);
-                }
-                if (tGerMax != null && tGerMin != null){
-                    if (tGerMax < tGerMin){
-                        cult.setTiempoGerminarMax(tGerMin);
-                        cult.setTiempoGerminarMin(tGerMax);
-                    } else {
-                        cult.setTiempoGerminarMax(tGerMax);
-                        cult.setTiempoGerminarMin(tGerMin);
-                    }
-                }
-                if (tGerMax != null && tGerMin == null){
-                    if (cult.getTiempoGerminarMin() < tGerMax){
-                        cult.setTiempoGerminarMax(tGerMax);
-                    } else {
-                        cult.setTiempoGerminarMax(cult.getTiempoGerminarMin());
-                        cult.setTiempoGerminarMin(tGerMax);
-                    }
-                }
-                if (tGerMin != null && tGerMax == null){
-                     if (cult.getTiempoGerminarMax() > tGerMin){
-                        cult.setTiempoGerminarMin(tGerMin);
-                    } else {
-                        cult.setTiempoGerminarMin(cult.getTiempoGerminarMax());
-                        cult.setTiempoGerminarMax(tGerMin);
-                    }
-                }
-                if (tGerMax != null && tGerMin == null){
-                     if (cult.getTiempoGerminarMin() < tGerMax){
-                        cult.setTiempoGerminarMax(tGerMax);
-                    } else {
-                        cult.setTiempoGerminarMax(cult.getTiempoCosecharMin());
-                        cult.setTiempoGerminarMin(tGerMin);
-                    }
-                }
-                if (tTransMax != null && tTransMin != null){
-                    if (tTransMax < tTransMin){
-                        cult.setTiempoTransplantarMax(tTransMin);
-                        cult.setTiempoTransplantarMin(tTransMax);
-                    } else {
-                        cult.setTiempoTransplantarMax(tTransMax);
-                        cult.setTiempoTransplantarMin(tTransMin);
-                    }
-                }
-                if (tTransMax != null && tTransMin == null){
-                    if (cult.getTiempoTransplantarMin() < tTransMax){
-                        cult.setTiempoTransplantarMax(tTransMax);
-                    } else { 
-                        cult.setTiempoTransplantarMax(cult.getTiempoTransplantarMin());
-                        cult.setTiempoTransplantarMin(tTransMax);
-                    }
-                }
-                if (tTransMin != null && tTransMax == null){
-                    if(cult.getTiempoTransplantarMax() > tTransMin){
-                        cult.setTiempoTransplantarMin(tTransMin);
-                    } else {
-                        cult.setTiempoTransplantarMin(cult.getTiempoTransplantarMax());
-                        cult.setTiempoTransplantarMax(tTransMin);
-                    }
-                }
-                if (tCosMax != null && tCosMin != null){
-                    if (tCosMax < tCosMin){
-                        cult.setTiempoCosecharMax(tCosMin);
-                        cult.setTiempoCosecharMin(tCosMax);
-                    } else {
-                        cult.setTiempoCosecharMax(tCosMax);
-                        cult.setTiempoCosecharMin(tCosMin);
-                    }
-                }
-                if (tCosMax != null && tCosMin == null){
-                    if (cult.getTiempoCosecharMin() < tTransMax){
-                        cult.setTiempoCosecharMax(tCosMax);
-                    } else { 
-                        cult.setTiempoCosecharMax(cult.getTiempoCosecharMin());
-                        cult.setTiempoCosecharMin(tCosMax);
-                    } 
-                }
-                if (tCosMin != null && tCosMax == null){
-                    if(cult.getTiempoCosecharMax() > tCosMin){
-                        cult.setTiempoCosecharMin(tCosMin);
-                    } else {
-                        cult.setTiempoCosecharMin(cult.getTiempoCosecharMax());
-                        cult.setTiempoCosecharMax(tCosMin);
-                    }
-                }
-                if (profSiemb != null) {
-                    cult.setProfundidadSiembraCM(profSiemb);
-                }
-                return cR.save(cult);
-            } else {
-                throw new Errores_servicio("Usted no tiene acceso al cultivo seleccionado para modificarlo");
-            }
-        } else {
-            throw new Errores_servicio("El cultivo ingresado no se encuentra cargado en nuestra base de datos, pruebe con otro");
-        }
-    }
+//    public Cultivo modificarCultivo (String id, String nombre, Mes inSiemb, Mes finSiemb, String met, Integer tGerMin, Integer tGerMax, Integer tTransMin, Integer tTransMax, Integer tCosMin, Integer tCosMax, Integer profSiemb) throws Errores_servicio{
+//        Optional<Cultivo> rta = cR.findById(id);
+//        if (rta.isPresent()){
+//            Cultivo cult = rta.get();
+//            if (cult.getModificable()){
+//                if (nombre != null){
+//                    cult.setNombre(nombre);
+//                }
+//                if (inSiemb != null){
+//                    cult.setInicioEpocadeSiembra(inSiemb);
+//                }
+//                if (finSiemb != null){
+//                    cult.setFinEpocaSiembra(finSiemb);
+//                }
+//                if (met != null){
+//                    cult.setMetodo(met);
+//                }
+//                if (tGerMax != null && tGerMin != null){
+//                    if (tGerMax < tGerMin){
+////                        cult.setTiempoGerminarMax(tGerMin);
+////                        cult.setTiempoGerminarMin(tGerMax);
+//                    } else {
+////                        cult.setTiempoGerminarMax(tGerMax);
+////                        cult.setTiempoGerminarMin(tGerMin);
+//                    }
+//                }
+//                if (tGerMax != null && tGerMin == null){
+//                    if (cult.getTiempoGerminarMin() < tGerMax){
+//                        cult.setTiempoGerminarMax(tGerMax);
+//                    } else {
+////                        cult.setTiempoGerminarMax(cult.getTiempoGerminarMin());
+////                        cult.setTiempoGerminarMin(tGerMax);
+//                    }
+//                }
+//                if (tGerMin != null && tGerMax == null){
+//                     if (cult.getTiempoGerminarMax() > tGerMin){
+//                        cult.setTiempoGerminarMin(tGerMin);
+//                    } else {
+//                        cult.setTiempoGerminarMin(cult.getTiempoGerminarMax());
+//                        cult.setTiempoGerminarMax(tGerMin);
+//                    }
+//                }
+//                if (tGerMax != null && tGerMin == null){
+//                     if (cult.getTiempoGerminarMin() < tGerMax){
+//                        cult.setTiempoGerminarMax(tGerMax);
+//                    } else {
+//                        cult.setTiempoGerminarMax(cult.getTiempoCosecharMin());
+//                        cult.setTiempoGerminarMin(tGerMin);
+//                    }
+//                }
+//                if (tTransMax != null && tTransMin != null){
+//                    if (tTransMax < tTransMin){
+//                        cult.setTiempoTransplantarMax(tTransMin);
+//                        cult.setTiempoTransplantarMin(tTransMax);
+//                    } else {
+//                        cult.setTiempoTransplantarMax(tTransMax);
+//                        cult.setTiempoTransplantarMin(tTransMin);
+//                    }
+//                }
+//                if (tTransMax != null && tTransMin == null){
+//                    if (cult.getTiempoTransplantarMin() < tTransMax){
+//                        cult.setTiempoTransplantarMax(tTransMax);
+//                    } else { 
+//                        cult.setTiempoTransplantarMax(cult.getTiempoTransplantarMin());
+//                        cult.setTiempoTransplantarMin(tTransMax);
+//                    }
+//                }
+//                if (tTransMin != null && tTransMax == null){
+//                    if(cult.getTiempoTransplantarMax() > tTransMin){
+//                        cult.setTiempoTransplantarMin(tTransMin);
+//                    } else {
+//                        cult.setTiempoTransplantarMin(cult.getTiempoTransplantarMax());
+//                        cult.setTiempoTransplantarMax(tTransMin);
+//                    }
+//                }
+//                if (tCosMax != null && tCosMin != null){
+//                    if (tCosMax < tCosMin){
+//                        cult.setTiempoCosecharMax(tCosMin);
+//                        cult.setTiempoCosecharMin(tCosMax);
+//                    } else {
+//                        cult.setTiempoCosecharMax(tCosMax);
+//                        cult.setTiempoCosecharMin(tCosMin);
+//                    }
+//                }
+//                if (tCosMax != null && tCosMin == null){
+//                    if (cult.getTiempoCosecharMin() < tTransMax){
+//                        cult.setTiempoCosecharMax(tCosMax);
+//                    } else { 
+//                        cult.setTiempoCosecharMax(cult.getTiempoCosecharMin());
+//                        cult.setTiempoCosecharMin(tCosMax);
+//                    } 
+//                }
+//                if (tCosMin != null && tCosMax == null){
+//                    if(cult.getTiempoCosecharMax() > tCosMin){
+//                        cult.setTiempoCosecharMin(tCosMin);
+//                    } else {
+//                        cult.setTiempoCosecharMin(cult.getTiempoCosecharMax());
+//                        cult.setTiempoCosecharMax(tCosMin);
+//                    }
+//                }
+//                if (profSiemb != null) {
+//                    cult.setProfundidadSiembraCM(profSiemb);
+//                }
+//                return cR.save(cult);
+//            } else {
+//                throw new Errores_servicio("Usted no tiene acceso al cultivo seleccionado para modificarlo");
+//            }
+//        } else {
+//            throw new Errores_servicio("El cultivo ingresado no se encuentra cargado en nuestra base de datos, pruebe con otro");
+//        }
+//    }
     
     ////////////////////////////////////////////////////////////////////////////
     ///////////////////////  Métodos para eliminar los cultivos ////////////////
@@ -210,19 +213,19 @@ public class Cultivo_servicio { // OBS: modificar el validar s/los atributos act
     }
     
     // mi método para eliminarlo
-    public void DarBajaCultivo(String id) throws Errores_servicio{
-        Optional<Cultivo> rta = cR.findById(id);
-        if (rta.isPresent()){
-            Cultivo cult = rta.get();
-            if (cult.getModificable()){
-                cR.delete(cult);
-            } else {
-                throw new Errores_servicio("No tiene el acceso requerido para eliminar dicho cultivo");
-            }
-        } else {
-            throw new Errores_servicio("No se ha encontrado al cultivo que quiere eliminar");
-        }
-    }
+//    public void DarBajaCultivo(String id) throws Errores_servicio{
+//        Optional<Cultivo> rta = cR.findById(id);
+//        if (rta.isPresent()){
+//            Cultivo cult = rta.get();
+//            if (cult.getModificable()){
+//                cR.delete(cult);
+//            } else {
+//                throw new Errores_servicio("No tiene el acceso requerido para eliminar dicho cultivo");
+//            }
+//        } else {
+//            throw new Errores_servicio("No se ha encontrado al cultivo que quiere eliminar");
+//        }
+//    }
     ////////////////////////////////////////////////////////////////////////////
     ///////////////////////////  validaciones de los datos /////////////////////
     ////////////////////////////////////////////////////////////////////////////
