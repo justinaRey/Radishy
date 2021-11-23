@@ -44,9 +44,9 @@ public class User_servicio implements UserDetailsService{
 //Recibe el nombre de usuario, busca el usuario en el repositorio(sistema de persistencia)
 //y lo transforma en un usuario de SPRING SECURITY
     @Override
-    public UserDetails loadUserByUsername(String nombre) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String apodo) throws UsernameNotFoundException {
         try {
-            Usuario usuario = usuarioServicio.findByNombreUsuario(nombre);
+            Usuario usuario = usuarioServicio.findByApodo(apodo);
             boolean enabled = true;
             boolean accountNonExipired = true;
             boolean credentialNonExpired = true;
@@ -58,7 +58,7 @@ public class User_servicio implements UserDetailsService{
             session.setAttribute("usuariosession", usuario);
             usuario.setEnSesion(!usuario.getEnSesion());
             usuarioServicio.save(usuario);
-            return new User(usuario.getNombre(), usuario.getPassword(), enabled, accountNonExipired, credentialNonExpired, accountNonLocked, authorities); // en video musetra solamente el get nombre y password, y desp los permisos)
+            return new User(usuario.getApodo(), usuario.getPassword(), enabled, accountNonExipired, credentialNonExpired, accountNonLocked, authorities); // en video musetra solamente el get nombre y password, y desp los permisos)
             
 //            return new User(nombre, usuario.getPassword(), losPermisosSerian); // lo que para mí debe devolver 
         } catch (Exception e) {

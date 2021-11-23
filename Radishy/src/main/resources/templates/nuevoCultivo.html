@@ -159,22 +159,22 @@
           />
           <label for="inputState" class="form-label">Inicio</label>
             <select id="inputState" class="form-select" name="iniSiembra">
-              <option th:each="iniSiembra: ${epocas}" th:value="${iniSiembra}" th:text="${iniSiembra}" placeholder="Seleccione su género"></option>
+              <option th:each="iniSiembra: ${epocas}" th:value="${iniSiembra}" th:text="${iniSiembra}" placeholder="Seleccione mes de inicio de siembra"></option>
             </select>
           <br>
           <label for="inputState" class="form-label">Fin</label>
             <select id="inputState" class="form-select" name="finSiembra">
-              <option th:each="finSiembra: ${epocas}" th:value="${finSiembra}" th:text="${finSiembra}" placeholder="Seleccione su género"></option>
+              <option th:each="finSiembra: ${epocas}" th:value="${finSiembra}" th:text="${finSiembra}" placeholder="Seleccione mes de fin de siembra"></option>
             </select>
           <br>
-          <h5 style="text-align: initial; font-size: 1em">Epoca de siembra</h5>
+<!--          <h5 style="text-align: initial; font-size: 1em">Epoca de siembra</h5>
           
           <input class="fechis" type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
           <script type="text/javascript">
             $(function () {
               $('input[name="daterange"]').daterangepicker();
             });
-          </script>
+          </script>-->
           <br />
           <br />
           

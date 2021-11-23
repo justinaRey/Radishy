@@ -246,6 +246,11 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
        Usuario usuario = uR.findByNombreUsuario(nombre);
         return usuario;
     }
+
+public Usuario findByApodo(String apodo){
+       Usuario usuario = uR.findByApodo(apodo);
+        return usuario;
+    }
     
     //Busca al usuario con el enSesion en true
     public Usuario findByEnSesion() {
@@ -255,6 +260,8 @@ public class Usuario_servicio { //OBS: ver modificarUsuario() para q si o sí de
     public int cantidadUsuariosNombre (String nombre){
         return uR.cantidadUsuariosNombre(nombre);
     }
+
+
     
     public Usuario save (Usuario usuario) {
         return uR.save(usuario);

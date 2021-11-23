@@ -38,12 +38,6 @@ public class Cultivo_servicio { // OBS: modificar el validar s/los atributos act
         cultivo.setTiempoCosechar(tCosechar);
         cultivo.setTiempoTransplantar(tTransplantar);
         cultivo.setTiempoGerminar(tGerminar);
-//        cultivo.setTiempoCosecharMax(tCosecharMax);
-//        cultivo.setTiempoCosecharMin(tCosecharMin);
-//        cultivo.setTiempoGerminarMax(tGerminarMax);
-//        cultivo.setTiempoGerminarMin(tGerminarMin);
-//        cultivo.setTiempoTransplantarMax(tTransplantarMax);
-//        cultivo.setTiempoTransplantarMin(tTransplantarMin);
 //        cultivo.setTiempoParaCosechar();
 //        cultivo.setTiempoParaTransplantar();
 //        cultivo.setTiempoParaGerminar();
@@ -273,7 +267,7 @@ public class Cultivo_servicio { // OBS: modificar el validar s/los atributos act
     }
     
     // validación de que todos los datos sean completado con el doble comando de los min y max en los tiempos
-    public void validarDatos (String nombre, Mes iniSiembra, Mes finSiembra, String metodo, Integer profSiembra, Integer tGerminarMin, Integer tGerminarMax, Integer tTransplantarMin, Integer tTransplantarMax, Integer tCosecharMin, Integer tCosecharMax) throws Errores_servicio{
+    public void validarDatos (String nombre, Mes iniSiembra, Mes finSiembra, String metodo, Integer profSiembra, Integer tGerminar, Integer tTransplantar, Integer tCosechar) throws Errores_servicio{
         if (nombre == null) {
             throw new Errores_servicio("El nombre del cultivo que quiere agregar no puede estar vacío");
         }
@@ -286,13 +280,13 @@ public class Cultivo_servicio { // OBS: modificar el validar s/los atributos act
         if (profSiembra == null){
             throw new Errores_servicio("Le falta completar la profundidad a la que se debe sembrar el cultivo");
         }
-        if (tGerminarMin == null || tGerminarMax == null){
+        if (tGerminar == null){
             throw new Errores_servicio("No ha completado todos los campos referidos al tiempo de germinado del cultivo");
         }
-        if (tTransplantarMax == null || tTransplantarMin == null) {
+        if (tTransplantar == null) {
             throw new Errores_servicio("No ha completado todos los campos referidos al tiempo de transplante del cultivos");
         }
-        if ( tCosecharMax == null || tCosecharMin == null){
+        if ( tCosechar == null){
             throw new Errores_servicio("No ha completado todos los campos referidos al tiempo de cosecha del cultivo");
         }
     }

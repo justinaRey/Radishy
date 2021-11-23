@@ -26,6 +26,9 @@ public interface Usuario_repositorio extends JpaRepository<Usuario, String>{
     // busca al usuario según su nombre de usuario
     @Query("Select u from Usuario u where u.nombre = :nombre")
     public Usuario findByNombreUsuario(@Param("nombre") String nombre);
+
+    @Query("Select u from Usuario u where u.apodo = :apodo")
+    public Usuario findByApodo(@Param("apodo") String apodo);
     
     // devuelve una lista con todas las sesiones iniciadas
     @Query("Select u from Usuario u where u.enSesion = true")
