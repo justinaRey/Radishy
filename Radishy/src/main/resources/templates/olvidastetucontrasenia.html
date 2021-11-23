@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <title>Recuperar cuenta</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width">
+    <meta http-equiv="X-UA Compatible" content="width=device-width, initial-scale=1.0">
+    <!--Tipografia: 'Roboto' .Thin 100-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/olvidastetucontrasenia.css">
+
+    
+</head>
+<body>
+    <nav th:replace="/Fragments/navbar :: navbar"></nav>
+  <div class="formulario">
+<h1>Reestablecer contraseña</h1>
+      <section class="form-login">
+          <div sec:authorize="isAuthenticated()">
+          <h1 style="color: white;">NO PUEDE ENTRAR ACÁ</h1>
+          <h1 style="color: white;">DEBE INICIAR SESIÓN</h1>
+      </div>
+          <div sec:authorize="!isAuthenticated()">
+          <form class="m-5" th:action="@{/usuario/recuperarpassword}" method="POST">
+            <h5>INGRESE SU NOMBRE DE USUARIO</h5>
+
+            <input class="controls"type ="text" name="apodo" id="apodo" value=""placeholder="Ingrese su nombre de usuario"> 
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg">ENVIAR</button>
+          </form>
+              </div>
+          <p><a href="a"></a></p>
+        </div>
+</body>

@@ -1,0 +1,29 @@
+body{
+    background: #24303c;
+}
+
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+
+}
+
+ .formulario{
+    font-size: large;
+    font-weight: 200px;
+    color: #FFFFFF;
+    width: 400px;
+    background: #22374d;
+    padding:30px;
+    margin:auto;
+    margin-top:80px;
+    border-radius: 4px;
+    font-family: 'Calibri';
+    color: white;
+    box-shadow:7px 13px 37px #000 ;
+    
+}
+.button{
+    border-width: 0vh;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>INFORMACION DE CUENTA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width">
+    <meta http-equiv="X-UA Compatible"content="width=device-width, initial-scale=1.0">
+    <!--Tipografia: 'Roboto' .Thin 100-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <link rel="stylesheet" href="../CSS/modificarusuario.css">
+  </head>
+  <body>
+    <nav th:replace="/Fragments/navbar :: navbar"></nav>
+    <div class="container">
+           <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+               <span th:text="${error}"></span>
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+           </div>
+       </div>
+      <title>Información de tu cuenta </title>
+      <section class="form-register">
+          <div sec:authorize="!isAuthenticated()">
+          <h1 style="color: white;">NO PUEDE ENTRAR ACÁ</h1>
+          <h1 style="color: white;">DEBE INICIAR SESIÓN</h1>
+      </div>
+          <div sec:authorize="isAuthenticated()">
+          <form th:action="@{/usuario/modificacion}" method="POST">
+          <h4>Cuenta</h4>
+          <input class="controls" type ="text" name="apodo" id="apodo" placeholder="Nombre de usuario">
+          <input class="controls" type ="text" name="nombre" id="nombre" placeholder="Nombre">
+          <input class="controls" type ="text" name="apellido" id="apellido" placeholder="Apellido">
+          <input class="controls" type ="email" name="email" id="email" placeholder="Correo electronico">
+          <input class="controls" type ="password" name="password2" id="password2" placeholder="Contraseña nueva">
+          <input class="controls" type ="password" name="password3" id="password3" placeholder="Confirme contraseña nueva">
+          <input class="botons" type="submit" value="GUARDAR CAMBIOS">
+          </form>
+              </div>
+          <p><a th:href="@{/usuario/probando}">¿Olvidaste la contraseña?</a></p>
+          </section>
+
+      </section>
+      <footer th:replace="/Fragments/footer :: footer"></footer>
+</body>
