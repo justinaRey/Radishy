@@ -1,0 +1,88 @@
+
+body{
+    background-image: url("/IMG/Wallpaper/wallpaper.png");
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+}
+
+/*--- -Main- ---*/
+main{
+    background-color: #44558d9f;
+    margin-top: -3.6%;
+    text-align: center;
+}
+
+/* -Article- */
+article{
+    padding-top: 20%;
+}
+
+.Titulo-principal{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 4em;
+}
+
+.Imagen-principal{
+    margin-bottom: 10%;
+}
+
+.article-IMG{
+    height: 30%;
+    width: 30%;
+    margin-left: 5%;
+    float : left;
+}
+
+
+
+.subtitle{
+    font-weight: 900;
+    font-size: 4em;
+    margin-top: 2%;
+}
+
+
+
+.text{
+    font-size: 1.3em;
+    margin-top: 3%;
+    margin-left: 45%;
+    margin-right: 10%;
+}
+
+/* Partners */
+/* Egg */
+article.partners{
+    text-align: center;
+    margin-bottom: 17%;
+}
+
+#partner-lona-img{
+    position: absolute;
+    background-image: black;
+    color: #181E23;
+    display: flex;
+    align-items: center;
+}
+
+.partner-egg-titulo{
+    font-size: 4em;
+    font-weight: 900;
+    color: #FFC170;
+    position: relative;
+    text-align: center;
+    padding-top: 5%;
+}
+
+#partner-huevo-img{
+    margin-top: 2%;
+    position: relative;
+}
+
+.partner-egg-subtitulo{
+    font-weight: 800;
+    position: relative;
+}
+
+
+

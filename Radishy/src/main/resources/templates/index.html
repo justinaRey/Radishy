@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <div th:replace="/Fragments/head :: head">
+    </div>
+    <!--CSS-->
+  <link rel="stylesheet" href="/CSS/style.css">
+
+</head>
+
+<body>
+  <nav th:replace="/Fragments/navbar :: navbar"></nav>
+
+  <main class="container">
+    <article>
+      <img class="Imagen-principal" src="/IMG/Main/Imagen-Principal8.png" alt="Logo-Principal">
+      <h1 class="Titulo-principal">Bienvenidos a Radishy</h1>
+    </article>
+
+    <article>
+      <img class="article-IMG" src="/IMG/Main/Article/people1.png" alt="">
+      <h1 class="subtitle" id="sub-somos">¿Quienes somos?</h2>
+        <p class="text">Nuestro Equipo comparte una visión sobre una economía sostenible en la cual tengamos autonomía y podamos obtener alimentos sanos, naturales y llenos de nutrientes.<br> Al mismo tiempo, hacer tus propios cultivos es fuente de satisfacción personal, alegría y bienestar. En esta época de tecnología, inmediatez y velocidad, la huerta urbana ayuda a las personas a ser más pacientes y comprensivas.</p>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn btn-outline-primary">Seguir leyendo</button>  
+        </div><!--Indexar el primer parrafo de la pagina "sobre nosotros"-->
+    </article>
+
+    <article>
+      <img class="article-IMG" src="/IMG/Main/Article/service1.png" alt="">
+      <h1 class="subtitle">¿Que brindamos?</h1>
+      <p class="text">Brindamos el servicio de mayor exelencia en toda latioamerica que proporciona a tus plantas los valores fijados por el usuario con el proposito de servir como recordatio a largo plazo</p>
+    </article>
+
+    <article>
+      <img class="article-IMG" src="/IMG/Main/Article/Funcionamiento.png" alt="">
+      <h1 class="subtitle">¿Como funciona mis cultivos?</h1>
+      <p class="text">Mis cultivos brinda un seguimiento a tiempo real de cada verdura que el usuario añada a su lista de cultivos.<br> Si el usuario quiere cargar una verdura a su lista lo hace haciendo clik en 'Mis Cultivos' y luego en 'Cargar un Cultivo'. En el caso de que el cultivo no se encuentre en la base de datos el usuario podra cargarlo yendo al apartado de 'Mis Cultivos' y luego a 'Crear un Nuevo Cultivo'</p>
+    </article>
+
+    <article>
+      <img class="article-IMG" src="/IMG/Main/Article/registro.png" alt="">
+      <h1 class="subtitle">Registro</h1>
+      <p class="text">Para registrarse pueden pulsar el boton de aqui abajo o en su defecto haciendo click en el icono de un
+        hombresito que se encuentra en la esquina derecha de la parte superior.</p>
+    </article>
+
+    <article>
+      <img class="article-IMG" src="/IMG/Main/Article/contacto.png" alt="">
+      <h1 class="subtitle">Contacto</h1>
+      <p class="text">Ante cualquier consulta o inconveniente puedes mandarnos un mensaje hacien click <a href="">aqui</a></p>
+    </article>
+
+    <article class="partners">
+      <img src="../IMG/Main/bg-horizontal.webp" alt="Lona roja" id="partner-lona-img">
+    <h1 class="partner-egg-titulo">Partners</h1>
+    <img src="../IMG/Main/huevo.png" alt="Huevo de Egg" id="partner-huevo-img">
+    <h2 class="partner-egg-subtitulo">Egg</h2>
+  </article>
+    
+  </main>
+
+  <footer th:replace="/Fragments/footer :: footer"></footer>
+</body>
+
+</html>
