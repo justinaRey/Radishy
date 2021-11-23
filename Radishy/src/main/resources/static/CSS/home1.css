@@ -1,6 +1,6 @@
 
 body{
-    background-image: url("../IMG/Wallpaper/wallpaper.png");
+    background-image: url("/static/IMG/Wallpaper/wallpaper.png");
     font-family: 'Roboto', sans-serif;
     color: #FFFFFF;
 }
@@ -16,9 +16,52 @@ main{
 
 /* -Article- */
 article{
-    padding-top: 10%;
+    padding-top: 20%;
 }
 
 .Titulo-principal{
     font-family: 'Roboto Mono', monospace;
+    font-size: 4em;
 }
+
+.Imagen-principal{
+    margin-bottom: 10%;
+}
+
+.article-IMG{
+    height: 30%;
+    width: 30%;
+    margin-left: 5%;
+    float : left;
+}
+
+
+
+.subtitle{
+    font-weight: 900;
+    font-size: 4em;
+    margin-top: 2%;
+}
+
+.registro{
+    text-align: left;
+    margin-right: 60%;
+
+    background-color: crimson;
+}
+
+.text{
+    font-size: 1.3em;
+    margin-top: 3%;
+    margin-left: 45%;
+    margin-right: 10%;
+}
+
+
+
+.contacto{
+    background-color: cyan;
+}
+
+
+
