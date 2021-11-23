@@ -13,6 +13,10 @@
 <body>
   <nav th:replace="/Fragments/navbar :: navbar"></nav>
 
+  <div th:if="${param.logout}" class="alert alert-succes alert-dismissible fade show mt-3" role="alert">
+        <span> Su sesión ha sido cerrada con éxtio </span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+  </div>
   <main class="container">
     <article>
       <img class="Imagen-principal" src="/IMG/Main/Imagen-Principal8.png" alt="Logo-Principal">

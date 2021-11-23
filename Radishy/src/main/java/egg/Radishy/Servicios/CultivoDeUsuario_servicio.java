@@ -79,7 +79,6 @@ public class CultivoDeUsuario_servicio { // no la revisé xq la hice yo, pero ti
     
     // eliminarMiCultivo(): elimina al cultivo de la lista de cultivos del usuario seleccionado
     public void eliminarMiCultivo (String idCultUsu) throws Errores_servicio{
-        chequearEsteSesionIniciada(); // se puede sacar quizás, si no se usa el enSesion
         Optional<CultivoDeUsuario> rta = repositorioCultUsu.findById(idCultUsu);
         if (rta.isPresent()){
             repositorioCultUsu.delete(rta.get());

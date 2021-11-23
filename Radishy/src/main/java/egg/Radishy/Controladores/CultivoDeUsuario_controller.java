@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Calendar;
+import org.springframework.web.bind.annotation.PathVariable;
+
 /**
  *
  * @author usuario
@@ -112,16 +114,17 @@ public class CultivoDeUsuario_controller {
     
     /*    controlador para eliminar un cultivo del listado de los cultivos    */
     
-    @GetMapping("/iniciada/mis-cultivos/eliminar-cultivo")
-    public String eliminarCultivo(ModelMap modelo, @RequestParam String idSesIn){
+    @PostMapping("/iniciada/mis-cultivos/eliminar-cultivo/{id}")
+    public String eliminarCultivo(ModelMap modelo, @RequestParam String id){
         try {
-            servicio.eliminarMiCultivo(idSesIn);
+            System.out.println(id);
+            servicio.eliminarMiCultivo(id);
             modelo.put("confirmacion", "El culivo seleccionado ha sido eliminado de sus cultivos con éxito");
         } catch (Errores_servicio ex) {
             modelo.put("error", ex.getMessage());
             Logger.getLogger(CultivoDeUsuario_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "misCultivos";
+        return "redirect:/sesion/iniciada/mis-cultivos";
     }
     
     

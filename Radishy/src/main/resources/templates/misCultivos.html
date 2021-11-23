@@ -39,16 +39,6 @@
                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
            </div>
        </div>
-     
-      
-   <table>
-            <tbody>
-                <tr th:each=" p,iterator : ${cultivosSesIn}">
-                    <td th:text="${iterator.index+1}"></td>
-                    <td th:text="${p.cultivo.nombre}"></td>
-                </tr>
-            </tbody> 
-    </table>
         
 
         <script type="text/javascript">
@@ -103,6 +93,10 @@
                             </tr>
                         </tbody>
                     </table>
+                    <form th:action="@{/sesion/iniciada/mis-cultivos/eliminar-cultivo/{p.id}}" method="POST">
+                        <button th:href="@{/sesion/iniciada/mis-cultivos/eliminar-cultivo/{p.id}}" type="submit" th:value="${p.id}" name="id" class="boxx">Eliminar cultivo</button>
+                    </form>
+                    
                 </div>
             </a>
 
@@ -123,9 +117,6 @@
                 }
             </script>
         </div>
-
-
-
         <footer th:fragment="footer">
             <div class="foot-1">
                 <h1 class="typography">Redes Sociales</h1>
