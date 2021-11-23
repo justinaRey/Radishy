@@ -185,26 +185,5 @@
       <!---->
 </body>
 
-<footer th:fragment="footer">
-    <div class="foot-1">
-      <h1 class="typography">Redes Sociales</h1>
-      <div class="iconos">
-        <a href=""
-          ><img src="../Img/facebook.png" alt="Icono Facebook" id="ico-face"
-        /></a>
-        <a href=""
-          ><img src="../Img/twitter.png" alt="Icono Twitter" id="ico-twit"
-        /></a>
-        <a href=""
-          ><img src="../Img/instagram.png" alt="Icono Instagram" id="ico-inst"
-        /></a>
-        <a href=""
-          ><img src="../Img/email.png" alt="Icono Gmail" id="ico-gmail"
-        /></a>
-      </div>
-    </div>
-    <h2 class="typography">
-      2021 Copyright Radishy - Todos los derechos reservados.
-    </h2>
-  </footer>
+<footer th:replace="/Fragments/footer :: footer"></footer>
 </html>
