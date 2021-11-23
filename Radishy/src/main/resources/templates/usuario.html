@@ -10,6 +10,12 @@
 
 <body>
 <nav th:replace="/Fragments/navbar :: navbar"></nav>
+<div class="container">
+           <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+               <span th:text="${error}"></span>
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+           </div>
+       </div>
        <h1>Iniciar sesion</h1>
       <section class="form-login">
           <h2>Ingrese sus datos de usuario</h2> <!-- Modifiqué la palabra login por lo que dice -->

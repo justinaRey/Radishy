@@ -1,4 +1,16 @@
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: radishycompany@gmail.com
+    password: RadishyDollar$$
+    properties: 
+        mail: 
+            smtp:
+                auth: true
+                starttls:
+                    required: true
+                    enable: true
 #Configuración MySQL
   datasource:
     url: jdbc:mysql://localhost:3306/Radishy?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8

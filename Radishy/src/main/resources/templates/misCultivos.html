@@ -27,53 +27,14 @@
 
   <body class="boddy">
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(0, 187, 178);">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <a class="navbar-brand" href="/">
-            <img src="/IMG/radishy.png" alt="" width="44" height="38" />
-          </a>
+    <nav th:replace="/Fragments/navbar :: navbar"></nav>
 
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle active"
-                style="text-align: center; font-size: 20px; margin-left: 4%;"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Mis cultivos
-              </a>
-              <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" th:href="@{/cultivos/listarCultivos}">Ver mis cultivos</a></li>
-                <li><a class="dropdown-item" th:href="@{/sesion/iniciada/agregar-mis-cultivos}">Cargar un cultivo</a></li>
-                <li>
-                  <a class="dropdown-item" th:href="@{/cultivos/agregarCultivo}">Crear un nuevo cultivo</a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" style="text-align: center; font-size: 20px;"
-                >Contacto</a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#" style="text-align: center; font-size: 20px;"
-                  >Sobre nosotros</a>
-            </li>
-          </ul>
-          <a class="navbar-brand" href="/">
-            <img src="/IMG/2561496_user_icon.png" alt="" width="40" height="40"/>
-          </a>
-        </div>
-      </div>
-    </nav>
-
-      
+      <div class="container">
+           <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+               <span th:text="${error}"></span>
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+           </div>
+       </div>
      
       
    <table>

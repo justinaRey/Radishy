@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <div class="container">
+           <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+               <span th:text="${error}"></span>
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+           </div>
+       </div>
     <h1 class="title">Error</h1>
     <h2 class="title" th:text="${codigo}"></h2>
     <hr>
