@@ -42,4 +42,10 @@ public class Main_controller {
         return "/send-email";
     }
 
+    @PostMapping("enviar-contacto")
+    public String enviarContacto(@RequestParam String nombre, @RequestParam String email, @RequestParam String telefono, @RequestParam String mensaje){
+        mS.mandarMail(nombre, email, telefono, mensaje);
+        return "index";
+    }
+
 }

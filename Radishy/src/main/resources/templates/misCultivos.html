@@ -72,26 +72,34 @@
                         <tbody>
                             <tr>
                                 <td class="atributos">Nombre:</td>
+                                <td>    </td>
                                 <td th:text="${p.cultivo.nombre}"></td>
                             </tr>
                             <tr>
                                 <td class="atributos">Sembrado:</td>
+                                <td>    </td>
                                 <td th:text="${p.fechaDeSembrado}"></td>
                             </tr>
 
                             <tr>
-                                <td class="atributos">Tiempo de germinar:</td>
-                                <td th:text="${p.fechaDeGerminar}"></td>
+                                <td class="atributos">Tiempo de germinar después de:</td>
+                                <td>    </td>
+                                <td th:text="${p.cultivo.tiempoGerminar}"></td>
+                                <td class="atributos">días.</td>
                             </tr>
 
                             <tr>
                                 <td class="atributos">Tiempo hasta el transplante:</td>
-                                <td th:text="${p.fechaDeTransplantar}"></td>
+                                <td>    </td>
+                                <td th:text="${p.cultivo.tiempoTransplantar}"></td>
+                                <td class="atributos">días.</td>
                             </tr>
 
                             <tr>
                                 <td class="atributos">Tiempo para la cosecha:</td>
-                                <td th:text="${p.fechaDeCosechar}"></td>
+                                <td>    </td>
+                                <td th:text="${p.cultivo.tiempoCosechar}"></td>
+                                <td class="atributos">días.</td>
                             </tr>
                         </tbody>
                     </table>

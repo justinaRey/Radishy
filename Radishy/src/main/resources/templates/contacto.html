@@ -23,19 +23,16 @@
                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
            </div>
        </div>
-    <form class="m-5" th:action="@{/save/contacto}" method="POST" th:object="${CONTACTO}">
+    <form class="m-5" th:action="@{/enviar-contacto}" method="POST" th:object="${CONTACTO}">
         <h2>CONTACTO</h2>
-        <input type="nombre" name="nombre" id="nombre" placeholder="Ingrese su nombre"><br>
-        <input type="email" name="email" id="e-mail" placeholder="Ingrese su correo electronico"><br>
-        <input type="nombre" name="Telefono" id="telefono" placeholder="Ingrese su numero de telefono"><br>
-        <textarea type="textarea" name="mensaje" placeholder="Escriba aqui su mensaje"></textarea><br>
-        <input type="button" value="ENVIAR" id="boton">
+        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre"><br>
+        <input type="email" name="email" id="email" placeholder="Ingrese su correo electronico"><br>
+        <input type="text" name="telefono" id="telefono" placeholder="Ingrese su numero de telefono"><br>
+        <textarea type="textarea" name="mensaje" id="mensaje" placeholder="Escriba aqui su mensaje"></textarea><br>
+        <input type="submit" value="ENVIAR" id="boton">
 
     </form>
     <section>
-        
-
-
     </section>
     <footer>
     <div class="foot-1">
